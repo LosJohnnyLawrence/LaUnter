@@ -8,10 +8,15 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
     public class Plato : Item
     {
-        public Item[] PosiblesExtras { get; set; }
+     
+
+        public IList<Item> PosiblesExtras { get; set; } = new List<Item>();
         public Categoria Categoria { get; set; }
 
         public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }
+
+        public override bool SePuedeAgregar(Item item) =>
+           PosiblesExtras.Contains(item);
 
     }
 }

@@ -8,7 +8,7 @@ namespace CAECE.JL.Unter.Server.Datos
 {
     public class Plato : Item
     {
-        public Item[] PosiblesExtras { get; set; }
+        public IList<Item> PosiblesExtras { get; set; } = new List<Item>();
         public Categoria Categoria { get; set; }
 
         public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }

@@ -32,7 +32,7 @@ namespace CAECE.JL.Unter.Server.API
 
             services.AddControllers();
             services.AddDbContext<ContextoDatosUnter>();
-            services.AgregarServiciosCore<ServicioFacturacion,ServicioAsmOrden,ServicioTrackOrden>();
+            services.AgregarServiciosCore<ServicioFacturacion,ServicioAsmOrden,ServicioTrackOrden,ServicioMozos>();
 
             services.AddSwaggerGen(c =>
             {
