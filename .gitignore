@@ -1,0 +1,11 @@
+build/
+bld/
+bin/
+Bin/
+obj/
+Obj/
+node_modules/
+.vs/
+
+package-lock.json
+~$$DiagramaDeploy.~vsdx
