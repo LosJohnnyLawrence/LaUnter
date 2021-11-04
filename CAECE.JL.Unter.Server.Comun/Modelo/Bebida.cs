@@ -11,5 +11,7 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public Categoria Categoria { get; set; }
 
         public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }
+
+        
     }
 }

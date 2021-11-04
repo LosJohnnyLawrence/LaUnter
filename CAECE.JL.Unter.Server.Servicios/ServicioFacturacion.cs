@@ -1,4 +1,5 @@
-﻿using CAECE.JL.Unter.Server.Servicios.Interfaces;
+﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Servicios
 {
-    public class ServicioFacturacion: IServicioFacturacion
+    public class ServicioFacturacion : IServicioFacturacion
     {
+        public void Facturar(Estadia estadia)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

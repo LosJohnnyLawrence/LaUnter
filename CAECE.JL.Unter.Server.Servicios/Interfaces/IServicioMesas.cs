@@ -32,7 +32,7 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
 
 
         /// <summary>
-        /// Crea una nueva mesa
+        /// Cambia estado de mesa a abierto
         /// </summary>
         /// <param name="mesa">Datos de mesa a Abrir</param>
         /// <returns>Mesa creada</returns>
@@ -40,7 +40,7 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
 
 
         /// <summary>
-        /// Crea una neuva mesa
+        /// Cambia estado de mesa a cerrado
         /// </summary>
         /// <param name="mesa">Datos de mesa a Cerrar</param>
         /// <returns>Mesa creada</returns>

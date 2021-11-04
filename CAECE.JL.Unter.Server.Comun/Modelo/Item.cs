@@ -16,13 +16,29 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public IList<Item> Componentes { get; protected set; } = new List<Item>();
         public virtual bool SePuedeAgregar(Item item) =>
              false;
-        
+
         public virtual bool SePuedeSacar(Item item) =>
              Componentes.Any(c => c.Id == item.Id);
 
         public override bool Equals(object obj)
             => (obj is Item item) && item?.Id == this.Id;
-        
+
+        public virtual void SacarItemASeleccion(Item item, Seleccion seleccion)
+        {
+            if (SePuedeSacar(item))
+                 seleccion.Sacar.Add(item);
+            else
+                throw new Exception("No se puede sacar");
+        }
+
+        public virtual void AgregarItemASeleccion(Item item, Seleccion seleccion)
+        {
+            if (SePuedeAgregar(item))
+                seleccion.Agregar.Add(item);
+            else
+                throw new Exception("No se puede sacar");
+        }
+
 
 
     }

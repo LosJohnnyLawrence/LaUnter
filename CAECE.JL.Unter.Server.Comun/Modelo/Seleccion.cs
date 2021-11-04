@@ -11,8 +11,8 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
 
         public int Cantidad { get; set; }
         public Item Item { get; set; }
-        public Item[] Agregar { get; set; }
-        public Item[] Sacar { get; set; }
+        public IList<Item> Agregar { get; set; }
+        public IList<Item> Sacar { get; set; }
         public EstadoPedido Estado { get; set; }
 
 

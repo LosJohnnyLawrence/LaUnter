@@ -10,12 +10,18 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioAsmOrden : IServicioAsmOrden
     {
-        public void AgregarBebida(int pedidoId, Bebida bebida, Seleccion seleccion)
+        private readonly IRepoPedidos _repoPedidos;
+        private readonly IRepoItem _repoItem;
+
+        public ServicioAsmOrden(IRepoPedidos repoPedidos, IRepoItem repoItem)
         {
-            throw new NotImplementedException();
+            _repoPedidos = repoPedidos;
+            _repoItem = repoItem;
+
+
         }
 
-        public void AgregarPlato(int pedidoId, Plato plato, Seleccion seleccion)
+        public void AgregarIngredienteASeleccion(int pedidoId, Seleccion seleccion, Item componente)
         {
             throw new NotImplementedException();
         }
@@ -26,6 +32,11 @@ namespace CAECE.JL.Unter.Server.Servicios
         }
 
         public Pedido ObtenerPedido(int pedidoId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Pedido SacarDeSeleccion(int pedidoId, Seleccion seleccion, Item componente)
         {
             throw new NotImplementedException();
         }

@@ -1,4 +1,5 @@
-﻿using CAECE.JL.Unter.Server.Servicios.Interfaces;
+﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,19 +8,41 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Servicios
 {
-    public class ServicioMenu: IServicioMenu
+    public class ServicioMenu : IServicioMenu
     {
-        //Agregar Irmeingredeinte
+        public Bebida ActualizarCatgoriaBebida(Bebida bebida)
+        {
+            throw new NotImplementedException();
+        }
 
-        //actualizar stock ingrediente
+        public Plato ActualizarCatgoriaPlato(Plato plato)
+        {
+            throw new NotImplementedException();
+        }
 
-        //agrefgar plato con categoria
+        public Ingrediente ActualizarStockIngrediente(int ingredienteId, int valor)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    agregar bebida con caegoria
-        //    agregar promocion con categoria
+        public Bebida AgregarBebida(Bebida bebida)
+        {
+            throw new NotImplementedException();
+        }
 
-        //    borrar item
+        public Ingrediente AgregarIngrediente(Ingrediente ingrediente)
+        {
+            throw new NotImplementedException();
+        }
 
+        public Plato AgregarPlato(Plato plato)
+        {
+            throw new NotImplementedException();
+        }
 
+        public void BorrarItem(int itemId)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

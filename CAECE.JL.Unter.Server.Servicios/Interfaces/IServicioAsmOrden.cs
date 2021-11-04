@@ -19,22 +19,24 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         public int NuevoPedido();
 
         /// <summary>
-        /// Añade un nuevo item al pedido ya seea Bebida,
+        /// Añade un nuevo Ingrediente a la seleccion de un item en
+        /// unpedido ya seea Bebida,
         /// comida o promocion
         /// </summary>
         /// <param name="pedidoId">Id del pedido para operar</param>
-        /// <param name="bebida">Bebida para agregar al pedido ya </param>
-        /// <param name="seleccion">Describe como se modifica el plato base</param>
-        public void AgregarBebida(int pedidoId, Bebida bebida, Seleccion seleccion);
+        // <param name="componente">Ingrediente a Agregar de la seleccion</param>
+        /// <param name="seleccion">Seleccion de item actual</param>
+        public void AgregarIngredienteASeleccion(int pedidoId, Seleccion seleccion, Item componente);
 
         /// <summary>
-        /// Añade un nuevo item al pedido ya seea Bebida,
+        /// Saca un nuevo Componenete a la seleccion de un item en
+        /// unpedido ya seea Bebida,
         /// comida o promocion
         /// </summary>
         /// <param name="pedidoId">Id del pedido para operar</param>
-        /// <param name="plato">Plato para agregar al pedido</param>
-        /// <param name="seleccion">Describe como se modifica el plato base</param>
-        public void AgregarPlato(int pedidoId, Plato plato, Seleccion seleccion);
+        /// <param name="componente">Ingrediente a Sacar de la seleccion</param>
+        /// <param name="seleccion">Seleccion de item actual</param>
+        public Pedido SacarDeSeleccion(int pedidoId, Seleccion seleccion, Item componente);
 
 
 
