@@ -3,9 +3,9 @@ using System;
 
 namespace CAECE.JL.Unter.Server.Datos
 {
-    public class ContextoDatosUnter: DbContext
+    public class ContextoDatosUnter : DbContext
     {
-        public ContextoDatosUnter()
+        public ContextoDatosUnter(DbContextOptions options) : base(options)
         {
         }
 
@@ -15,10 +15,15 @@ namespace CAECE.JL.Unter.Server.Datos
         public DbSet<Ingrediente> Ingredientes { get; set; }
         public DbSet<Plato> Platos { get; set; }
         public DbSet<Bebida> Bebidas { get; set; }
-        public DbSet<Promocion> Promocioness { get; set; }
         public DbSet<Sector> Sectores { get; set; }
-        public DbSet<Seleccion> Cambios { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Estadia> Estadias { get; set; }
+        public DbSet<EstadoMesa> EstadoMesas { get; set; }
+        public DbSet<EstadoPreparacion> EstadosPreparacion { get; set; }
+        public DbSet<RestriccionAlimentaria> RestriccionAlimentarias { get; set; }
+        public DbSet<Seleccion> Selecciones { get; set; }
+        public DbSet<TurnoMozo> TurnoMozos { get; set; }
 
     }
 }

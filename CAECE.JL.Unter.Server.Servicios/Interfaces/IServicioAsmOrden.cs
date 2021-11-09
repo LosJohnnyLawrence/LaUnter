@@ -13,31 +13,37 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
 
         /// <summary>
         /// Crea un nuevo peido y perisiste su data, 
-        /// devuelve el Id para operar con ella a que la PI es stateles
+        /// devuelve el Id para operar con ella a que la API es stateles
         /// </summary>
-        /// <returns>Id del nuevo Pedido</returns>
-        public int NuevoPedido();
+        /// <returns> Data nuevo Pedido</returns>
+        public Pedido NuevoPedido();
 
+  
         /// <summary>
-        /// Añade un nuevo Ingrediente a la seleccion de un item en
-        /// unpedido ya seea Bebida,
+        /// Añade un nuevo item al pedido ya seea Bebida,
         /// comida o promocion
         /// </summary>
         /// <param name="pedidoId">Id del pedido para operar</param>
-        // <param name="componente">Ingrediente a Agregar de la seleccion</param>
-        /// <param name="seleccion">Seleccion de item actual</param>
-        public void AgregarIngredienteASeleccion(int pedidoId, Seleccion seleccion, Item componente);
+        /// <param name="bebida">Bebida para agregar al pedido ya </param>
+        /// <param name="seleccion">Describe como se modifica el plato base</param>
+        public void AgregarSeleccionBebida(int pedidoId, Bebida bebida, Seleccion seleccion);
 
         /// <summary>
-        /// Saca un nuevo Componenete a la seleccion de un item en
-        /// unpedido ya seea Bebida,
+        /// Añade un nuevo item al pedido ya seea Bebida,
         /// comida o promocion
         /// </summary>
         /// <param name="pedidoId">Id del pedido para operar</param>
-        /// <param name="componente">Ingrediente a Sacar de la seleccion</param>
-        /// <param name="seleccion">Seleccion de item actual</param>
-        public Pedido SacarDeSeleccion(int pedidoId, Seleccion seleccion, Item componente);
+        /// <param name="plato">Plato para agregar al pedido</param>
+        /// <param name="seleccion">Describe como se modifica el plato base</param>
+        public void AgregarSeleccionPlato(int pedidoId, Plato plato, Seleccion seleccion);
 
+
+        /// <summary>
+        /// Elimina una seleccion de un pedido
+        /// </summary>
+        /// <param name="seleccionId">Id de la seleccion a eliminar</param>
+        /// <returns>El nuevo estado del pedido</returns>
+        public Pedido EliminarSeleccion(int seleccionId);
 
 
         /// <summary>

@@ -10,6 +10,7 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioFacturacion : IServicioFacturacion
     {
+        ///  <inheritdoc/>
         public void Facturar(Estadia estadia)
         {
             throw new NotImplementedException();

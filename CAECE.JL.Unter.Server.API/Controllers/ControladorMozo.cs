@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    public class ControladorOrden : Controller
+    public class ControladorMozo : Controller
     {
         // GET: Orden
         public ActionResult Index()

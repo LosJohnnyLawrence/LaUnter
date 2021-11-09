@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos.Interfaces
 {
-    public interface IRepoPedido
+    public interface IRepoMesa
     {
         /// <summary>
-        /// Obtiene datos de un pedido particular que ya exista
+        /// Obtiene datos de un estadia particular que hubo en una mesa
         /// </summary>
-        /// <param name="id">Id de la mesa  a obtener</param>
+        /// <param name="mesaId">Id de la mesa cuya data queremos obtener</param>
         /// <returns>Datos del pedido</returns>
-        public Pedido ObtenerPedidoPorId(int id);
+        public Pedido ObtenerUltimaEstadia(int mesaId);
 
         /// <summary>
         /// Obtiene datos de pedidos recibidos por un mozo

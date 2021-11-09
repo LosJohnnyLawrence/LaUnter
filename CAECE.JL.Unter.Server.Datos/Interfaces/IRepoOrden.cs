@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos.Interfaces
 {
-    public interface IRepoPedido
+    public interface IRepoOrden
     {
         /// <summary>
         /// Obtiene datos de un pedido particular que ya exista
@@ -50,11 +50,11 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
 
 
         /// <summary>
-        /// Actualiza un pedido
+        /// Elimina una seeccion existente de un pedido
         /// </summary>
-        /// <param name="pedido"> Datos del pedido actualizados </param>
+        /// <param name="selccion"> Datos de la seleccion actualizados </param>
         /// <returns>El pedido actualizado como esta en la DB</returns>
-        public Pedido ActualizarPedido(Pedido pedido);
+        public Pedido EliminarSeleccion(Seleccion selccion);
 
         /// <summary>
         /// Eliminar un pedido

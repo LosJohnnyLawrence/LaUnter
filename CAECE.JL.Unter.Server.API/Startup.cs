@@ -1,15 +1,18 @@
 using CAECE.JL.Unter.Server.Datos;
+using CAECE.JL.Unter.Server.Datos.Helpers;
 using CAECE.JL.Unter.Server.Servicios;
 using CAECE.JL.Unter.Server.Servicios.Helpers;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Serilog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,10 +32,15 @@ namespace CAECE.JL.Unter.Server.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
-            services.AddDbContext<ContextoDatosUnter>();
+            services.AddDbContext<ContextoDatosUnter>(builder => builder.UseSqlServer(Configuration.GetConnectionString("MainDB")));
+           
             services.AgregarServiciosCore<ServicioFacturacion, ServicioAsmOrden, ServicioTrackOrden, ServicioMenu, ServicioMesas, ServicioMozos>();
+
+            services.AgregarReposCore<RepoEstados, RepoMenu, RepoMesa, RepoMozos, RepoOrden>();
+            services.AgregarPerfilesNegocioAutomapper();
+          
+
 
             services.AddSwaggerGen(c =>
             {
@@ -51,6 +59,7 @@ namespace CAECE.JL.Unter.Server.API
             }
 
             app.UseHttpsRedirection();
+            app.UseSerilogRequestLogging();
 
             app.UseRouting();
 

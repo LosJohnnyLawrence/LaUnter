@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos.Interfaces
 {
-    public interface IRepoPedido
+    public interface IRepoMozos
     {
         /// <summary>
         /// Obtiene datos de un pedido particular que ya exista

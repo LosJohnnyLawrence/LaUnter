@@ -1,4 +1,6 @@
-﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,35 +12,51 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioAsmOrden : IServicioAsmOrden
     {
-        private readonly IRepoPedidos _repoPedidos;
-        private readonly IRepoItem _repoItem;
+        private readonly IRepoOrden _repoOrden;
+        private readonly IRepoMenu _repoMenu;
+        private readonly IMapper _mapper;
 
-        public ServicioAsmOrden(IRepoPedidos repoPedidos, IRepoItem repoItem)
+        public ServicioAsmOrden(IRepoOrden repoOrden, IRepoMenu repoMenu, IMapper mapper)
         {
-            _repoPedidos = repoPedidos;
-            _repoItem = repoItem;
+            _repoOrden = repoOrden;
+            _repoMenu = repoMenu;
+            _mapper = mapper;
 
 
         }
 
-        public void AgregarIngredienteASeleccion(int pedidoId, Seleccion seleccion, Item componente)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int NuevoPedido()
+        ///  <inheritdoc/>
+        public void AgregarSeleccionBebida(int pedidoId, Bebida bebida, Seleccion seleccion)
         {
             throw new NotImplementedException();
         }
 
+
+        ///  <inheritdoc/>
+        public void AgregarSeleccionPlato(int pedidoId, Plato plato, Seleccion seleccion)
+        {
+            throw new NotImplementedException();
+        }
+
+        ///  <inheritdoc/>
+        public Pedido EliminarSeleccion(int seleccionId)
+        {
+            throw new NotImplementedException();
+        }
+
+        ///  <inheritdoc/>
+        public Pedido NuevoPedido()
+        {
+            throw new NotImplementedException();
+        }
+
+        ///  <inheritdoc/>
         public Pedido ObtenerPedido(int pedidoId)
         {
-            throw new NotImplementedException();
+            var pedido = _repoOrden.ObtenerPedidoPorId(pedidoId);
+            return  _mapper.Map<Pedido>(pedido);
+            
         }
 
-        public Pedido SacarDeSeleccion(int pedidoId, Seleccion seleccion, Item componente)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

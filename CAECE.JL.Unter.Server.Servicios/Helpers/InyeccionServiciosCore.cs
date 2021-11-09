@@ -30,14 +30,12 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
         }
 
 
-        public void AgregarPerfilesAutomapper((this IServiceCollection servicios) { 
-            --TODO
+        public static void AgregarPerfilesNegocioAutomapper(this IServiceCollection servicios) {
+            servicios.AddAutoMapper(typeof(PerfilDeMappingDesdeData));
+           
         }
 
-        public void AgregarLogging(this IServiceCollection servicios)
-        {
-            servicios.AddLogging();--TODO
-        }
+   
 
     }
 }

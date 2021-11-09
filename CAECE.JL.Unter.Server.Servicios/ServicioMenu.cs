@@ -10,36 +10,43 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioMenu : IServicioMenu
     {
+        ///  <inheritdoc/>
         public Bebida ActualizarCatgoriaBebida(Bebida bebida)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public Plato ActualizarCatgoriaPlato(Plato plato)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public Ingrediente ActualizarStockIngrediente(int ingredienteId, int valor)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public Bebida AgregarBebida(Bebida bebida)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public Ingrediente AgregarIngrediente(Ingrediente ingrediente)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public Plato AgregarPlato(Plato plato)
         {
             throw new NotImplementedException();
         }
 
+        ///  <inheritdoc/>
         public void BorrarItem(int itemId)
         {
             throw new NotImplementedException();

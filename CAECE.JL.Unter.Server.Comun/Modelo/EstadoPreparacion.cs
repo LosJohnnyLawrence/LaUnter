@@ -1,6 +1,6 @@
 ﻿namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
-    public class EstadoPedido
+    public class EstadoPreparacion
     {
         public int Id { get; set; }
         public string Descripcion { get; set; }
