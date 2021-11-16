@@ -15,7 +15,7 @@ Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "CAECE.JL.Unter.Cliente", "C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAECE.JL.Unter.Notificaciones", "CAECE.JL.Unter.Notificaciones\CAECE.JL.Unter.Notificaciones.csproj", "{ED73BAB4-2414-471E-B726-CB9A850A1669}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAECE.JL.Unter.Identificacion", "CAECE.JL.Unter.Identificacion\CAECE.JL.Unter.Identificacion.csproj", "{9938E746-0B56-4410-A92E-4FAC2BFB2E75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAECE.JL.Unter.ProveedorIdentificacion", "CAECE.JL.Unter.Identificacion\CAECE.JL.Unter.ProveedorIdentificacion.csproj", "{9938E746-0B56-4410-A92E-4FAC2BFB2E75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
