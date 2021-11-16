@@ -1,4 +1,5 @@
 ﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Datos;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,16 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioMenu : IServicioMenu
     {
+        private readonly RepoMenu _repoMenu;
+        public ServicioMenu(RepoMenu repoMenu)
+        {
+            _repoMenu = repoMenu;
+        }
+
         ///  <inheritdoc/>
         public Bebida ActualizarCatgoriaBebida(Bebida bebida)
         {
-            throw new NotImplementedException();
+           _repoMenu.ActualizarCatgoriaBebida
         }
 
         ///  <inheritdoc/>

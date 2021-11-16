@@ -2,6 +2,7 @@
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,7 +14,7 @@ namespace CAECE.JL.Unter.Server.Servicios
         ///  <inheritdoc/>
         public void Facturar(Estadia estadia)
         {
-            throw new NotImplementedException();
+           File.WriteAllText(System.Text.JSON)
         }
     }
 }

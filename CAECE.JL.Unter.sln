@@ -13,7 +13,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAECE.JL.Unter.Server.API",
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "CAECE.JL.Unter.Cliente", "CAECE.JL.Unter.Cliente\CAECE.JL.Unter.Cliente.njsproj", "{364AD0CB-37EE-4BA0-B8FA-DBD9FDFD4C94}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAECE.JL.Unter.Notificaciones", "CAECE.JL.Unter.Notificaciones\CAECE.JL.Unter.Notificaciones.csproj", "{ED73BAB4-2414-471E-B726-CB9A850A1669}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CAECE.JL.Unter.Notificaciones", "CAECE.JL.Unter.Notificaciones\CAECE.JL.Unter.Notificaciones.csproj", "{ED73BAB4-2414-471E-B726-CB9A850A1669}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CAECE.JL.Unter.Identificacion", "CAECE.JL.Unter.Identificacion\CAECE.JL.Unter.Identificacion.csproj", "{9938E746-0B56-4410-A92E-4FAC2BFB2E75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -97,6 +99,18 @@ Global
 		{ED73BAB4-2414-471E-B726-CB9A850A1669}.Release|x64.Build.0 = Release|Any CPU
 		{ED73BAB4-2414-471E-B726-CB9A850A1669}.Release|x86.ActiveCfg = Release|Any CPU
 		{ED73BAB4-2414-471E-B726-CB9A850A1669}.Release|x86.Build.0 = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|x64.Build.0 = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Debug|x86.Build.0 = Debug|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|x64.ActiveCfg = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|x64.Build.0 = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|x86.ActiveCfg = Release|Any CPU
+		{9938E746-0B56-4410-A92E-4FAC2BFB2E75}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

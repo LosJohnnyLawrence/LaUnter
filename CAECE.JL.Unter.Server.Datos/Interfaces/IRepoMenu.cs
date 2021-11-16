@@ -9,64 +9,108 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
     public interface IRepoMenu
     {
         /// <summary>
-        /// Obtiene datos de un pedido particular que ya exista
+        /// Agrega un nuevo ingrediente para usar en el menu
         /// </summary>
-        /// <param name="id">Id de la mesa  a obtener</param>
-        /// <returns>Datos del pedido</returns>
-        public Pedido ObtenerPedidoPorId(int id);
+        /// <param name="ingrediente">data del ingredente nuevo a utilizaren el menu</param>
+        /// <returns></returns>
+        public Ingrediente AgregarIngrediente(Ingrediente ingrediente);
 
         /// <summary>
-        /// Obtiene datos de pedidos recibidos por un mozo
+        /// Agrega un nuevo ingrediente para usar en el menu
         /// </summary>
-        /// <param name="idDeMozo">Id del mozo relacionado a los datos a obtener</param>
-        /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
-        /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null);
-
+        /// <param name="plato">data del plato nuevo a agregar al menu</param>
+        /// <returns>El nuevo plato con la data final</returns>
+        public Plato AgregarPlato(Plato plato);
 
         /// <summary>
-        /// Obtiene datos de pedidos por una mesa en particlar
+        /// Agrega un nuevo ingrediente para usar en el menu
         /// </summary>
-        /// <param name="idDeMesa">Id de la mesa relacionado a los datos a obtener</param>
-        /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
-        /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMesa(int idDeMesa ,int? idEstado = null);
-
-
-       /// <summary>
-       /// Persite un Pedido en la DB
-       /// </summary>
-       /// <param name="idDeMesa"></param>
-       /// <returns></returns>
-        public Pedido CrearUnPedido(Pedido idDeMesa);
+        /// <param name="bebida">data de la nueva bebida a agregar al menu</param>
+        /// <returns>La nueva bebida con la data final</returns>
+        public Bebida AgregarBebida(Bebida bebida);
 
         /// <summary>
-        /// Permite Agregar un pedido solo menionando el Id
+        /// Actualiza el valor del stock de un Ingrediente dentreo
+        /// de transacciones nativas del framework EF (Entity framework)
         /// </summary>
-        /// <param name="selccion">Datos de la seleccion</param>
-        /// <param name="idPedido">Id del pedido a actualizar</param>
-        /// <returns>El pedido actualizado</returns>
-        public Pedido AgregarSeleccionAPedido(Seleccion selccion, int idPedido);
+        /// <param name="ingredienteId">Id del ingrediente que queremos actualizar</param>
+        /// <param name="valor">Nuevo Valor del stock</param>
+        /// <returns>Ingrediente actualizado</returns>
+        public Ingrediente ActualizarStockIngrediente(int ingredienteId, int valor);
 
 
         /// <summary>
-        /// Actualiza un pedido
+        /// Actualiza el categoria de un Item en y sus componentes hijos, usando
+        /// composite y transacciones nativas del framework EF (Entity framework)
         /// </summary>
-        /// <param name="pedido"> Datos del pedido actualizados </param>
-        /// <returns>El pedido actualizado como esta en la DB</returns>
-        public Pedido ActualizarPedido(Pedido pedido);
+        /// <param name="bebida">Item de la bebida a actualizar</param>
+        /// <returns>Bebida actualizada</returns>
+        public Bebida ActualizarBebida(Bebida bebida);
 
         /// <summary>
-        /// Eliminar un pedido
+        /// Actualiza el categoria de un Item y sus componentes hijos, usando
+        /// composite y transacciones nativas del framework EF (Entity framework)
         /// </summary>
-        /// <param name="pedido"> Datos del pedido a borrar</param>
-        public void EliminarPedido(Pedido pedido);
+        /// <param name="plato">Item del plato a actualizar</param>
+        /// <returns>Bebida actualizada</returns>
+        public Plato ActualizarPlato(Plato plato);
+
 
         /// <summary>
-        /// Eliminar un pedido
+        /// Elimina un item del menu, ya sea un ingrediente, un plato o una bebida
+        /// Se elimina en casacada y dentro de una transaccion
         /// </summary>
-        /// <param name="idPedido"> Id del pedido a borrar </param>
-        public void EliminarPedido(int idPedido);
+        /// <param name="itemId"></param>
+        public void BorrarItem(int itemId);
+
+        /// <summary>
+        /// Obtiene detalles de una bebida del menu
+        /// </summary>
+        /// <param name="itemId"> Id de la bebida la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Bebida ObtenerBebida(int itemId);
+
+        /// <summary>
+        /// Obtiene detalles de un plato del menu
+        /// </summary>
+        /// <param name="itemId"> Id del plato la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Plato ObtenerPlato(int itemId);
+
+        /// <summary>
+        /// Obtiene detalles de un ingrediente posible del menu
+        /// </summary>
+        /// <param name="itemId"> Id del ingrediente la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Plato ObtenerIngrediente(int itemId);
+
+        /// <summary>
+        /// Obtiene list de ingredientes posible del menu
+        /// </summary>
+        /// <returns>Ingredientes del menu</returns>
+        public IQueryable<Ingrediente> ObtenerTodosLosIngredientes();
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <param name="numPag">Numero de pagina</param>
+        /// <param name="tamDePagina">Tmaño de pagina en cantidad de items</param>        /// 
+        /// <returns>Lista con lazy loading del menu</returns>
+        public IQueryable<Item> ObtenerMenuPaginado(int numPag, int tamDePagina);
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <param name="idCategoria">Id de la categoria que deseamos mostrar</param>
+        /// <returns>Lista con lazy loading de items del menu elegido</returns>
+        public IQueryable<Item> ObtenerMenuPorCategoria(int idCategoria);
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <returns>Lista con lazy loading de categorias de los Items Menu Existentes</returns>
+        public IQueryable<Categoria> ObtenerCategorias();
+
 
 
     }

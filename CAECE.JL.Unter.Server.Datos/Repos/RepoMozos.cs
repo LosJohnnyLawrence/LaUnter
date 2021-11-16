@@ -7,46 +7,51 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos
 {
-    public class RepoMozos : IRepoMozos
+    public class RepoMozos : RepoAbstracto, IRepoMozos
     {
-        public Pedido ActualizarPedido(Pedido pedido)
+        public RepoMozos(ContextoDatosUnter contextoDatosUnter):base(contextoDatosUnter)
         {
-            throw new NotImplementedException();
+
+        }
+        public Mozo ActualizarDatosMozo(Mozo mozo)
+        {
+            return base.Actualizar(mozo);
         }
 
-        public Pedido AgregarSeleccionAPedido(Seleccion selccion, int idPedido)
+        public TurnoMozo ActualizarTurnoMozo(TurnoMozo turno)
         {
-            throw new NotImplementedException();
+            return base.Actualizar(turno);
         }
 
-        public Pedido CrearUnPedido(Pedido idDeMesa)
+        public void BorrarMozo(int idMozo)
         {
-            throw new NotImplementedException();
+           var mozo = _contextoDatosUnter.Mozos.Find(idMozo);
+            _contextoDatosUnter.Mozos.Remove(mozo);
         }
 
-        public void EliminarPedido(Pedido pedido)
+        public Mozo CrearNuevoMozo(Mozo mozo)
         {
-            throw new NotImplementedException();
+            return base.Crear(mozo);
         }
 
-        public void EliminarPedido(int idPedido)
+        public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno)
         {
-            throw new NotImplementedException();
+            return base.Crear(turno);
         }
 
-        public Pedido ObtenerPedidoPorId(int id)
+        public TurnoMozo OtenerTurnoActualMozo(Mozo mozo)
         {
-            throw new NotImplementedException();
+            var diaActual = DateTime.Now.DayOfWeek;
+            var horaActual = DateTime.Now.TimeOfDay;
+            //obtngo un turno para este mozo particular dentro del dia y horarios actuales
+           return _contextoDatosUnter.TurnoMozos.FirstOrDefault(turno => turno.Mozo.Id == mozo.Id &&
+                                        turno.Dia == diaActual && horaActual < turno.FinTurno && horaActual > turno.InicioTurno);
         }
 
-        public Pedido[] ObtenerPedidosPorMesa(int idDeMesa, int? idEstado = null)
+        public IQueryable<TurnoMozo> OtenerTurnosMozo(Mozo mozo)
         {
-            throw new NotImplementedException();
-        }
+            return _contextoDatosUnter.TurnoMozos.Where(turno => turno.Mozo.Id == mozo.Id);
 
-        public Pedido[] ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null)
-        {
-            throw new NotImplementedException();
         }
     }
 }

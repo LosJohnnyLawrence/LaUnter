@@ -9,64 +9,53 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
     public interface IRepoMozos
     {
         /// <summary>
-        /// Obtiene datos de un pedido particular que ya exista
+        /// Persiste la data de un nuevo mozo
         /// </summary>
-        /// <param name="id">Id de la mesa  a obtener</param>
-        /// <returns>Datos del pedido</returns>
-        public Pedido ObtenerPedidoPorId(int id);
+        /// <param name="mozo">data del mozo</param>
+        /// <returns>data final del mozo</returns>
+        public Mozo CrearNuevoMozo(Mozo mozo);
 
         /// <summary>
-        /// Obtiene datos de pedidos recibidos por un mozo
+        /// Elimina la data de un mozo existente
         /// </summary>
-        /// <param name="idDeMozo">Id del mozo relacionado a los datos a obtener</param>
-        /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
-        /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null);
-
+        /// <param name="idMozo">id del mozo a borrar</param>
+        public void BorrarMozo(int idMozo);
 
         /// <summary>
-        /// Obtiene datos de pedidos por una mesa en particlar
+        /// Actualiza la data de un nuevo mozo
         /// </summary>
-        /// <param name="idDeMesa">Id de la mesa relacionado a los datos a obtener</param>
-        /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
-        /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMesa(int idDeMesa ,int? idEstado = null);
-
-
-       /// <summary>
-       /// Persite un Pedido en la DB
-       /// </summary>
-       /// <param name="idDeMesa"></param>
-       /// <returns></returns>
-        public Pedido CrearUnPedido(Pedido idDeMesa);
+        /// <param name="mozo">data nueva del mozo</param>
+        /// <returns>data actualizada del mozo</returns>
+        public Mozo ActualizarDatosMozo(Mozo mozo);
 
         /// <summary>
-        /// Permite Agregar un pedido solo menionando el Id
+        /// Obtiene Turnos del mozo para saber
+        /// cuadno y en que sector trabajaraa un mozo
         /// </summary>
-        /// <param name="selccion">Datos de la seleccion</param>
-        /// <param name="idPedido">Id del pedido a actualizar</param>
-        /// <returns>El pedido actualizado</returns>
-        public Pedido AgregarSeleccionAPedido(Seleccion selccion, int idPedido);
-
-
-        /// <summary>
-        /// Actualiza un pedido
-        /// </summary>
-        /// <param name="pedido"> Datos del pedido actualizados </param>
-        /// <returns>El pedido actualizado como esta en la DB</returns>
-        public Pedido ActualizarPedido(Pedido pedido);
+        /// <param name="mozo"></param>
+        /// <returns>Lista con lazy loading de turnos</returns>
+        public IQueryable<TurnoMozo> OtenerTurnosMozo(Mozo mozo);
 
         /// <summary>
-        /// Eliminar un pedido
+        /// Obtiene Turnos el turno qeudeberia hacer un mozo ahora
         /// </summary>
-        /// <param name="pedido"> Datos del pedido a borrar</param>
-        public void EliminarPedido(Pedido pedido);
+        /// <param name="mozo">Data del mozo</param>
+        /// <returns> Data del turno actual del mozo, si no es su turno,null</returns>
+        public TurnoMozo OtenerTurnoActualMozo(Mozo mozo);
 
         /// <summary>
-        /// Eliminar un pedido
+        /// Actualiza la data de un existente
         /// </summary>
-        /// <param name="idPedido"> Id del pedido a borrar </param>
-        public void EliminarPedido(int idPedido);
+        /// <param name="turno">data actualizada del turno</param>
+        /// <returns>data actualizada del turno</returns>
+        public TurnoMozo ActualizarTurnoMozo(TurnoMozo turno);
+
+        /// <summary>
+        /// Crea un nuevo turno par a un mozo
+        /// </summary>
+        /// <param name="turno">data del turno y del mozo</param>
+        /// <returns>turno con data final</returns>
+        public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno);
 
 
     }

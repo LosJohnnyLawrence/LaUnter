@@ -9,11 +9,11 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
     public interface IRepoOrden
     {
         /// <summary>
-        /// Obtiene datos de un pedido particular que ya exista
+        /// Obtiene datos de un estadia particular que hubo en una mesa
         /// </summary>
-        /// <param name="id">Id de la mesa  a obtener</param>
-        /// <returns>Datos del pedido</returns>
-        public Pedido ObtenerPedidoPorId(int id);
+        /// <param name="mesaId">Id de la mesa cuya data queremos obtener</param>
+        /// <returns>Datos de la ultima etadia</returns>
+        public Estadia ObtenerUltimaEstadia(int mesaId);
 
         /// <summary>
         /// Obtiene datos de pedidos recibidos por un mozo
@@ -21,7 +21,7 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <param name="idDeMozo">Id del mozo relacionado a los datos a obtener</param>
         /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
         /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null);
+        public IQueryable<Pedido> ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null);
 
 
         /// <summary>
@@ -30,14 +30,14 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <param name="idDeMesa">Id de la mesa relacionado a los datos a obtener</param>
         /// <param name="idEstado">Id si queremos filtrar por un estado particular</param>
         /// <returns>Array de datos de los pedidos</returns>
-        public Pedido[] ObtenerPedidosPorMesa(int idDeMesa ,int? idEstado = null);
+        public IQueryable<Pedido> ObtenerPedidosPorMesa(int idDeMesa, int? idEstado = null);
 
 
-       /// <summary>
-       /// Persite un Pedido en la DB
-       /// </summary>
-       /// <param name="idDeMesa"></param>
-       /// <returns></returns>
+        /// <summary>
+        /// Persite un Pedido en la DB
+        /// </summary>
+        /// <param name="idDeMesa"></param>
+        /// <returns></returns>
         public Pedido CrearUnPedido(Pedido idDeMesa);
 
         /// <summary>
@@ -50,17 +50,13 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
 
 
         /// <summary>
-        /// Elimina una seeccion existente de un pedido
+        /// Actualiza un pedido
         /// </summary>
-        /// <param name="selccion"> Datos de la seleccion actualizados </param>
+        /// <param name="pedido"> Datos del pedido actualizados </param>
         /// <returns>El pedido actualizado como esta en la DB</returns>
-        public Pedido EliminarSeleccion(Seleccion selccion);
+        public Pedido ActualizarPedido(Pedido pedido);
 
-        /// <summary>
-        /// Eliminar un pedido
-        /// </summary>
-        /// <param name="pedido"> Datos del pedido a borrar</param>
-        public void EliminarPedido(Pedido pedido);
+
 
         /// <summary>
         /// Eliminar un pedido

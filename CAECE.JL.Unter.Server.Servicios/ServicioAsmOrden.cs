@@ -24,30 +24,22 @@ namespace CAECE.JL.Unter.Server.Servicios
 
 
         }
-
         ///  <inheritdoc/>
-        public void AgregarSeleccionBebida(int pedidoId, Bebida bebida, Seleccion seleccion)
+        public Pedido AgregarSeleccion(int pedidoId, Seleccion seleccion)
         {
-            throw new NotImplementedException();
-        }
-
-
-        ///  <inheritdoc/>
-        public void AgregarSeleccionPlato(int pedidoId, Plato plato, Seleccion seleccion)
-        {
-            throw new NotImplementedException();
+            return _mapper.Map<Pedido>(_repoOrden.AgregarSeleccionAPedido(_mapper.Map<Datos.Seleccion>(seleccion), pedidoId)) ;
         }
 
         ///  <inheritdoc/>
-        public Pedido EliminarSeleccion(int seleccionId)
+        public void EliminarSeleccion(int seleccionId)
         {
-            throw new NotImplementedException();
+            _repoOrden.EliminarSeleccion(new Datos.Seleccion { Id = seleccionId });
         }
 
         ///  <inheritdoc/>
-        public Pedido NuevoPedido()
+        public Pedido NuevoPedido(Pedido pedido)
         {
-            throw new NotImplementedException();
+           return _mapper.Map<Pedido>(_repoOrden.CrearUnPedido(_mapper.Map<Datos.Pedido>(pedido)));
         }
 
         ///  <inheritdoc/>

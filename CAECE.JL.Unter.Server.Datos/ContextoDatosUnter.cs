@@ -9,6 +9,8 @@ namespace CAECE.JL.Unter.Server.Datos
         {
         }
 
+        public DbSet<Item> ItemsMenu { get; set; }
+
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Mozo> Mozos { get; set; }
         public DbSet<Mesa> Mesas { get; set; }
