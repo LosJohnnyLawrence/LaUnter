@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAECE.JL.Unter.Server.Datos
+namespace CAECE.JL.Unter.Server.Datos.Repo
 {
     /// <summary>
     /// Implementacion de metodos geneicos a modo de template para evitar repetir codigos

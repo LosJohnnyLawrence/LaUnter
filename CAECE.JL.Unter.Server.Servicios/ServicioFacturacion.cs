@@ -14,7 +14,7 @@ namespace CAECE.JL.Unter.Server.Servicios
         ///  <inheritdoc/>
         public void Facturar(Estadia estadia)
         {
-           File.WriteAllText(System.Text.JSON)
+            File.WriteAllText("C:\\",System.Text.Json.JsonSerializer.Serialize(estadia));
         }
     }
 }

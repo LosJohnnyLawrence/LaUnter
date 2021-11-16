@@ -1,5 +1,6 @@
-﻿using CAECE.JL.Unter.Server.Comun.Modelo;
-using CAECE.JL.Unter.Server.Datos;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -11,52 +12,55 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioMenu : IServicioMenu
     {
-        private readonly RepoMenu _repoMenu;
-        public ServicioMenu(RepoMenu repoMenu)
+        private readonly IRepoMenu _repoMenu;
+        private readonly IMapper _mapper;
+
+        public ServicioMenu(IRepoMenu repoMenu, IMapper mapper)
         {
             _repoMenu = repoMenu;
+            _mapper = mapper;
         }
 
         ///  <inheritdoc/>
-        public Bebida ActualizarCatgoriaBebida(Bebida bebida)
+        public Bebida ActualizarBebida(Bebida bebida)
         {
-           _repoMenu.ActualizarCatgoriaBebida
+            return  _mapper.Map<Bebida>( _repoMenu.ActualizarBebida(_mapper.Map<Datos.Bebida>( bebida)));
         }
 
         ///  <inheritdoc/>
-        public Plato ActualizarCatgoriaPlato(Plato plato)
+        public Plato ActualizarPlato(Plato plato)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Plato>(_repoMenu.ActualizarPlato(_mapper.Map<Datos.Plato>(plato)));
         }
 
         ///  <inheritdoc/>
         public Ingrediente ActualizarStockIngrediente(int ingredienteId, int valor)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Ingrediente>(_repoMenu.ActualizarStockIngrediente(ingredienteId,valor));
         }
 
         ///  <inheritdoc/>
         public Bebida AgregarBebida(Bebida bebida)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Bebida>(_repoMenu.AgregarBebida(_mapper.Map<Datos.Bebida>(bebida)));
         }
 
         ///  <inheritdoc/>
         public Ingrediente AgregarIngrediente(Ingrediente ingrediente)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Ingrediente>(_repoMenu.AgregarIngrediente(_mapper.Map<Datos.Ingrediente>(ingrediente)));
         }
 
         ///  <inheritdoc/>
         public Plato AgregarPlato(Plato plato)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Plato>(_repoMenu.AgregarPlato(_mapper.Map<Datos.Plato>(plato)));
         }
 
         ///  <inheritdoc/>
         public void BorrarItem(int itemId)
         {
-            throw new NotImplementedException();
+            _repoMenu.BorrarItem(itemId);
         }
     }
 }

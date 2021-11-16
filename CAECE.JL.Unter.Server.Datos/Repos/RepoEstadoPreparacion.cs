@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAECE.JL.Unter.Server.Datos
+namespace CAECE.JL.Unter.Server.Datos.Repo
 {
-    public class RepoEstados : IRepoEstados
+    public class RepoEstadoPreparacion : IRepoEstadoPreparacion
     {
         public EstadoPreparacion ActualizarEstado(EstadoPreparacion estado)
         {
@@ -19,7 +19,8 @@ namespace CAECE.JL.Unter.Server.Datos
             throw new NotImplementedException();
         }
 
-        public EstadoPreparacion[] ObtenerEstados()
+
+        public IQueryable<EstadoPreparacion> ObtenerEstados()
         {
             throw new NotImplementedException();
         }

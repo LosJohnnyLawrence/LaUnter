@@ -15,7 +15,7 @@ namespace CAECE.JL.Unter.Server.Datos
         public Cliente Cliente { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime? FechaFin { get; set; }
-        public DateTime Mozo { get; set; }
+        public Mozo Mozo { get; set; }
         public List<Pedido> Pedidos { get; set; }
     }
 }

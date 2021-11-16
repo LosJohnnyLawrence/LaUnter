@@ -1,4 +1,6 @@
-﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,46 +12,54 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioMozos : IServicioMozos
     {
+        private readonly IRepoMozos _repoMozos;
+        private readonly IMapper _mapper;
+
+        public ServicioMozos(IRepoMozos repoMozos, IMapper mapper)
+        {
+            _repoMozos = repoMozos;
+            _mapper = mapper;
+        }
         ///  <inheritdoc/>
         public Mozo ActualizarDatosMozo(Mozo mozo)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Mozo>(_repoMozos.ActualizarDatosMozo(_mapper.Map<Datos.Mozo>(mozo)));
         }
 
         ///  <inheritdoc/>
         public TurnoMozo ActualizarTurnoMozo(TurnoMozo turno)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TurnoMozo>(_repoMozos.ActualizarTurnoMozo(_mapper.Map<Datos.TurnoMozo>(turno)));
         }
 
         ///  <inheritdoc/>
-        public void BorrarMozo(Mozo mesa)
+        public void BorrarMozo(int mozoId)
         {
-            throw new NotImplementedException();
+            _repoMozos.BorrarMozo(mozoId);
         }
 
         ///  <inheritdoc/>
         public Mozo CrearNuevoMozo(Mozo mozo)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<Mozo>(_repoMozos.CrearNuevoMozo(_mapper.Map<Datos.Mozo>(mozo)));
         }
 
         ///  <inheritdoc/>
         public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TurnoMozo>(_repoMozos.CrearNuevoTurnoMozo(_mapper.Map<Datos.TurnoMozo>(turno)));
         }
 
         ///  <inheritdoc/>
-        public TurnoMozo OtenerTurnoActualMozo(Mozo mozo)
+        public TurnoMozo OtenerTurnoActualMozo(int mozoId)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<TurnoMozo>(_repoMozos.OtenerTurnoActualMozo(mozoId));
         }
 
         ///  <inheritdoc/>
-        public TurnoMozo[] OtenerTurnosMozo(Mozo mozo)
+        public IList<TurnoMozo> OtenerTurnosMozo()
         {
-            throw new NotImplementedException();
+            return _mapper.Map<IList<TurnoMozo>>(_repoMozos.OtenerTurnoMozosActuales().ToList());
         }
     }
 }

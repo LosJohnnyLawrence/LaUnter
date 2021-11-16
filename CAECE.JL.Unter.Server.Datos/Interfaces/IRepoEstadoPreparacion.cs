@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos.Interfaces
 {
-    public interface IRepoEstados
+    public interface IRepoEstadoPreparacion
     {
         /// <summary>
         /// Obtiene datos de un estado particular que ya exista
@@ -19,7 +19,7 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// Obtiene datos de todos los estado ya existentes
         /// </summary>
         /// <returns>Array de Datos de estados</returns>
-        public EstadoPreparacion[] ObtenerEstados();
+        public IQueryable<EstadoPreparacion> ObtenerEstados();
 
         /// <summary>
         /// Obtiene datos de pedidos recibidos por un mozo

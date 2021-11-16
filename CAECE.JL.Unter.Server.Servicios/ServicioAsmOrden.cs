@@ -33,7 +33,7 @@ namespace CAECE.JL.Unter.Server.Servicios
         ///  <inheritdoc/>
         public void EliminarSeleccion(int seleccionId)
         {
-            _repoOrden.EliminarSeleccion(new Datos.Seleccion { Id = seleccionId });
+            _repoOrden.EliminarSeleccion( seleccionId );
         }
 
         ///  <inheritdoc/>

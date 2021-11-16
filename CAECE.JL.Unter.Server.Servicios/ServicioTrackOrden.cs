@@ -1,4 +1,6 @@
-﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Modelo;
+using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,15 +12,19 @@ namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioTrackOrden : IServicioTrackOrden
     {
+        private readonly IRepoEstadoPreparacion _repoEstados;
+        private readonly IMapper _mapper;
 
-        public ServicioTrackOrden(IRepoEstados )
+        public ServicioTrackOrden(IRepoEstadoPreparacion repoEstados, IMapper mapper)
         {
+            _repoEstados = repoEstados;
+            _mapper = mapper;
 
         } 
         ///  <inheritdoc/>
         public void CompletarPedido(Pedido pedido)
         {
-            throw new NotImplementedException();
+            _repoEstados.ActualizarEstado();
         }
 
         ///  <inheritdoc/>

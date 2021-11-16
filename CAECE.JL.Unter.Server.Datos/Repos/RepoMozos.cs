@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAECE.JL.Unter.Server.Datos
+namespace CAECE.JL.Unter.Server.Datos.Repo
 {
     public class RepoMozos : RepoAbstracto, IRepoMozos
     {
@@ -39,13 +39,27 @@ namespace CAECE.JL.Unter.Server.Datos
             return base.Crear(turno);
         }
 
-        public TurnoMozo OtenerTurnoActualMozo(Mozo mozo)
+        public Mozo ObtenerMozo(int idMozo)
+        {
+           return  _contextoDatosUnter.Mozos.Find(idMozo);
+        }
+
+        public TurnoMozo OtenerTurnoActualMozo(int mozoId)
         {
             var diaActual = DateTime.Now.DayOfWeek;
             var horaActual = DateTime.Now.TimeOfDay;
             //obtngo un turno para este mozo particular dentro del dia y horarios actuales
-           return _contextoDatosUnter.TurnoMozos.FirstOrDefault(turno => turno.Mozo.Id == mozo.Id &&
+           return _contextoDatosUnter.TurnoMozos.FirstOrDefault(turno => turno.Mozo.Id == mozoId &&
                                         turno.Dia == diaActual && horaActual < turno.FinTurno && horaActual > turno.InicioTurno);
+        }
+
+        public IQueryable<TurnoMozo> OtenerTurnoMozosActuales()
+        {
+            var diaActual = DateTime.Now.DayOfWeek;
+            var horaActual = DateTime.Now.TimeOfDay;
+            //obtngo un turno para este mozo particular dentro del dia y horarios actuales
+            return _contextoDatosUnter.TurnoMozos.Where(turno => 
+                                         turno.Dia == diaActual && horaActual < turno.FinTurno && horaActual > turno.InicioTurno);
         }
 
         public IQueryable<TurnoMozo> OtenerTurnosMozo(Mozo mozo)

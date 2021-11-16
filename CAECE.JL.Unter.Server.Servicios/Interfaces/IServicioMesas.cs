@@ -34,9 +34,11 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// <summary>
         /// Cambia estado de mesa a abierto
         /// </summary>
-        /// <param name="mesa">Datos de mesa a Abrir</param>
-        /// <returns>Mesa creada</returns>
-        public void AbrirMesa(Mesa mesa);
+        /// <param name="mesaId"> Datos de mesa a Abrir </param>
+        /// <param name="cliente"> Cliente que va a estar en la mesa</param>
+        /// <param name="mozoId"> Mozo principal ateniendo a la mesa en esta estadia</param>
+        /// <returns></returns>
+        public Estadia AbrirMesa(int mesaId, Cliente cliente, int mozoId);
 
 
         /// <summary>

@@ -5,16 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CAECE.JL.Unter.Server.Datos
+namespace CAECE.JL.Unter.Server.Datos.Repo
 {
     public class RepoOrden : RepoAbstracto, IRepoOrden
     {
 
-        public RepoOrden(ContextoDatosUnter contextoDatosUnter):base(contextoDatosUnter)
+        public RepoOrden(ContextoDatosUnter contextoDatosUnter) : base(contextoDatosUnter)
         {
-                
+
         }
-       
+
 
         public Pedido ActualizarPedido(Pedido pedido)
         {
@@ -41,6 +41,19 @@ namespace CAECE.JL.Unter.Server.Datos
             _contextoDatosUnter.Pedidos.Remove(pedido);
             _contextoDatosUnter.SaveChanges();
 
+        }
+
+        public Pedido EliminarSeleccion(int selccionID)
+        {
+            var seleccion = _contextoDatosUnter.Selecciones.Find(selccionID);
+            _contextoDatosUnter.Selecciones.Remove(seleccion);
+            _contextoDatosUnter.SaveChanges();
+            return _contextoDatosUnter.Pedidos.Find(seleccion.Pedido.Id);
+        }
+
+        public Pedido ObtenerPedidoPorId(int id)
+        {
+            return _contextoDatosUnter.Pedidos.Find(id);
         }
 
         public IQueryable<Pedido> ObtenerPedidosPorMesa(int idDeMesa, int? idEstado = null)

@@ -44,14 +44,14 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// </summary>
         /// <param name="bebida">Bebida a actualizar</param>
         /// <returns>Bebida actualizada</returns>
-        public Bebida ActualizarCatgoriaBebida(Bebida bebida);
+        public Bebida ActualizarBebida(Bebida bebida);
 
         /// <summary>
         /// Actualiza el categoria de un plato
         /// </summary>
         /// <param name="plato">Plato a actualizar</param>
         /// <returns>Plato ya actualizado</returns>
-        public Plato ActualizarCatgoriaPlato(Plato plato);
+        public Plato ActualizarPlato(Plato plato);
 
         /// <summary>
         /// Elimina un item del menu, ya sea un ingrediente, un plato o una bebida

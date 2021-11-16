@@ -22,6 +22,12 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         public void BorrarMozo(int idMozo);
 
         /// <summary>
+        /// Obtiene la data de un mozo existente
+        /// </summary>
+        /// <param name="idMozo">id del mozo a buscar</param>
+        public Mozo ObtenerMozo(int idMozo);
+
+        /// <summary>
         /// Actualiza la data de un nuevo mozo
         /// </summary>
         /// <param name="mozo">data nueva del mozo</param>
@@ -39,9 +45,16 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <summary>
         /// Obtiene Turnos el turno qeudeberia hacer un mozo ahora
         /// </summary>
-        /// <param name="mozo">Data del mozo</param>
+        /// <param name="mozoId">Data del mozo</param>
         /// <returns> Data del turno actual del mozo, si no es su turno,null</returns>
-        public TurnoMozo OtenerTurnoActualMozo(Mozo mozo);
+        public TurnoMozo OtenerTurnoActualMozo(int mozoId);
+
+
+        /// <summary>
+        /// Obtiene Turnos el turno de mozos actuales
+        /// </summary>
+        /// <returns> Data de turnos de mozos actuales con lazy laoding</returns>
+        public IQueryable<TurnoMozo> OtenerTurnoMozosActuales();
 
         /// <summary>
         /// Actualiza la data de un existente

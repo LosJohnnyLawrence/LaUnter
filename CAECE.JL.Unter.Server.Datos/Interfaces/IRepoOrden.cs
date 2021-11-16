@@ -64,6 +64,19 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <param name="idPedido"> Id del pedido a borrar </param>
         public void EliminarPedido(int idPedido);
 
+        /// <summary>
+        /// Obtiene datos de un pedido particular que ya exista
+        /// </summary>
+        /// <param name="id">Id de la mesa  a obtener</param>
+        /// <returns>Datos del pedido</returns>
+        public Pedido ObtenerPedidoPorId(int id);
+
+        /// <summary>
+        /// Elimina una seeccion existente de un pedido
+        /// </summary>
+        /// <param name="selccionId"> Id de la seleccion actualizados </param>
+        /// <returns>El pedido actualizado como esta en la DB</returns>
+        public Pedido EliminarSeleccion(int selccionId);
 
     }
 }

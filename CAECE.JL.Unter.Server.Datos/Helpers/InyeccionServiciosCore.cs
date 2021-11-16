@@ -15,11 +15,11 @@ namespace CAECE.JL.Unter.Server.Datos.Helpers
         /// </summary>
         /// <param name="servicios"></param>
         public static void AgregarReposCore<TEstados, TMenu, TMesa, TMozos, TOrden>(this IServiceCollection servicios)
-            where TEstados : class, IRepoEstados where TMenu : class, IRepoMenu where TMesa : class, IRepoMesa
+            where TEstados : class, IRepoEstadoPreparacion where TMenu : class, IRepoMenu where TMesa : class, IRepoMesa
         where TMozos : class, IRepoMozos where TOrden : class, IRepoOrden 
         {
              
-                servicios.AddTransient<IRepoEstados, TEstados>(); 
+                servicios.AddTransient<IRepoEstadoPreparacion, TEstados>(); 
                 servicios.AddTransient<IRepoMenu, TMenu>(); 
                 servicios.AddTransient<IRepoMesa, TMesa>();        
                 servicios.AddTransient<IRepoMozos, TMozos>(); 
