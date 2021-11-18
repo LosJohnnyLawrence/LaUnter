@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AyudaComponent } from './componentes/ayuda/ayuda.component';
 import { CajaComponent } from './componentes/caja/caja.component';
 import { CocinaComponent } from './componentes/cocina/cocina.component';
 import { ConfigComponent } from './componentes/config/config.component';
@@ -12,7 +13,7 @@ const routes: Routes = [
   {path:'cocina',component: CocinaComponent},
   {path:'config',component: ConfigComponent},
   {path:'home',component: HomeComponent},
-  {path:'ayuda',component: HomeComponent},
+  {path:'ayuda',component: AyudaComponent},
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 
 
