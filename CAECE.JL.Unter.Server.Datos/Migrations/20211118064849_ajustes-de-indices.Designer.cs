@@ -4,14 +4,16 @@ using CAECE.JL.Unter.Server.Datos;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace CAECE.JL.Unter.Server.Datos.Migrations
 {
     [DbContext(typeof(ContextoDatosUnter))]
-    partial class ContextoDatosUnterModelSnapshot : ModelSnapshot
+    [Migration("20211118064849_ajustes-de-indices")]
+    partial class ajustesdeindices
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
