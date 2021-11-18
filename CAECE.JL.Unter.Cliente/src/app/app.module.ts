@@ -11,6 +11,9 @@ import { ListadoItemsComponent } from './componentes/comun/listado-items/listado
 import { ListadoMesasComponent } from './componentes/comun/listado-mesas/listado-mesas.component';
 import { ListadoPedidosComponent } from './componentes/comun/listado-pedidos/listado-pedidos.component';
 import { MesaComponent } from './componentes/mozo/mesa/mesa.component';
+import { HomeComponent } from './componentes/home/home.component';
+import { AyudaComponent } from './componentes/ayuda/ayuda.component';
+import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,10 @@ import { MesaComponent } from './componentes/mozo/mesa/mesa.component';
     ListadoItemsComponent,
     ListadoMesasComponent,
     ListadoPedidosComponent,
-    MesaComponent
+    MesaComponent,
+    HomeComponent,
+    AyudaComponent,
+    NavBarComponent
   ],
   imports: [
     BrowserModule,
