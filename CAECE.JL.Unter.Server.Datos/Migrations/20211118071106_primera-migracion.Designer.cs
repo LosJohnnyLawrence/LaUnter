@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CAECE.JL.Unter.Server.Datos.Migrations
 {
     [DbContext(typeof(ContextoDatosUnter))]
-    [Migration("20211118064849_ajustes-de-indices")]
-    partial class ajustesdeindices
+    [Migration("20211118071106_primera-migracion")]
+    partial class primeramigracion
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

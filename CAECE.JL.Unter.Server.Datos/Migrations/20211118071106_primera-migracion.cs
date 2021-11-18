@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace CAECE.JL.Unter.Server.Datos.Migrations
 {
-    public partial class nombremigration : Migration
+    public partial class primeramigracion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -28,7 +28,7 @@ namespace CAECE.JL.Unter.Server.Datos.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -42,7 +42,7 @@ namespace CAECE.JL.Unter.Server.Datos.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Descripcion = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(450)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -437,6 +437,20 @@ namespace CAECE.JL.Unter.Server.Datos.Migrations
                 name: "IX_Estadias_MozoId",
                 table: "Estadias",
                 column: "MozoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EstadoMesas_Nombre",
+                table: "EstadoMesas",
+                column: "Nombre",
+                unique: true,
+                filter: "[Nombre] IS NOT NULL");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_EstadosPreparacion_Nombre",
+                table: "EstadosPreparacion",
+                column: "Nombre",
+                unique: true,
+                filter: "[Nombre] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Item_ItemId",
