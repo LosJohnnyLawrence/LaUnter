@@ -12,6 +12,7 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public string Nombre { get; set; }
         public string DNI { get; set; }
         public DateTime FechaEntrada { get; set; }
+
         public Mesa Mesa { get; set; }
     }
 }

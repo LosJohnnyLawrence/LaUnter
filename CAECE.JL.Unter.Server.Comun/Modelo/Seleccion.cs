@@ -10,7 +10,7 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
     /// Es un componente de un pedido
     /// Una instania de un item con modificaciones
     /// </summary>
-    public class Seleccion: : ContextoEstado
+    public class Seleccion: ContextoEstado
     {
         public int Id { get; set; }
 

@@ -28,6 +28,7 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
             servicios.AddTransient<IServicioMenu, TMenu>();
             servicios.AddTransient<IServicioMesas, TMesas>();
             servicios.AddTransient<IServicioMozos, TMozos>();
+            //Regitramos los estados apr aque sean faciles de ussar en los otros servicios
             var estadosProvider = new ProviderEstados();
                 estadosProvider.RegistrarEstado<EstadoCancelado>();
                 estadosProvider.RegistrarEstado<EstadoDevolucion>();

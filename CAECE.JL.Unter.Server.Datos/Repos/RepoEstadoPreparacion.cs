@@ -7,22 +7,31 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Datos.Repo
 {
-    public class RepoEstadoPreparacion : IRepoEstadoPreparacion
+    public class RepoEstadoPreparacion : RepoAbstracto, IRepoEstadoPreparacion
     {
+        public RepoEstadoPreparacion(ContextoDatosUnter contexto) : base(contexto)
+        {
+
+        }
         public EstadoPreparacion ActualizarEstado(EstadoPreparacion estado)
         {
-            throw new NotImplementedException();
+            return base.Actualizar(estado);
         }
 
         public EstadoPreparacion ObtenerEstado(int id)
         {
-            throw new NotImplementedException();
+            return _contextoDatosUnter.EstadosPreparacion.Find(id);
         }
 
 
         public IQueryable<EstadoPreparacion> ObtenerEstados()
         {
-            throw new NotImplementedException();
+            return _contextoDatosUnter.EstadosPreparacion;
+        }
+
+        public void PersistirMotivo(string motivo, Pedido pedido)
+        {
+            _contextoDatosUnter.Crear(new MotivoDevolucion { Comentario = motivo, Pedido = pedido });
         }
     }
 }

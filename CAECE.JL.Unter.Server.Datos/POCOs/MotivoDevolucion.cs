@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace CAECE.JL.Unter.Server.Datos.Modelo
+namespace CAECE.JL.Unter.Server.Datos
 {
     public class MotivoDevolucion
     {

@@ -15,7 +15,7 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// y aplicacciones necesarias
         /// </summary>
         /// <param name="pedido">pedido a operar</param>
-        public void PasarestadoPedido(Pedido pedido);
+        public void PasarEstadoPedido(Pedido pedido);
 
 
         /// <summary>
@@ -45,7 +45,7 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// y aplicacciones necesarias
         /// </summary>
         /// <param name="seleccion">seleccion a operar</param>
-        public void PasarestadoSeleccion(Seleccion seleccion);
+        public void PasarEstadoSeleccion(Seleccion seleccion);
 
 
         /// <summary>

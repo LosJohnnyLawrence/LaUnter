@@ -57,6 +57,14 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         public Pedido ActualizarPedido(Pedido pedido);
 
 
+        /// <summary>
+        /// Actualiza un seleccion
+        /// </summary>
+        /// <param name="seleccion"> Datos del seleccion actualizados </param>
+        /// <returns>El seleccion actualizado como esta en la DB</returns>
+        public Seleccion ActualizarSeleccion(Seleccion seleccion);
+
+
 
         /// <summary>
         /// Eliminar un pedido

@@ -21,6 +21,11 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return base.Actualizar(pedido);
         }
 
+        public Seleccion ActualizarSeleccion(Seleccion seleccion)
+        {
+            return base.Actualizar(seleccion);
+        }
+
         public Pedido AgregarSeleccionAPedido(Seleccion selccion, int idPedido)
         {
             var pedido = _contextoDatosUnter.Pedidos.Find(idPedido);
