@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using CAECE.JL.Unter.Server.Datos.Helpers;
 
 namespace CAECE.JL.Unter.Server.Datos
 {
@@ -30,11 +31,16 @@ namespace CAECE.JL.Unter.Server.Datos
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
 
+            modelBuilder.Entity<EstadoMesa>(e => e.HasIndex(em =>em.Nombre).IsUnique());
+            modelBuilder.Entity<EstadoPreparacion>(e => e.HasIndex(em => em.Nombre).IsUnique());
+
+
             modelBuilder.Entity<Ingrediente>().HasBaseType<Item>();
             modelBuilder.Entity<Bebida>().HasBaseType<Item>();
             modelBuilder.Entity<Plato>();
 
 
+            modelBuilder.AddSeedData();
             base.OnModelCreating(modelBuilder);
 
         }
