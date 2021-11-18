@@ -62,18 +62,19 @@ namespace CAECE.JL.Unter.Server.API
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CAECE.JL.Unter.Server.API v1"));
             }
-
-            app.UseHttpsRedirection();
-            app.UseSerilogRequestLogging();
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
+             
 
-            app.UseAuthorization();
+            //app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
             });
+            
+          //  app.UseSerilogRequestLogging();
         }
     }
 }

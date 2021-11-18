@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
+    [Route("api/mesa")]
+    [ApiController]
     public class ControladorMesa : Controller
     {
         private readonly IServicioMesas _servicioMesas;

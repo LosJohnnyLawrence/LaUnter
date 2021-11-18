@@ -7,12 +7,14 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
+    [Route("api/mozo")]
+    [ApiController]
     public class ControladorMozo : Controller
     {
         // GET: Orden
         public ActionResult Index()
         {
-            return View();
+            return Ok("a");
         }
 
         // GET: Orden/Details/5

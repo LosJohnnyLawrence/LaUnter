@@ -9,6 +9,8 @@ using Serilog;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
+    [Route("api/estados")]
+    [ApiController]
     public class ControladorEstadosOrden : Controller
     {
 

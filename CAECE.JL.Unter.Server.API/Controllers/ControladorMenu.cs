@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
+    [Route("api/menu")]
+    [ApiController]
     public class ControladorMenu : Controller
     {
       

@@ -14,6 +14,12 @@ import { MesaComponent } from './componentes/mozo/mesa/mesa.component';
 import { HomeComponent } from './componentes/home/home.component';
 import { AyudaComponent } from './componentes/ayuda/ayuda.component';
 import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
+import { CarroComponent } from './componentes/comun/carro/carro.component';
+import { ListaSeleccionComponent } from './componentes/comun/lista-seleccion/lista-seleccion.component';
+import { DetalleSeleccionComponent } from './componentes/comun/detalle-seleccion/detalle-seleccion.component';
+import { DetalleItemComponent } from './componentes/comun/detalle-item/detalle-item.component';
+import { DetalleMesaComponent } from './componentes/comun/detalle-mesa/detalle-mesa.component';
+import { DetallePedidoComponent } from './componentes/comun/detalle-pedido/detalle-pedido.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,13 @@ import { NavBarComponent } from './componentes/nav-bar/nav-bar.component';
     MesaComponent,
     HomeComponent,
     AyudaComponent,
-    NavBarComponent
+    NavBarComponent,
+    CarroComponent,
+    ListaSeleccionComponent,
+    DetalleSeleccionComponent,
+    DetalleItemComponent,
+    DetalleMesaComponent,
+    DetallePedidoComponent
   ],
   imports: [
     BrowserModule,

@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
+    [Route("api/orden")]
+    [ApiController]
     public class ControladorOrden : Controller
     {
         // GET: Orden

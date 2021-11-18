@@ -31,6 +31,6 @@ namespace CAECE.JL.Unter.Server.API
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
-                });
+                }).UseSerilog();
     }
 }
