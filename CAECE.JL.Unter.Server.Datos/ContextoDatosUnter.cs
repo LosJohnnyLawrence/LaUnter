@@ -28,5 +28,18 @@ namespace CAECE.JL.Unter.Server.Datos
         public DbSet<TurnoMozo> TurnoMozos { get; set; }
         public DbSet<MotivoDevolucion> MotivoDevoluciones { get; set; }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder) {
+
+            modelBuilder.Entity<Ingrediente>().HasBaseType<Item>();
+            modelBuilder.Entity<Bebida>().HasBaseType<Item>();
+            modelBuilder.Entity<Plato>();
+
+
+            base.OnModelCreating(modelBuilder);
+
+        }
+
     }
+
+   
 }
