@@ -1,4 +1,5 @@
 using CAECE.JL.Unter.Server.Datos;
+using CAECE.JL.Unter.Server.Datos.Repo;
 using CAECE.JL.Unter.Server.Datos.Helpers;
 using CAECE.JL.Unter.Server.Servicios;
 using CAECE.JL.Unter.Server.Servicios.Helpers;
@@ -17,6 +18,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CAECE.JL.Unter.Notificaciones;
+using CAECE.JL.Unter.Notificaciones.Helpers;
 
 namespace CAECE.JL.Unter.Server.API
 {
@@ -37,7 +40,9 @@ namespace CAECE.JL.Unter.Server.API
            
             services.AgregarServiciosCore<ServicioFacturacion, ServicioAsmOrden, ServicioTrackOrden, ServicioMenu, ServicioMesas, ServicioMozos>();
 
-            services.AgregarReposCore<RepoEstados, RepoMenu, RepoMesa, RepoMozos, RepoOrden>();
+            services.AgregarServiciosNotificacion<ConectorNotificacion>();
+
+            services.AgregarReposCore<RepoEstadoPreparacion, RepoMenu, RepoMesa, RepoMozos, RepoOrden>();
             services.AgregarPerfilesNegocioAutomapper();
           
 

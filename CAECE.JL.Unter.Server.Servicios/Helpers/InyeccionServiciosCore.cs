@@ -21,7 +21,6 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
         where TMenu : class, IServicioMenu where TMesas : class, IServicioMesas where TMozos : class, IServicioMozos
         {
 
-
             servicios.AddTransient<IServicioAsmOrden, TAsmOrd>();
             servicios.AddTransient<IServicioFacturacion, TFact>();
             servicios.AddTransient<IServicioTrackOrden, TTrack>();
@@ -36,17 +35,18 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
                 estadosProvider.RegistrarEstado<EstadoListo>();
                 estadosProvider.RegistrarEstado<EstadoTomandoPedido>();
                 estadosProvider.RegistrarEstado<EstadoEntregado>();
-            servicios.AddTransient<IProviderEstados>(_=>estadosProvider);
+            servicios.AddTransient<IProviderEstados>(_ => estadosProvider);
 
         }
 
 
-        public static void AgregarPerfilesNegocioAutomapper(this IServiceCollection servicios) {
+        public static void AgregarPerfilesNegocioAutomapper(this IServiceCollection servicios)
+        {
             servicios.AddAutoMapper(typeof(PerfilDeMappingDesdeData));
-           
+
         }
 
-   
+
 
     }
 }

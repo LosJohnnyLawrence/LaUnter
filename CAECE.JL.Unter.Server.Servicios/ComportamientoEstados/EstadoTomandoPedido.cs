@@ -9,36 +9,31 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Servicios
 {
-    public class EstadoTomandoPedido : IComportamientoEstadoPreparacion
+    public class EstadoTomandoPedido : EstadoAbstracto, IComportamientoEstadoPreparacion
     {
-        public void AsignarPreparacion(ContextoEstado contextoEstado)
+        public EstadoTomandoPedido(IProviderEstados providerEstados, IConectorNotificacion conectorNotificaion) : base(providerEstados, conectorNotificaion)
         {
-            throw new NotImplementedException();
         }
 
         public void AvanzarEstado()
         {
-            throw new NotImplementedException();
+            base._contextoEstado.SetComportamientoEstado(_providerEstados.ObtenerEstado(Constantes.EstadoPreparacion.EnPreparacion));
         }
 
         public void DevolverEstado()
         {
-            throw new NotImplementedException();
+            base._contextoEstado.SetComportamientoEstado(_providerEstados.ObtenerEstado(Constantes.EstadoPreparacion.Cancelado));
         }
 
-        public void Notificar(string notificacion = null, object extras = null)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string ObtenerNombre()
+       
+        public override string ObtenerNombre()
         {
             return Constantes.EstadoPreparacion.TomandoPedido;
         }
 
         public void Cancelar()
         {
-            throw new NotImplementedException();
+            base._contextoEstado.SetComportamientoEstado(_providerEstados.ObtenerEstado(Constantes.EstadoPreparacion.Cancelado));
         }
     }
 }

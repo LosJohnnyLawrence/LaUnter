@@ -72,7 +72,7 @@ namespace CAECE.JL.Unter.Server.Servicios
             estadoActual.Cancelar();
             estadoActual.Notificar(estadoActual.ObtenerNombre(), motivo);
             var seleccionMappeado = _mapper.Map<Datos.Seleccion>(seleccion);
-            _repoEstados.PersistirMotivo(motivo, seleccionMappeado.Pedido);
+            _repoEstados.PersistirMotivo(motivo, seleccionMappeado.Pedido, seleccionMappeado);
             _repoOrden.ActualizarSeleccion(seleccionMappeado);
 
         }
@@ -84,7 +84,7 @@ namespace CAECE.JL.Unter.Server.Servicios
             estadoActual.DevolverEstado();
             estadoActual.Notificar(estadoActual.ObtenerNombre(), motivo);
             var seleccionMappeado = _mapper.Map<Datos.Seleccion>(seleccion);
-            _repoEstados.PersistirMotivo(motivo, seleccionMappeado.Pedido);
+            _repoEstados.PersistirMotivo(motivo, seleccionMappeado.Pedido, seleccionMappeado);
             _repoOrden.ActualizarSeleccion(seleccionMappeado);
         }
 

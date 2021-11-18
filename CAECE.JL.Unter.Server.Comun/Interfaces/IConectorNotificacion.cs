@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Comun.Interfaces
 {
-    public interface IConectorNotificaion
+    public interface IConectorNotificacion
     {
+        public Task EnviarNotificacion(string nombre, string payload);
     }
 }
+

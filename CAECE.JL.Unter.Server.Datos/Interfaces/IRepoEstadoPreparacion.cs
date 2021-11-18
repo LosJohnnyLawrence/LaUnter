@@ -16,12 +16,13 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         public EstadoPreparacion ObtenerEstado(int id);
 
         /// <summary>
-        /// Persiste el motivo de un estado de excepcion
+        /// Persiste el motivo de un estado de excepcion, se toma el mayor nivel de detalle 
+        /// si se pasan las selecciones ademas del pedido se asume que esto aplica a la seleccion en particular
         /// </summary>
         /// <param name="motivo">Comentario del motivo a paresistir</param>
-        /// <param name="pedido">El pedido que cambio de estado</param>
-        /// <returns>Datos del estado</returns>
-        public void PersistirMotivo(string motivo, Pedido pedido);
+        /// <param name="pedido">El pedido que puede haber cambiado de estado</param>
+        /// <param name="seleccion">Las selecciones particulares que cambio de estado</param>        /// 
+        public void PersistirMotivo(string motivo, Pedido pedido, Seleccion seleccion=null);
 
         /// <summary>
         /// Obtiene datos de todos los estado ya existentes

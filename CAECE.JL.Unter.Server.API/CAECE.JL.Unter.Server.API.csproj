@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CAECE.JL.Unter.Notificaciones\CAECE.JL.Unter.Notificaciones.csproj" />
     <ProjectReference Include="..\CAECE.JL.Unter.Server.Comun\CAECE.JL.Unter.Server.Comun.csproj" />
     <ProjectReference Include="..\CAECE.JL.Unter.Server.Datos\CAECE.JL.Unter.Server.Datos.csproj" />
     <ProjectReference Include="..\CAECE.JL.Unter.Server.Servicios\CAECE.JL.Unter.Server.Servicios.csproj" />
