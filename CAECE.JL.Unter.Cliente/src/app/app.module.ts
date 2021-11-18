@@ -3,10 +3,26 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MozoComponent } from './componentes/mozo/mozo.component';
+import { CocinaComponent } from './componentes/cocina/cocina.component';
+import { ConfigComponent } from './componentes/config/config.component';
+import { CajaComponent } from './componentes/caja/caja.component';
+import { ListadoItemsComponent } from './componentes/comun/listado-items/listado-items.component';
+import { ListadoMesasComponent } from './componentes/comun/listado-mesas/listado-mesas.component';
+import { ListadoPedidosComponent } from './componentes/comun/listado-pedidos/listado-pedidos.component';
+import { MesaComponent } from './componentes/mozo/mesa/mesa.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MozoComponent,
+    CocinaComponent,
+    ConfigComponent,
+    CajaComponent,
+    ListadoItemsComponent,
+    ListadoMesasComponent,
+    ListadoPedidosComponent,
+    MesaComponent
   ],
   imports: [
     BrowserModule,
