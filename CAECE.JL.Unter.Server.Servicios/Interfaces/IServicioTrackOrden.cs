@@ -11,64 +11,72 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
     {
 
         /// <summary>
-        /// Cambia el estado del pedido a "activa"
+        /// Avanza al proximo estado del flujo normal dependiendo del estado actual
+        /// y aplicacciones necesarias
         /// </summary>
         /// <param name="pedido">pedido a operar</param>
-        public void PonerPedidoEnProgreso(Pedido pedido);
+        public void PasarestadoPedido(Pedido pedido);
+
 
         /// <summary>
-        /// Cambia el estado del pedido a "Completo"
+        /// Retrocede a un estado de error dependiendo del estado actual
+        /// y aplicacciones necesarias
         /// </summary>
         /// <param name="pedido">pedido a operar</param>
-        public void CompletarPedido(Pedido pedido);
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void DevolverEstadoPedido(Pedido pedido, string motivo);
+
+
 
         /// <summary>
-        /// Cambia el estado del pedido a "ParaEntregar"
+        /// Lleava al estado terminal de error "cancelado" 
+        /// y aplicacciones necesarias
         /// </summary>
         /// <param name="pedido">pedido a operar</param>
-        public void PedidoListoEntregar(Pedido pedido);
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void CancelarPedido(Pedido pedido, string motivo);
+
+
+
+
 
         /// <summary>
-        /// Cambia el estado del pedido a "Devuelto e incluye un motivo"
-        /// </summary>
-        /// <param name="pedido">pedido a operar</param>
-        public void DevolverPedido(Pedido pedido, string motivo);
-
-        /// <summary>
-        /// Cambia el estado del seleccion a "activa"
-        /// </summary>
-        /// <param name="seleccion">pedido a operar</param>
-        public void PonerSeleccionEnProgreso(Seleccion seleccion);
-
-        /// <summary>
-        /// Cambia el estado del seleccion a "Completo"
-        /// </summary>
-        /// <param name="seleccion">Seleccion a operar</param>
-        public void CompletarSeleccion(Seleccion seleccion);
-
-        /// <summary>
-        /// Cambia el estado del seleccion a "ParaEntregar"
+        /// Avanza al proximo estado del flujo normal dependiendo del estado actual
+        /// y aplicacciones necesarias
         /// </summary>
         /// <param name="seleccion">seleccion a operar</param>
-        public void SeleccionListoEntregar(Seleccion seleccion);
+        public void PasarestadoSeleccion(Seleccion seleccion);
+
 
         /// <summary>
-        /// Cambia el estado del seleccion a "Devuelto e incluye un motivo"
+        /// Retrocede a un estado de error dependiendo del estado actual
+        /// y aplicacciones necesarias
         /// </summary>
         /// <param name="seleccion">seleccion a operar</param>
-        public void DevolverSeleccion(Seleccion seleccion, string motivo);
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void DevolverEstadoSeleccion(Seleccion seleccion, string motivo);
+
+
+
+        /// <summary>
+        /// Lleava al estado terminal de error "cancelado" 
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="seleccion">seleccion a operar</param>
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void CancelarSeleccion(Seleccion seleccion, string motivo);
 
         /// <summary>
         /// Obtiene el estado actual de un pedido
         /// </summary>
         /// <param name="pedido"></param>
-        public void ObtenerEstadoDePedido(Pedido pedido);
+        public EstadoPreparacion ObtenerEstadoDePedido(Pedido pedido);
 
         /// <summary>
         /// Obtiene el estado actual de un seleccion
         /// </summary>
         /// <param name="seleccion"></param>
-        public void ObtenerEstadoDeSeleccion(Seleccion seleccion);
+        public EstadoPreparacion ObtenerEstadoDeSeleccion(Seleccion seleccion);
 
     }
 }

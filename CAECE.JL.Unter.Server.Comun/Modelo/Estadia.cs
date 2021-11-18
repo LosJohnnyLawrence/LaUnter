@@ -6,6 +6,10 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
+    /// <summary>
+    /// Son los datos a una estadia de un cliente en una mesa
+    /// desde qeu se abre la mesa hasta que se cierra
+    /// </summary>
     public class Estadia
     {
         public int Id { get; set; }

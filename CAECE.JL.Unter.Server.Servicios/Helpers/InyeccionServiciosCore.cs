@@ -1,4 +1,6 @@
-﻿using CAECE.JL.Unter.Server.Servicios.Interfaces;
+﻿using CAECE.JL.Unter.Server.Comun;
+using CAECE.JL.Unter.Server.Comun.Interfaces;
+using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
 using System.Collections.Generic;
@@ -26,6 +28,14 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
             servicios.AddTransient<IServicioMenu, TMenu>();
             servicios.AddTransient<IServicioMesas, TMesas>();
             servicios.AddTransient<IServicioMozos, TMozos>();
+            var estadosProvider = new ProviderEstados();
+                estadosProvider.RegistrarEstado<EstadoCancelado>();
+                estadosProvider.RegistrarEstado<EstadoDevolucion>();
+                estadosProvider.RegistrarEstado<EstadoEnPreparacion>();
+                estadosProvider.RegistrarEstado<EstadoListo>();
+                estadosProvider.RegistrarEstado<EstadoTomandoPedido>();
+                estadosProvider.RegistrarEstado<EstadoEntregado>();
+            servicios.AddTransient<IProviderEstados>(_=>estadosProvider);
 
         }
 

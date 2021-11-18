@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CAECE.JL.Unter.Server.Comun.Interfaces;
 
 namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
-    public class Pedido
+    public class Pedido: ContextoEstado
     {
         public int Id { get; set; }
         public string Nombre { get; set; }
@@ -18,6 +19,15 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public EstadoPreparacion Estado { get; set; }
         public DateTime FechaInicio { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
+
+        private IComportamientoEstadoPreparacion _comportamientoEstadoPreparacion;
+        public void SetComportamientoEstado(IComportamientoEstadoPreparacion comportamientoEstadoPreparacion) {
+            _comportamientoEstadoPreparacion = comportamientoEstadoPreparacion;
+        }
+        public IComportamientoEstadoPreparacion GetComportamientoEstado()
+        {
+            return _comportamientoEstadoPreparacion;
+        }
     }
 
 }

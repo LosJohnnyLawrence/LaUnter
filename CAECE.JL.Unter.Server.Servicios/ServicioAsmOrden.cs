@@ -15,13 +15,14 @@ namespace CAECE.JL.Unter.Server.Servicios
         private readonly IRepoOrden _repoOrden;
         private readonly IRepoMenu _repoMenu;
         private readonly IMapper _mapper;
+        private readonly IServicioTrackOrden _servicioTrackOrden;
 
-        public ServicioAsmOrden(IRepoOrden repoOrden, IRepoMenu repoMenu, IMapper mapper)
+        public ServicioAsmOrden(IRepoOrden repoOrden, IRepoMenu repoMenu, IMapper mapper, IServicioTrackOrden servicioTrackOrden)
         {
             _repoOrden = repoOrden;
             _repoMenu = repoMenu;
             _mapper = mapper;
-
+            _servicioTrackOrden = servicioTrackOrden;
 
         }
         ///  <inheritdoc/>
@@ -39,7 +40,8 @@ namespace CAECE.JL.Unter.Server.Servicios
         ///  <inheritdoc/>
         public Pedido NuevoPedido(Pedido pedido)
         {
-           return _mapper.Map<Pedido>(_repoOrden.CrearUnPedido(_mapper.Map<Datos.Pedido>(pedido)));
+            var pedidoCreado = _repoOrden.CrearUnPedido(_mapper.Map<Datos.Pedido>(pedido));
+           return _mapper.Map<Pedido>(pedidoCreado);
         }
 
         ///  <inheritdoc/>

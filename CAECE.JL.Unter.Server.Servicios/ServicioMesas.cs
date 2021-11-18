@@ -31,7 +31,7 @@ namespace CAECE.JL.Unter.Server.Servicios
             var mesa = _repoMesa.ObtenerMesa(mesaId);
             var mozo = _repoMozo.ObtenerMozo(mozoId);
             var estadia = new Datos.Estadia() { Cliente = _mapper.Map<Datos.Cliente>(cliente), FechaInicio = DateTime.Now, Mozo = mozo, Mesa = mesa };          
-            mesa.Estado = _repoMesa.ObtenerEstadoMesa(Constantes.EstadoMesaAbierto);
+            mesa.Estado = _repoMesa.ObtenerEstadoMesa(Constantes.EstadoMesa.Abierto);
             return _mapper.Map<Estadia>( _repoMesa.CrearEstadia(_mapper.Map<Datos.Estadia>(estadia), _mapper.Map<Datos.Mesa>(mesa)));
         }
 
@@ -44,7 +44,7 @@ namespace CAECE.JL.Unter.Server.Servicios
         ///  <inheritdoc/>
         public void CerrarMesa(Mesa mesa)
         {
-            mesa.Estado = _mapper.Map<EstadoMesa> (_repoMesa.ObtenerEstadoMesa(Constantes.EstadoMesaCerrado));
+            mesa.Estado = _mapper.Map<EstadoMesa> (_repoMesa.ObtenerEstadoMesa(Constantes.EstadoMesa.Cerrado));
             _mapper.Map<Mesa>(_repoMesa.ActualizarMesa(_mapper.Map<Datos.Mesa>(mesa)));
         }
 

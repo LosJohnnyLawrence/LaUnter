@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
+    /// <summary>
+    /// Sector donde esta una mesa con metadata
+    /// </summary>
     public class Sector
     {
         public int Id { get; set; }

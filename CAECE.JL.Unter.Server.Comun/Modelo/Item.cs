@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
+    /// <summary>
+    /// Es un item del menu,
+    /// puede ser un ingrediente de algo,
+    /// un plato o una bebida
+    /// </summary>
     public abstract class Item
     {
         public int Id { get; set; }

@@ -26,6 +26,7 @@ namespace CAECE.JL.Unter.Server.Datos
         public DbSet<RestriccionAlimentaria> RestriccionAlimentarias { get; set; }
         public DbSet<Seleccion> Selecciones { get; set; }
         public DbSet<TurnoMozo> TurnoMozos { get; set; }
+        public DbSet<MotivoDevolucion> MotivoDevoluciones { get; set; }
 
     }
 }

@@ -1,83 +1,64 @@
 ﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Interfaces;
 using CAECE.JL.Unter.Server.Comun.Modelo;
 using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Servicios
 {
     public class ServicioTrackOrden : IServicioTrackOrden
     {
         private readonly IRepoEstadoPreparacion _repoEstados;
+        private readonly IRepoOrden _repoOrden;
         private readonly IMapper _mapper;
+        private readonly IProviderEstados _providerEstados;
 
-        public ServicioTrackOrden(IRepoEstadoPreparacion repoEstados, IMapper mapper)
+        public ServicioTrackOrden(IRepoEstadoPreparacion repoEstados, IRepoOrden repoOrden, IMapper mapper, IProviderEstados providerEstados)
         {
             _repoEstados = repoEstados;
+            _repoOrden = repoOrden;
             _mapper = mapper;
+            _providerEstados = providerEstados;
 
-        } 
-        ///  <inheritdoc/>
-        public void CompletarPedido(Pedido pedido)
-        {
-            _repoEstados.ActualizarEstado();
         }
 
-        ///  <inheritdoc/>
-        public void CompletarSeleccion(Seleccion seleccion)
+        public void CancelarPedido(Pedido pedido, string motivo)
         {
-            throw new NotImplementedException();
+            _repoOrden.
         }
-        statepat aca imp
 
-        ///  <inheritdoc/>
-        public void DevolverPedido(Pedido pedido, string motivo)
+        public void CancelarSeleccion(Seleccion seleccion, string motivo)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void DevolverSeleccion(Seleccion seleccion, string motivo)
+        public void DevolverEstadoPedido(Pedido pedido, string motivo)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void ObtenerEstadoDePedido(Pedido pedido)
+        public void DevolverEstadoSeleccion(Seleccion seleccion, string motivo)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void ObtenerEstadoDeSeleccion(Seleccion seleccion)
+        public EstadoPreparacion ObtenerEstadoDePedido(Pedido pedido)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void PedidoListoEntregar(Pedido pedido)
+        public EstadoPreparacion ObtenerEstadoDeSeleccion(Seleccion seleccion)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void PonerPedidoEnProgreso(Pedido pedido)
+        public void PasarestadoPedido(Pedido pedido)
         {
             throw new NotImplementedException();
         }
 
-        ///  <inheritdoc/>
-        public void PonerSeleccionEnProgreso(Seleccion seleccion)
-        {
-            throw new NotImplementedException();
-        }
-
-        ///  <inheritdoc/>
-        public void SeleccionListoEntregar(Seleccion seleccion)
+        public void PasarestadoSeleccion(Seleccion seleccion)
         {
             throw new NotImplementedException();
         }

@@ -28,6 +28,7 @@ namespace CAECE.JL.Unter.Server.Servicios
             CreateMap<Comun.Modelo.RestriccionAlimentaria, Datos.RestriccionAlimentaria>();
             CreateMap<Comun.Modelo.Seleccion, Datos.Seleccion>();
             CreateMap<Comun.Modelo.TurnoMozo, Datos.TurnoMozo>();
+            CreateMap<Comun.Modelo.MotivoDevolucion, Datos.MotivoDevolucion>();
 
         }
 

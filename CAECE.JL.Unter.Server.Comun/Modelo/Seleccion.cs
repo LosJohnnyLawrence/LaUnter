@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.Comun.Modelo
 {
-    public class Seleccion
+    /// <summary>
+    /// Es un componente de un pedido
+    /// Una instania de un item con modificaciones
+    /// </summary>
+    public class Seleccion: : ContextoEstado
     {
         public int Id { get; set; }
 
@@ -15,9 +19,7 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public IList<Item> Agregar { get; set; }
         public IList<Item> Sacar { get; set; }
         public EstadoPreparacion Estado { get; set; }
-        public Pedido Pedido { get; set; }
-
-
+        public Pedido Pedido { get; set; }     
 
 
     }
