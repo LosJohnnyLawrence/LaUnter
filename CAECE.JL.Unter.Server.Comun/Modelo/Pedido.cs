@@ -15,8 +15,7 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
         public string Notas { get; set; }
         public Seleccion[] Selecciones { get; set; }
         public Mozo Mozo { get; set; }
-        public Cliente Cliente { get; set; }
-        public EstadoPreparacion Estado { get; set; }
+        public Cliente Cliente { get; set; }       
         public DateTime FechaInicio { get; set; }
         public DateTime FechaUltimaModificacion { get; set; }
 

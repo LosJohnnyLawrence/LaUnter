@@ -1,4 +1,5 @@
 ﻿using CAECE.JL.Unter.Server.Comun.Interfaces;
+using CAECE.JL.Unter.Server.Comun.Modelo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace CAECE.JL.Unter.Server.Comun
 {
     public class ContextoEstado
     {
+        public EstadoPreparacion Estado { get; set; }
         private IComportamientoEstadoPreparacion _comportamientoEstadoPreparacion;
         public void SetComportamientoEstado(IComportamientoEstadoPreparacion comportamientoEstadoPreparacion)
         {

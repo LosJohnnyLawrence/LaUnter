@@ -1,5 +1,7 @@
-﻿using CAECE.JL.Unter.Server.Comun;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun;
 using CAECE.JL.Unter.Server.Comun.Interfaces;
+using CAECE.JL.Unter.Server.Datos.Interfaces;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using Microsoft.Extensions.DependencyInjection;
 using System;
@@ -28,7 +30,9 @@ namespace CAECE.JL.Unter.Server.Servicios.Helpers
             servicios.AddTransient<IServicioMesas, TMesas>();
             servicios.AddTransient<IServicioMozos, TMozos>();
             //Regitramos los estados apr aque sean faciles de ussar en los otros servicios
-            var estadosProvider = new ProviderEstados();
+            var provider = servicios.BuildServiceProvider();
+            var estadosProvider = new ProviderEstados(provider.GetService<IProviderEstados>(), provider.GetService<IConectorNotificacion>()
+                , provider.GetService<IRepoEstadoPreparacion>(), provider.GetService<IMapper>());
                 estadosProvider.RegistrarEstado<EstadoCancelado>();
                 estadosProvider.RegistrarEstado<EstadoDevolucion>();
                 estadosProvider.RegistrarEstado<EstadoEnPreparacion>();
