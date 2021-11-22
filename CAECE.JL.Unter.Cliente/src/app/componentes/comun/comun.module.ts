@@ -13,11 +13,32 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 import { ComunRoutingModule } from './comun-routing.module';
+import { CarroComponent } from './carro/carro.component';
+import { ListaSeleccionComponent } from './lista-seleccion/lista-seleccion.component';
+import { DetalleSeleccionComponent } from './detalle-seleccion/detalle-seleccion.component';
+import { DetalleItemComponent } from './detalle-item/detalle-item.component';
+import { DetalleMesaComponent } from './detalle-mesa/detalle-mesa.component';
+import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.component';
+import { ListadoItemsComponent } from './listado-items/listado-items.component';
+import { ListadoMesasComponent } from './listado-mesas/listado-mesas.component';
+import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.component';
+
 
 
 @NgModule({
-  declarations: [],
-  imports: [    MatCardModule,
+  declarations: [    
+    CarroComponent,
+    ListaSeleccionComponent,
+    DetalleSeleccionComponent,
+    DetalleItemComponent,
+    DetalleMesaComponent,
+    DetallePedidoComponent,
+    ListadoItemsComponent,
+    ListadoMesasComponent,
+    ListadoPedidosComponent
+  ],
+  imports: [   
+    MatCardModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
@@ -39,6 +60,15 @@ import { ComunRoutingModule } from './comun-routing.module';
     MatDividerModule,  
     MatExpansionModule,  
     FlexLayoutModule ,
-    ComunRoutingModule]
+    ComunRoutingModule,
+    CarroComponent,
+    ListaSeleccionComponent,
+    DetalleSeleccionComponent,
+    DetalleItemComponent,
+    DetalleMesaComponent,
+    DetallePedidoComponent,
+    ListadoItemsComponent,
+    ListadoMesasComponent,
+    ListadoPedidosComponent]
 })
 export class ComunModule { }

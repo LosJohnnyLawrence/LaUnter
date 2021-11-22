@@ -8,11 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class NavBarComponent implements OnInit {
 
  rutas = [
-    { nombre: 'Mozo', url: '/mozo' },
-    { nombre: 'Caja', url: '/caja' },
-    { nombre: 'Cocina', url: '/cocina' },
-    { nombre: 'Config', url: '/config' },
-    { nombre: 'Ayuda', url: '/ayuda' }
+    { nombre: 'mozo', url: '/mozo' },
+    { nombre: 'caja', url: '/caja' },
+    { nombre: 'cocina', url: '/cocina' },
+    { nombre: 'config', url: '/config' },
+    { nombre: 'ayuda', url: '/ayuda' }
   ];
 
   constructor() { }

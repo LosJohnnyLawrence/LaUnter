@@ -4,16 +4,16 @@
     <mat-sidenav mode="side" opened  [fixedInViewport]="true" [fixedTopGap]="64" >
         <mat-action-list>
             Configurar
-            <button mat-list-item > Mozos </button>
-            <button mat-list-item> Menus </button>
-            <button mat-list-item> Mesas </button>
+            <button mat-list-item [routerLink]="'./mozo'" > Mozos </button>
+            <button mat-list-item [routerLink]="'./menu'"> Menus </button>
+            <button mat-list-item [routerLink]="'./mesa'"> Mesas </button>
 
           </mat-action-list>
 
     </mat-sidenav>
-    <mat-sidenav-content>
-        
-        <router-outlet></router-outlet>
+    <mat-sidenav-content >
+        <p *ngIf="showDefaultMessage"><- Elija una opcion el menu lateral</p>
+        <router-outlet (activate)="showDefaultMessage=false"> </router-outlet>
         
     </mat-sidenav-content>
   </mat-sidenav-container>

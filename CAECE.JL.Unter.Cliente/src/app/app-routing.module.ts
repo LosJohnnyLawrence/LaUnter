@@ -8,7 +8,8 @@ import { HomeComponent } from './componentes/home/home.component';
 import { MozoComponent } from './componentes/mozo/mozo.component';
 
 const routes: Routes = [
-  {path:'mozo',component: MozoComponent},
+  {path:'mozo',component: MozoComponent,
+  loadChildren: ()=>import('./componentes/mozo/mozo.module').then(m=>m.MozoModule) },
   {path:'caja',component: CajaComponent},
   {path:'cocina',component: CocinaComponent},
   {path:'config',component: ConfigComponent,
