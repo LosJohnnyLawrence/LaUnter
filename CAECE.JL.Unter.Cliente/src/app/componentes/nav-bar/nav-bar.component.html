@@ -1,24 +1,26 @@
-  <nav class="navbar navbar-expand navbar-dark bg-dark fixed-top">
-    <a class="navbar-brand" routerLink="/">Untertürkheim</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav mr-auto">        
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/mozo">Mozo </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/caja">Caja </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/cocina">Cocina </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/config">Config </a>           
+  <mat-toolbar fxLayout="row" color="primary" color="dark">
 
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" routerLink="/ayuda">Ayuda </a>
-          </li>
-       
-      </ul>
-    </div>
-  </nav>
+            <h1><a fxFlex mat-raised-button routerLink="/" >
+                Untertürkheim
+            </a></h1>
+            <span class="menu-spacer"></span>
+           
+                <a *ngFor="let ruta of rutas" mat-button [routerLink]="ruta.url" class="mr"
+                 fxHide.xs> 
+                    {{ruta.nombre}}
+                 </a>
+
+                 <button mat-icon-button [matMenuTriggerFor]="dropMenu" fxHide fxShow.xs>
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-menu #dropMenu="matMenu">
+                    <ng-container *ngFor="let ruta of rutas">
+                        <button mat-menu-item [routerLink]="ruta.url">
+                            {{ruta.nombre}}
+                        </button>
+                        <mat-divider></mat-divider>
+                    </ng-container>
+                </mat-menu>
+        </mat-toolbar>
+
+

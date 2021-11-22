@@ -1,1 +1,60 @@
-<app-listado-items></app-listado-items>>
+<!-- <app-listado-items></app-listado-items>> -->
+
+<mat-sidenav-container >
+    <mat-sidenav mode="side" opened  [fixedInViewport]="true" [fixedTopGap]="64" >
+        <mat-action-list>
+            Configurar
+            <button mat-list-item > Mozos </button>
+            <button mat-list-item> Menus </button>
+            <button mat-list-item> Mesas </button>
+
+          </mat-action-list>
+
+    </mat-sidenav>
+    <mat-sidenav-content>
+        
+        <mat-accordion class="example-headers-align" multi>
+            <mat-expansion-panel>
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  Mozos
+                </mat-panel-title>
+                <mat-panel-description>
+                  Hace click para editar data de mozos
+                  <mat-icon>account_circle</mat-icon>
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+              content
+          
+            </mat-expansion-panel>
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Mesas
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Hace click para editar data de las mesas
+                    <mat-icon>account_circle</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                content
+            
+              </mat-expansion-panel>
+        
+              <mat-expansion-panel>
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    Menu
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Hace click para editar data de los menus
+                    <mat-icon>account_circle</mat-icon>
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                content
+            
+              </mat-expansion-panel>
+        </mat-accordion>
+        
+    </mat-sidenav-content>
+  </mat-sidenav-container>

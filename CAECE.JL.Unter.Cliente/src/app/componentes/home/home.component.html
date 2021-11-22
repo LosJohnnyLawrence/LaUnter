@@ -1,10 +1,15 @@
-<div [ngClass]="['card', 'presentation']">
-<h1 [ngClass]="['card-header']">Cervecería Untertürkheim</h1>
-<span [ngClass]="['card-body']">
-<h2>Cervezas del mundo y cocina alemana </h2>
-     <p>Lunes a sábados desde las 16hs  &nbsp;
-        Cocina hasta las 00hs &nbsp;
-        Wpp +5491164732465 &nbsp;
-    </p>
-</span>
-</div>
+<mat-card [ngClass]="['card', 'presentation']">
+        <mat-card-header>
+            <mat-card-title>
+            Cervecería Untertürkheim
+            </mat-card-title>
+            <mat-card-subtitle>
+                Cervezas del mundo y cocina alemana
+            </mat-card-subtitle>
+        </mat-card-header>
+    <mat-card-content>
+        <p>Lunes a sábados desde las 16hs</p> 
+        <p>Cocina hasta las 00hs</p> 
+        <p> Wpp +5491164732465</p>       
+    </mat-card-content>
+</mat-card>

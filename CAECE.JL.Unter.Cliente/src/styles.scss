@@ -1,11 +1,9 @@
-@import "../node_modules/bootstrap/scss/bootstrap";
-
 
 body {
 
   background-image: url("/assets/img/bckground.jpg");
-  height: 100%;
-  position: fixed;
   background-repeat: no-repeat;
   background-size: 100% auto;
 }
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
