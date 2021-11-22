@@ -13,48 +13,7 @@
     </mat-sidenav>
     <mat-sidenav-content>
         
-        <mat-accordion class="example-headers-align" multi>
-            <mat-expansion-panel>
-              <mat-expansion-panel-header>
-                <mat-panel-title>
-                  Mozos
-                </mat-panel-title>
-                <mat-panel-description>
-                  Hace click para editar data de mozos
-                  <mat-icon>account_circle</mat-icon>
-                </mat-panel-description>
-              </mat-expansion-panel-header>
-              content
-          
-            </mat-expansion-panel>
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Mesas
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Hace click para editar data de las mesas
-                    <mat-icon>account_circle</mat-icon>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                content
-            
-              </mat-expansion-panel>
-        
-              <mat-expansion-panel>
-                <mat-expansion-panel-header>
-                  <mat-panel-title>
-                    Menu
-                  </mat-panel-title>
-                  <mat-panel-description>
-                    Hace click para editar data de los menus
-                    <mat-icon>account_circle</mat-icon>
-                  </mat-panel-description>
-                </mat-expansion-panel-header>
-                content
-            
-              </mat-expansion-panel>
-        </mat-accordion>
+        <router-outlet></router-outlet>
         
     </mat-sidenav-content>
   </mat-sidenav-container>
