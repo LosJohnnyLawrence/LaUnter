@@ -1,1 +1,25 @@
-<p>Todo: listado de mesas con link pra apretar y sidenav con lista de pedidos listos</p>
+
+<mat-sidenav-container>
+    <mat-sidenav mode="side" opened  [fixedInViewport]="true" [fixedTopGap]="64" #drawer >
+        <div class="menu-toggle">
+            <button mat-button *ngIf="drawer.opened" aria-label="Abre menus" (click)="drawer.toggle()">
+              <mat-icon>close</mat-icon>
+            </button>
+          </div>
+        <mat-action-list>
+            <button mat-list-item *ngFor="let pedidoOrden of pedidosOrdenes" (click)="drawer.close()"  [routerLink]="'./pedido/'+pedidoOrden.id" >
+                {{pedidoOrden.descripcion}}
+             </button>
+        </mat-action-list>
+        <p>TODO: llenar sidenav con lista de pedidos listos</p>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div class="menu-toggle">
+            <button mat-button color="primary" aria-label="Abre menus" (click)="drawer.toggle()">
+              <mat-icon>menu</mat-icon>
+            </button>
+          </div>
+        <p>Todo: listado de mesas con link pra apretar y esten las seleciones para apretar</p>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PedidoComponent } from './componentes/mozo/pedido/pedido.component';
 import { MozoModule } from './componentes/mozo/mozo.module';
 import { ComunModule } from './componentes/comun/comun.module';
+import { DialogoAccionComponent } from './componentes/caja/dialogo-accion/dialogo-accion.component';
   
 
 @NgModule({
@@ -23,6 +24,7 @@ import { ComunModule } from './componentes/comun/comun.module';
     HomeComponent,
     AyudaComponent,
     NavBarComponent,
+    DialogoAccionComponent,
   ],
   imports: [
     BrowserModule,

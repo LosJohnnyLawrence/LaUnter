@@ -10,6 +10,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTableModule } from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
 
 import { ComunRoutingModule } from './comun-routing.module';
@@ -22,7 +23,7 @@ import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.componen
 import { ListadoItemsComponent } from './listado-items/listado-items.component';
 import { ListadoMesasComponent } from './listado-mesas/listado-mesas.component';
 import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.component';
-
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 @NgModule({
@@ -48,7 +49,9 @@ import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.compo
     MatDividerModule,  
     MatExpansionModule,  
     FlexLayoutModule ,
-    ComunRoutingModule
+    ComunRoutingModule,
+    MatTableModule,
+    MatDialogModule
   ],
   exports:[ MatCardModule,
     MatSidenavModule,
@@ -58,7 +61,8 @@ import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.compo
     MatIconModule,
     MatMenuModule,
     MatDividerModule,  
-    MatExpansionModule,  
+    MatExpansionModule, 
+    MatTableModule, 
     FlexLayoutModule ,
     ComunRoutingModule,
     CarroComponent,
@@ -69,6 +73,7 @@ import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.compo
     DetallePedidoComponent,
     ListadoItemsComponent,
     ListadoMesasComponent,
-    ListadoPedidosComponent]
+    ListadoPedidosComponent,
+    MatDialogModule]
 })
 export class ComunModule { }

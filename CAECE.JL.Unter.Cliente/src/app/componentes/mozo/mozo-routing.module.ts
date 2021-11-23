@@ -5,7 +5,7 @@ import { PedidoComponent } from './pedido/pedido.component';
 const routes: Routes = [
   {path:'pedido/:pedidoId', component:PedidoComponent},
   {path:'pedido', component:PedidoComponent},
-  {path:'mesa/:pedidoId', component:PedidoComponent}
+  {path:'mesa/:mesaId', component:PedidoComponent}
 
 
 ];

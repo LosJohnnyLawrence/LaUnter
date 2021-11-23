@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pedido',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PedidoComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  pedidoId:string|null=null;
+  constructor( private route: ActivatedRoute){}
+  ngOnInit(){
+    this.route.params.subscribe(routeParams => {
+      this.pedidoId = routeParams['pedidoId'];
+  });
   }
 
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogoAccionComponent } from './dialogo-accion/dialogo-accion.component';
 
 @Component({
   selector: 'app-caja',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CajaComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(public dialog: MatDialog) { }
+  dataSource=[{nombre:'dfdffd',direccion:'sdsd'}];
+  displayedColumns: string[] = ['nombre','direccion'];
   ngOnInit(): void {
   }
+
+  accionClick(fila:any){
+    this.dialog.open(DialogoAccionComponent, {
+      data: fila,   
+  });
+}
 
 }
