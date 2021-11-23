@@ -16,8 +16,12 @@ export class CajaComponent implements OnInit {
   }
 
   accionClick(fila:any){
-    this.dialog.open(DialogoAccionComponent, {
+    const dialogoRef = this.dialog.open(DialogoAccionComponent, {
       data: fila,   
+  });
+  dialogoRef.afterClosed().subscribe(result => {
+    console.log('The dialog was closed');
+    console.log(result);
   });
 }
 
