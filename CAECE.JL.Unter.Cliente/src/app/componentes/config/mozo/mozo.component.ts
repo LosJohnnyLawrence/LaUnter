@@ -9,7 +9,7 @@ export class MozoComponent implements OnInit {
 
   mozoEditId:number|null=null;
   editing=false;
-  mozoData = {};
+  mozoData:{id:number|null|undefined, nombre:string|null|undefined} = {nombre:null,id:null};
   mozos = [
     {nombre:'fafa',id:1},
     {nombre:'lala',id:2},
@@ -25,7 +25,7 @@ export class MozoComponent implements OnInit {
   inicioNuevo(){
     this.editing = true;
     this.mozoEditId = null;
-    this.mozoData = {};
+    this.mozoData=  {nombre:null,id:null};
   }
 
   inicioEdit(id:number){
@@ -35,8 +35,8 @@ export class MozoComponent implements OnInit {
     this.mozoData = this.getDataPorId(id);
   }
 
-  getDataPorId(id:number){
-    return {id:id}
+  getDataPorId(id:number): {id:number|null,nombre:string|null|undefined}{
+    return {id:id, nombre: this.mozos.find(m=>m.id==id)?.nombre}
   }
 
   guardar(){

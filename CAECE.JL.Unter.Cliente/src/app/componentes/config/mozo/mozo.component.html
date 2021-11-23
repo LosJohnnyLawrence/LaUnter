@@ -14,9 +14,9 @@
     <div *ngIf="editing" layout="column" layout-wrap="">
         <div layout="column">
             <div flex="">
-                <mat-form-field appearance="fill">
+                <mat-form-field appearance="fill" name="nombre" >
                     <mat-label>Nombre</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="mozoData.nombre">
                 </mat-form-field>
             </div>
             <div flex="">
