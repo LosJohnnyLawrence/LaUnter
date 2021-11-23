@@ -24,6 +24,9 @@ import { ListadoItemsComponent } from './listado-items/listado-items.component';
 import { ListadoMesasComponent } from './listado-mesas/listado-mesas.component';
 import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.component';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { FormsModule } from '@angular/forms';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -46,12 +49,16 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatButtonModule,
     MatIconModule,
     MatMenuModule,
+    MatSelectModule,
     MatDividerModule,  
     MatExpansionModule,  
     FlexLayoutModule ,
     ComunRoutingModule,
     MatTableModule,
-    MatDialogModule
+    MatDialogModule,
+    MatInputModule,
+    FormsModule,
+    MatGridListModule
   ],
   exports:[ MatCardModule,
     MatSidenavModule,
@@ -74,6 +81,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     ListadoItemsComponent,
     ListadoMesasComponent,
     ListadoPedidosComponent,
-    MatDialogModule]
+    MatDialogModule,
+    MatInputModule,
+    FormsModule,
+    MatSelectModule,
+    MatGridListModule
+  ]
 })
 export class ComunModule { }

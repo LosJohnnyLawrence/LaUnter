@@ -1,1 +1,66 @@
-<p>mozo works!</p>
+<div layout="row" layout-wrap="">
+    <div layout="column" layout-wrap="">
+        <div flex="33">
+            <mat-list color="primary">
+                <mat-list-item role="listitem" *ngFor="let mozo of mozos" (click)="inicioEdit(mozo.id)">
+                    {{mozo.nombre}}
+                </mat-list-item>
+            </mat-list>
+        </div>
+        <div flex="33">
+            <button (click)="inicioNuevo()" mat-raised-button color="primary"> Crear Nuevo </button>
+        </div>
+    </div>
+    <div *ngIf="editing" layout="column" layout-wrap="">
+        <div layout="column">
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Nombre</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>DNI</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Sector</mat-label>
+                    <mat-select>
+                        <mat-option value="one">First option</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+        <div layout="row">
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Dia de la semana</mat-label>
+                    <mat-select>
+                        <mat-option value="one">Lunes</mat-option>
+                        <mat-option value="two">Second option</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Horario Entrada</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+            <div flex="">
+                <mat-form-field appearance="fill">
+                    <mat-label>Horario Salida</mat-label>
+                    <input matInput>
+                </mat-form-field>
+            </div>
+        </div>
+        <button mat-raised-button (click)="guardar()"> Guardar </button>
+        <button mat-raised-button (click)="editing=false"> Cancelar </button>
+    </div>
+</div>
