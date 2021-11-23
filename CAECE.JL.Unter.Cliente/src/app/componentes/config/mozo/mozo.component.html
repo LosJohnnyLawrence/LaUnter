@@ -14,7 +14,7 @@
     <div *ngIf="editing" layout="column" layout-wrap="">
         <div layout="column">
             <div flex="">
-                <mat-form-field appearance="fill" name="nombre" >
+                <mat-form-field appearance="fill" name="nombre">
                     <mat-label>Nombre</mat-label>
                     <input matInput [(ngModel)]="mozoData.nombre">
                 </mat-form-field>
@@ -26,42 +26,41 @@
                 </mat-form-field>
             </div>
         </div>
+
         <div layout="row">
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Sector</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <div layout="row">
-            <mat-list color="primary">
-                <mat-list-item role="listitem">
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Dia de la semana</mat-label>
-                    <mat-select>
-                        <mat-option value="one">Lunes</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Horario Entrada</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Horario Salida</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-        </mat-list-item>
+            <mat-list *ngIf="mozoData && mozoData.turnos" color="primary">
+                <mat-list-item  *ngFor="let turno of mozoData.turnos" role="listitem">
+                    <div flex="">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Sector</mat-label>
+                            <mat-select>
+                                <mat-option value="one">First option</mat-option>
+                                <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div flex="">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Dia de la semana</mat-label>
+                            <mat-select>
+                                <mat-option value="one">Lunes</mat-option>
+                                <mat-option value="two">Second option</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div flex="">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Horario Entrada</mat-label>
+                            <input matInput  [(ngModel)]="turno.entrada">
+                        </mat-form-field>
+                    </div>
+                    <div flex="">
+                        <mat-form-field appearance="fill">
+                            <mat-label>Horario Salida</mat-label>
+                            <input matInput [(ngModel)]="turno.salida">
+                        </mat-form-field>
+                    </div>
+                </mat-list-item>
             </mat-list>
         </div>
         <button mat-raised-button (click)="guardar()"> Guardar </button>
