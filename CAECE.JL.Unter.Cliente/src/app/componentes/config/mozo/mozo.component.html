@@ -38,6 +38,8 @@
             </div>
         </div>
         <div layout="row">
+            <mat-list color="primary">
+                <mat-list-item role="listitem">
             <div flex="">
                 <mat-form-field appearance="fill">
                     <mat-label>Dia de la semana</mat-label>
@@ -59,6 +61,8 @@
                     <input matInput>
                 </mat-form-field>
             </div>
+        </mat-list-item>
+            </mat-list>
         </div>
         <button mat-raised-button (click)="guardar()"> Guardar </button>
         <button mat-raised-button (click)="editing=false"> Cancelar </button>
