@@ -7,7 +7,7 @@ import { Plato, Item, RestriccionAlimentaria, Categoria } from 'src/app/modelos/
   styleUrls: ['./plato-form.component.scss']
 })
 export class PlatoFormComponent implements OnInit {
-  @Input() posiblesComponentes: Plato[]|null = null; 
+  @Input() posiblesComponentes: Item[]|null = null; 
   @Input() posiblesRestricciones: RestriccionAlimentaria[]|null = null; 
   @Input() posiblesCategorias: Categoria[]|null = null; 
   @Input() platoData: Plato = new Plato();

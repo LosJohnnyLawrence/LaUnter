@@ -7,7 +7,7 @@ import { Ingrediente, Item } from 'src/app/modelos/item.model';
   styleUrls: ['./ingrediente-form.component.scss']
 })
 export class IngredienteFormComponent implements OnInit {
-  @Input() posiblesComponentes: Ingrediente[]|null = null; 
+  @Input() posiblesComponentes: Item[]|null = null; 
   @Input() ingredienteData: Ingrediente = new Ingrediente();
   @Input() editing = false;
   @Output() guardar = new EventEmitter<Ingrediente>();

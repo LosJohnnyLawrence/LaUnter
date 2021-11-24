@@ -7,20 +7,24 @@
     <div flex="">        
         <mat-form-field appearance="fill">
             <mat-label>Restricciones Alimentarias</mat-label>
-            <mat-select [(ngModel)]="itemData.restriccionesAlimentarias" [compareWith]="compareRestricciones" multiple>
-                <mat-option *ngIf="!!posiblesRestricciones" *ngFor="let res of posiblesRestricciones" [value]="res" >
-                    {{ res.nombre }}
-                </mat-option>
+            <mat-select [(ngModel)]="bebidaData.restriccionesAlimentarias" [compareWith]="compareRestricciones" multiple>
+                <span  *ngIf="!!posiblesRestricciones">
+                    <mat-option *ngFor="let res of posiblesRestricciones" [value]="res" >
+                        {{ res.nombre }}
+                    </mat-option>
+                </span>
             </mat-select>
         </mat-form-field>
     </div>
     <div flex="">
         <mat-form-field appearance="fill">
             <mat-label>Categoria</mat-label>
-            <mat-select [(ngModel)]="itemData.categoria" [compareWith]="compareCategorias">
-                <mat-option *ngIf="!!posiblesCategorias" *ngFor="let cat of posiblesCategorias" [value]="cat" >
-                    {{ cat.nombre }}
-                </mat-option>
+            <mat-select [(ngModel)]="bebidaData.categoria" [compareWith]="compareCategorias">
+                <span *ngIf="!!posiblesCategorias" >
+                    <mat-option *ngFor="let cat of posiblesCategorias" [value]="cat" >
+                        {{ cat.nombre }}
+                    </mat-option>
+                </span>
             </mat-select>
         </mat-form-field>
     </div>

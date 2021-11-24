@@ -7,30 +7,36 @@
     <div flex="">
         <mat-form-field appearance="fill">
             <mat-label>Posibles Extras</mat-label>
-            <mat-select [(ngModel)]="itemData.posiblesExtras" [compareWith]="compareComponentes" multiple>
-                <mat-option *ngIf="!!posiblesComponentes" *ngFor="let comp of posiblesComponentes" [value]="comp" >
+            <mat-select [(ngModel)]="platoData.posiblesExtras" [compareWith]="compareComponentes" multiple>
+                <span *ngIf="!!posiblesComponentes">
+                <mat-option  *ngFor="let comp of posiblesComponentes" [value]="comp" >
                     {{ comp.nombre }}
                 </mat-option>
+            </span>
             </mat-select>
         </mat-form-field>
     </div>
     <div flex="">        
         <mat-form-field appearance="fill">
             <mat-label>Restricciones Alimentarias</mat-label>
-            <mat-select [(ngModel)]="itemData.restriccionesAlimentarias" [compareWith]="compareRestricciones" multiple>
-                <mat-option *ngIf="!!posiblesRestricciones" *ngFor="let res of posiblesRestricciones" [value]="res" >
-                    {{ res.nombre }}
-                </mat-option>
+            <mat-select [(ngModel)]="platoData.restriccionesAlimentarias" [compareWith]="compareRestricciones" multiple>
+               <span *ngIf="!!posiblesRestricciones">
+                    <mat-option  *ngFor="let res of posiblesRestricciones" [value]="res" >
+                        {{ res.nombre }}
+                    </mat-option>
+                </span>
             </mat-select>
         </mat-form-field>
     </div>
     <div flex="">
         <mat-form-field appearance="fill">
             <mat-label>Categoria</mat-label>
-            <mat-select [(ngModel)]="itemData.categoria" [compareWith]="compareCategorias">
-                <mat-option *ngIf="!!posiblesCategorias" *ngFor="let cat of posiblesCategorias" [value]="cat" >
+            <mat-select [(ngModel)]="platoData.categoria" [compareWith]="compareCategorias">
+                <span *ngIf="!!posiblesCategorias" >
+                <mat-option *ngFor="let cat of posiblesCategorias" [value]="cat" >
                     {{ cat.nombre }}
                 </mat-option>
+                </span>
             </mat-select>
         </mat-form-field>
     </div>

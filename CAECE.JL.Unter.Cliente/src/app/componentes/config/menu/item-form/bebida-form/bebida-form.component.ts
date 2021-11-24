@@ -7,7 +7,7 @@ import { Bebida, Categoria, Item, RestriccionAlimentaria } from 'src/app/modelos
   styleUrls: ['./bebida-form.component.scss']
 })
 export class BebidaFormComponent implements OnInit {
-  @Input() posiblesComponentes: Bebida[]|null = null; 
+  @Input() posiblesComponentes: Item[]|null = null; 
   @Input() posiblesRestricciones: RestriccionAlimentaria[]|null = null; 
   @Input() posiblesCategorias: Categoria[]|null = null; 
   @Input() bebidaData: Bebida = new Bebida();

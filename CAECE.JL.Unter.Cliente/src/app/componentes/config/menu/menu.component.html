@@ -1,13 +1,70 @@
 <h2>Menu</h2>
 <div layout="row" layout-wrap="">
+    <h3>Platos</h3>
     <div layout="column" layout-wrap="">
         <div flex="33">
- <placeholder-3 itemslist></placeholder-3>
+            <app-item-list [items]="listaPlato" (accionDeLista)="inicioEditPlato">
+            </app-item-list>
+            
         </div>
         <div flex="33">
-            <button (click)="inicioNuevo()" mat-raised-button color="primary"> Crear Nuevo </button>
+            <button (click)="inicioNuevoPlato()" mat-raised-button color="primary"> Crear Nuevo </button>
         </div>
     </div>
-    <div *ngIf="editing" layout="column" layout-wrap="">
-        
+    <div *ngIf="editingPlato" layout="column" layout-wrap="">
+    <app-plato-form [posiblesComponentes]="listIngrediente"
+        [posiblesRestricciones]="listaRestriccions"
+        [posiblesCategorias]="listaCategorias"
+        [platoData]="dataPlato"
+        [editing]="editingPlato"
+        (guardar)="guardarPlato"
+        (cancelar)="cancelEditPlato"
+    ></app-plato-form>    
+    </div>
+</div>
+
+<div layout="row" layout-wrap="">
+    <h3>Bebidas</h3>
+    <div layout="column" layout-wrap="">
+        <div flex="33">
+            <app-item-list [items]="listaBebida" (accionDeLista)="inicioEditBebida">
+            </app-item-list>
+            
+        </div>
+        <div flex="33">
+            <button (click)="inicioNuevoBebida()" mat-raised-button color="primary"> Crear Nuevo </button>
+        </div>
+    </div>
+    <div *ngIf="editingBebida" layout="column" layout-wrap="">
+    <app-bebida-form [posiblesComponentes]="listIngrediente"
+        [posiblesRestricciones]="listaRestriccions"
+        [posiblesCategorias]="listaCategorias"
+        [bebidaData]="dataBebida"
+        [editing]="editingBebida"
+        (guardar)="guardarBebida"
+        (cancelar)="cancelEditBebida"
+    ></app-bebida-form>    
+    </div>
+</div>
+
+<div layout="row" layout-wrap="">
+    <h3>Ingredientes</h3>
+    <div layout="column" layout-wrap="">
+        <div flex="33">
+            <app-item-list [items]="listIngrediente" (accionDeLista)="inicioEditIngrediente">
+            </app-item-list>
+            
+        </div>
+        <div flex="33">
+            <button (click)="inicioNuevoIngrediente()" mat-raised-button color="primary"> Crear Nuevo </button>
+        </div>
+    </div>
+    <div *ngIf="editingIngrediente" layout="column" layout-wrap="">
+    <app-ingrediente-form [posiblesComponentes]="listIngrediente"
+        [ingredienteData]="dataIngrediente"
+        [editing]="editingIngrediente"
+        (guardar)="guardarIngrediente"
+        (cancelar)="cancelEditIngrediente"
+    ></app-ingrediente-form>    
+    </div>
 </div>

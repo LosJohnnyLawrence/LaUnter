@@ -23,9 +23,11 @@
         <mat-form-field appearance="fill">
             <mat-label>Componentes</mat-label>
             <mat-select [(ngModel)]="itemData.componentes" [compareWith]="compareComponentes" multiple>
-                <mat-option *ngIf="!!posiblesComponentes" *ngFor="let comp of posiblesComponentes" [value]="comp" >
+             <span *ngIf="!!posiblesComponentes" >
+                <mat-option *ngFor="let comp of posiblesComponentes" [value]="comp" >
                     {{ comp.nombre }}
                 </mat-option>
+            </span>
             </mat-select>
         </mat-form-field>
     </div>
@@ -33,5 +35,5 @@
 
 <button mat-raised-button (click)="guardarHandler()"> Guardar </button>
 <button mat-raised-button (click)="cancelarHandler()"> Cancelar </button>
-</div>
+
 
