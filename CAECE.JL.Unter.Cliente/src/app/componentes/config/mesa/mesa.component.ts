@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Mesa } from 'src/app/modelos/mesa.model';
+import { MesaService } from 'src/app/servicios/mesa.service';
 
 @Component({
   selector: 'app-mesa',
@@ -8,15 +10,10 @@ import { Component, OnInit } from '@angular/core';
 export class MesaComponent implements OnInit {
   mesaEditId:number|null=null;
   editing=false;
-  mesaData = {};
-  mesas = [
-    {nombre:'ventana',id:1},
-    {nombre:'cocina',id:2}
-
-  ];
+  mesaData:Mesa = new Mesa();
   
 
-  constructor() { }
+  constructor(private mesaService:MesaService) { }
 
   ngOnInit(): void {
   }
@@ -25,23 +22,35 @@ export class MesaComponent implements OnInit {
   inicioNuevo(){
     this.editing = true;
     this.mesaEditId = null;
-    this.mesaData = {};
+    this.mesaData = new Mesa();
   }
 
-  inicioEdit(id:number){
+  inicioEdit(id:number|null){
     console.log("esto id "+id)
     this.editing = true;
     this.mesaEditId = id;
-    this.mesaData = this.getDataPorId(id);
+    this.mesaData = this.obtenerMesaPorId(id)?? new Mesa();
   }
 
-  getDataPorId(id:number){
-    return {id:id}
+
+  obtenerMesaPorId(id:number|null): Mesa |null{
+    let item =this.mesaService.obtenerMesa(id)??new Mesa();
+    return {...item};
+  }
+
+  obtenerMesas(): Mesa[]{
+    return this.mesaService.obtenerTodos();
   }
 
   guardar(){
     this.editing = false;
-    location.reload();
+    if(this.mesaData?.id==null){
+    this.mesaService.crearMesa(this.mesaData);
+  }else {
+    this.mesaService.actualizarMesa(this.mesaData);
+  }
+
+    this.mesaData = new Mesa();
   }
 
 }

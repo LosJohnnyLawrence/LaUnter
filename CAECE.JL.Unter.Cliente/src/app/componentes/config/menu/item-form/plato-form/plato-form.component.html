@@ -1,0 +1,37 @@
+<app-item-form [posiblesComponentes]="posiblesComponentes" [itemData]="platoData" 
+[editing]="editing" (guardar)="guardarHandler"  (cancelar)="cancelarHandler" >
+</app-item-form>
+
+
+<div layout="row">
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Posibles Extras</mat-label>
+            <mat-select [(ngModel)]="itemData.posiblesExtras" [compareWith]="compareComponentes" multiple>
+                <mat-option *ngIf="!!posiblesComponentes" *ngFor="let comp of posiblesComponentes" [value]="comp" >
+                    {{ comp.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div flex="">        
+        <mat-form-field appearance="fill">
+            <mat-label>Restricciones Alimentarias</mat-label>
+            <mat-select [(ngModel)]="itemData.restriccionesAlimentarias" [compareWith]="compareRestricciones" multiple>
+                <mat-option *ngIf="!!posiblesRestricciones" *ngFor="let res of posiblesRestricciones" [value]="res" >
+                    {{ res.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <mat-select [(ngModel)]="itemData.categoria" [compareWith]="compareCategorias">
+                <mat-option *ngIf="!!posiblesCategorias" *ngFor="let cat of posiblesCategorias" [value]="cat" >
+                    {{ cat.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div> 

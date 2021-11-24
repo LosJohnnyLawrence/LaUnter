@@ -14,6 +14,10 @@ import { PedidoComponent } from './componentes/mozo/pedido/pedido.component';
 import { MozoModule } from './componentes/mozo/mozo.module';
 import { ComunModule } from './componentes/comun/comun.module';
 import { DialogoAccionComponent } from './componentes/caja/dialogo-accion/dialogo-accion.component';
+import { MozoService } from './servicios/mozo.service';
+import { PedidoService } from './servicios/pedido.service';
+import { MesaService } from './servicios/mesa.service';
+import { ItemService } from './servicios/item.service';
   
 
 @NgModule({
@@ -35,7 +39,12 @@ import { DialogoAccionComponent } from './componentes/caja/dialogo-accion/dialog
     MozoModule
 
   ],
-  providers: [],
+  providers: [
+    MozoService,
+    PedidoService,
+    MesaService,
+    ItemService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

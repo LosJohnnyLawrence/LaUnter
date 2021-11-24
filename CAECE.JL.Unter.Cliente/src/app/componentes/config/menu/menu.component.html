@@ -1,78 +1,13 @@
+<h2>Menu</h2>
 <div layout="row" layout-wrap="">
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <mat-list color="primary">
-                <mat-list-item role="listitem" *ngFor="let item of items" (click)="inicioEdit(item.id)">
-                    {{item.nombre}}
-                </mat-list-item>
-            </mat-list>
+ <placeholder-3 itemslist></placeholder-3>
         </div>
         <div flex="33">
             <button (click)="inicioNuevo()" mat-raised-button color="primary"> Crear Nuevo </button>
         </div>
     </div>
     <div *ngIf="editing" layout="column" layout-wrap="">
-        <div layout="column">
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Nombre</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Descripcion</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Precio</mat-label>
-                    <input matInput>
-                </mat-form-field>
-            </div>
-        </div>
-        <div layout="row">
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Componentes</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <div layout="row">
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Posibles Extras</mat-label>
-                    <mat-select>
-                        <mat-option value="one">Lunes</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Restricciones Alimentarias</mat-label>
-                    <mat-select>
-                        <mat-option value="one">Lunes</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-            <div flex="">
-                <mat-form-field appearance="fill">
-                    <mat-label>Categoria</mat-label>
-                    <mat-select>
-                        <mat-option value="one">Lunes</mat-option>
-                        <mat-option value="two">Second option</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-        <button mat-raised-button (click)="guardar()"> Guardar </button>
-        <button mat-raised-button (click)="editing=false"> Cancelar </button>
-    </div>
+        
 </div>

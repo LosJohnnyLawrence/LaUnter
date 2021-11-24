@@ -1,16 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Mozo } from 'src/app/modelos/mozo.model';
+import { MozoService } from 'src/app/servicios/mozo.service';
 
-class Turno {
-public sector:number|null=null;
-public dia:number|null=null;
-public entrada:string|null=null;
-public salida:string|null=null;
-}
-class Mozo {
-  public id:number|null|undefined;
-  public nombre:string|null|undefined;
-  public  turnos:Turno[]|null|undefined;
-  }
 
 @Component({
   selector: 'app-mozo',
@@ -21,19 +13,10 @@ export class MozoComponent implements OnInit {
 
   mozoEditId:number|null=null;
   editing=false;
-  mozoData:Mozo =
-   {nombre:null,id:null,turnos:[]};
-  mozos = [
-    {nombre:'fafa',id:1,turnos:[{sector:1,dia:2,entrada:'11:32',salida:'15:00'}]},
-    {nombre:'lala',id:2},
-    {nombre:'tata',id:9,turnos:[
-      {sector:1,dia:2,entrada:'11:32',salida:'15:00'},
-      {sector:1,dia:3,entrada:'11:32',salida:'15:00'},
-    ]}
+  mozoData:Mozo =new Mozo();
 
-  ];
 
-  constructor() { }
+  constructor(private mozoService: MozoService, private route:Router) { }
 
   ngOnInit(): void {
   }
@@ -41,24 +24,33 @@ export class MozoComponent implements OnInit {
   inicioNuevo(){
     this.editing = true;
     this.mozoEditId = null;
-    this.mozoData=  {nombre:null,id:null,turnos:[]};
+    this.mozoData =  new Mozo();
   }
 
-  inicioEdit(id:number){
-    console.log("esto id "+id)
+  inicioEdit(id:number|null){
     this.editing = true;
     this.mozoEditId = id;
-    this.mozoData = this.getDataPorId(id);
+    this.mozoData = this.obtenerMozoPorId(id) ?? new Mozo();
   }
 
-  getDataPorId(id:number): Mozo{
-    let mozoActual = this.mozos.find(m=>m.id==id);
-    return {id:id, nombre: mozoActual?.nombre,turnos:mozoActual?.turnos}
+  obtenerMozoPorId(id:number|null): Mozo |null{
+    let item =this.mozoService.obtenerMozo(id)??new Mozo();
+    return {...item};
+  }
+
+  obtenerMozos(): Mozo[]{
+    return this.mozoService.obtenerTodos();
   }
 
   guardar(){
     this.editing = false;
-    location.reload();
+    if(this.mozoData?.id==null){
+    this.mozoService.crearMozo(this.mozoData);
+  }else {
+    this.mozoService.actualizarMozo(this.mozoData);
+  }
+
+    this.mozoData = new Mozo();
   }
 
  

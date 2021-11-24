@@ -1,0 +1,16 @@
+<app-item-form [posiblesComponentes]="posiblesComponentes" [itemData]="ingredienteData" 
+[editing]="editing" (guardar)="guardarHandler"  (cancelar)="cancelarHandler" >
+</app-item-form>
+
+<div flex="">
+    <mat-form-field appearance="fill">
+        <mat-label>Costo</mat-label>
+        <input matInput [(ngModel)]="itemData.costo" >
+    </mat-form-field>
+</div>
+<div flex="">
+    <mat-form-field appearance="fill">
+        <mat-label>CantidadStock</mat-label>
+        <input matInput [(ngModel)]="itemData.cantidadStock" >
+    </mat-form-field>
+</div>

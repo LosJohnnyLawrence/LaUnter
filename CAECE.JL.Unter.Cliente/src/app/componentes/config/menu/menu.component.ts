@@ -27,7 +27,6 @@ export class MenuComponent implements OnInit {
   }
 
   inicioEdit(id:number){
-    console.log("esto id "+id)
     this.editing = true;
     this.itemEditId = id;
     this.itemData = this.getDataPorId(id);

@@ -1,8 +1,9 @@
+<h2>Mesas</h2>
 <div layout="row" layout-wrap="">
     <div layout="column" layout-wrap="">
         <div flex="33">
             <mat-list color="primary">
-                <mat-list-item role="listitem" *ngFor="let mesa of mesas" (click)="inicioEdit(mesa.id)">
+                <mat-list-item role="listitem" *ngFor="let mesa of obtenerMesas()" (click)="inicioEdit(mesa.id)">
                     {{mesa.nombre}}
                 </mat-list-item>
             </mat-list>
@@ -16,13 +17,13 @@
             <div flex="">
                 <mat-form-field appearance="fill">
                     <mat-label>Nombre</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="mesaData.nombre">
                 </mat-form-field>
             </div>
             <div flex="">
                 <mat-form-field appearance="fill">
                     <mat-label>Descripcion</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="mesaData.descripcion">
                 </mat-form-field>
             </div>
         </div>
@@ -42,7 +43,7 @@
             <div flex="">
                 <mat-form-field appearance="fill">
                     <mat-label>Cantidad comensales</mat-label>
-                    <input matInput>
+                    <input matInput [(ngModel)]="mesaData.cantComensales">
                 </mat-form-field>
             </div>
         </div>

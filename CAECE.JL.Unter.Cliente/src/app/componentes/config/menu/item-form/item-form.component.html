@@ -1,0 +1,37 @@
+<div layout="column">
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="itemData.nombre" >
+        </mat-form-field>
+    </div>
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="itemData.descripcion" >
+        </mat-form-field>
+    </div>
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Precio</mat-label>
+            <input matInput [(ngModel)]="itemData.precio" >
+        </mat-form-field>
+    </div>
+</div>
+<div layout="row">
+    <div flex="">
+        <mat-form-field appearance="fill">
+            <mat-label>Componentes</mat-label>
+            <mat-select [(ngModel)]="itemData.componentes" [compareWith]="compareComponentes" multiple>
+                <mat-option *ngIf="!!posiblesComponentes" *ngFor="let comp of posiblesComponentes" [value]="comp" >
+                    {{ comp.nombre }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+</div>
+
+<button mat-raised-button (click)="guardarHandler()"> Guardar </button>
+<button mat-raised-button (click)="cancelarHandler()"> Cancelar </button>
+</div>
+
