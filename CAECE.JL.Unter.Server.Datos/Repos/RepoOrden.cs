@@ -54,7 +54,7 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
         public IQueryable<Pedido> ObtenerPedidos()
         {
             return _contextoDatosUnter.Pedidos.Include(p => p.Mozo).Include(p => p.Estado).Include(p => p.Cliente)
-                .Include(p => p.Mesa).Include(p => p.Selecciones).AsQueryable();
+                .Include(p => p.Mesa).Include(p => p.Selecciones).ThenInclude(s => s.Item).AsQueryable();
         }
         
 
@@ -74,7 +74,7 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
         public Pedido ObtenerPedidoPorId(int id)
         {
             return _contextoDatosUnter.Pedidos.Include(p => p.Mozo).Include(p => p.Estado).Include(p => p.Cliente)
-                .Include(p => p.Mesa).Include(p => p.Selecciones).FirstOrDefault(p=>p.Id == id);
+                .Include(p => p.Mesa).Include(p => p.Selecciones).ThenInclude(s=>s.Item).FirstOrDefault(p=>p.Id == id);
         }
 
         public IQueryable<Pedido> ObtenerPedidosPorMesa(int idDeMesa, int? idEstado = null)
