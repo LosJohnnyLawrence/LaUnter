@@ -67,6 +67,7 @@ export class MesaService {
     if(nuevosDatos == null ){
       return Promise.resolve(null); 
     }
+    nuevosDatos.id=0;
     return this.httpClient.post<Mesa>(environment.apiUrlBase+"/api/mesa/CrearMesa", nuevosDatos).
     toPromise();
   }

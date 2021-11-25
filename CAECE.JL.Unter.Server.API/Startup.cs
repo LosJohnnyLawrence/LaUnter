@@ -49,7 +49,7 @@ namespace CAECE.JL.Unter.Server.API
             services.AgregarPerfilesPresAutomapper();
 
 
-
+            services.AddCors();
 
             services.AddSwaggerGen(c =>
             {
@@ -68,7 +68,13 @@ namespace CAECE.JL.Unter.Server.API
             }
             //app.UseHttpsRedirection();
 
-            app.UseRouting();
+            app.UseCors(x => x
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .SetIsOriginAllowed(origin => true));
+
+
+           app.UseRouting();
              
 
             //app.UseAuthorization();
