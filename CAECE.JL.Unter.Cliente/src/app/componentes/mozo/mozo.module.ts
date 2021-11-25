@@ -8,6 +8,7 @@ import { MozoComponent } from './mozo.component';
 import { PedidoComponent } from './pedido/pedido.component';
 import { ListaBebidaComponent } from './pedido/lista-bebida/lista-bebida.component';
 import { ListaPlatosComponent } from './pedido/lista-platos/lista-platos.component';
+import { EdicionSelecComponent } from './pedido/edicion-selec/edicion-selec.component';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { ListaPlatosComponent } from './pedido/lista-platos/lista-platos.compone
   PedidoComponent,
   MozoComponent,
   ListaBebidaComponent,
-  ListaPlatosComponent
+  ListaPlatosComponent,
+  EdicionSelecComponent
 ],
   imports: [
     ComunModule,

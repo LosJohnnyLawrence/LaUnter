@@ -1,0 +1,61 @@
+<div flex="">
+    <mat-form-field appearance="fill">
+        <mat-label>Item Seleccionado</mat-label>
+        <input matInput [value]="seleccion.item?.nombre??seleccion.id" disabled>
+    </mat-form-field>
+</div>
+
+<mat-form-field appearance="fill">
+    <mat-label>Bebidas </mat-label>
+    <mat-select [value]="seleccion.item" >
+        <span *ngIf="!!bebidas" >
+        <mat-option *ngFor="let comp of bebidas" [value]="comp" (click)="itemSeleccionado(comp)">
+            {{ comp.nombre }}
+        </mat-option>
+        </span>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Platos </mat-label>
+    <mat-select [value]="seleccion.item" >
+        <span *ngIf="!!platos" >
+        <mat-option *ngFor="let comp of platos" [value]="comp" (click)="itemSeleccionado(comp)" >
+            {{ comp.nombre }}
+        </mat-option>
+        </span>
+    </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+    <mat-label>Agregar</mat-label>
+    <mat-select [(ngModel)]="seleccion.agregar" [compareWith]="compareComponentes" multiple>
+     <span *ngIf="!!ingredientes" >
+        <mat-option *ngFor="let comp of ingredientes" [value]="comp" >
+            {{ comp.nombre }}
+        </mat-option>
+    </span>
+    </mat-select>
+</mat-form-field>
+
+
+<mat-form-field appearance="fill">
+    <mat-label>Sacar</mat-label>
+    <mat-select [(ngModel)]="seleccion.sacar" [compareWith]="compareComponentes" multiple>
+     <span *ngIf="!!ingredientes" >
+        <mat-option *ngFor="let comp of ingredientes" [value]="comp" >
+            {{ comp.nombre }}
+        </mat-option>
+    </span>
+    </mat-select>
+</mat-form-field>
+<p>
+<button mat-button (click)="handlerGuardar(seleccion)">
+    Guardar
+</button>
+
+
+<button mat-button (click)="handlerCancelar()">
+    Cancelar
+</button>
+</p>
