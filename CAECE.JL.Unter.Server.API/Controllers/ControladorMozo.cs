@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Servicios.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,79 +13,91 @@ namespace CAECE.JL.Unter.Server.API.Controllers
     [ApiController]
     public class ControladorMozo : Controller
     {
-        // GET: Orden
-        public ActionResult Index()
+        private readonly IServicioMozos _servicioMozos;
+        private readonly IMapper _mapper;
+
+        public ControladorMozo(IServicioMozos servicioMozos, IMapper mapper)
         {
-            return Ok("a");
+            _servicioMozos = servicioMozos;
+            _mapper = mapper;
+
         }
 
-        // GET: Orden/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Orden/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Orden/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+        /// <summary>
+        /// Persiste la data de un nuevo mozo
+        /// </summary>
+        /// <param name="mozo">data del mozo</param>
+        /// <returns>data final del mozo</returns>
+        public Mozo CrearNuevoMozo(Mozo mozo) {
+            return _mapper.Map<Mozo>( _servicioMozos.CrearNuevoMozo(_mapper.Map<Comun.Modelo.Mozo>(mozo)) );
         }
 
-        // GET: Orden/Edit/5
-        public ActionResult Edit(int id)
+        [HttpDelete]
+        /// <summary>
+        /// Elimina la data de un mozo existente
+        /// </summary>
+        /// <param name="mozoId">data del mozo a borrar</param>
+        public void BorrarMozo(int mozoId)
         {
-            return View();
+            _servicioMozos.BorrarMozo(mozoId);
         }
 
-        // POST: Orden/Edit/5
+
+        [HttpPut]
+        /// <summary>
+        /// Actualiza la data de un nuevo mozo
+        /// </summary>
+        /// <param name="mozo">data nueva del mozo</param>
+        /// <returns>data actualizada del mozo</returns>
+        public Mozo ActualizarDatosMozo(Mozo mozo)
+        {
+            return _mapper.Map<Mozo>(_servicioMozos.ActualizarDatosMozo(_mapper.Map<Comun.Modelo.Mozo>(mozo)));
+        }
+
+
+        [HttpGet]
+        /// <summary>
+        /// Obtiene Turnos de todos los mozos actuales
+        /// </summary>
+        /// <returns>Lista de turnos</returns>
+        public IList<TurnoMozo> OtenerTurnosMozo()
+        {
+            return _mapper.Map<IList<TurnoMozo>>(_servicioMozos.OtenerTurnosMozo());
+        }
+
+        [HttpGet]
+        /// <summary>
+        /// Obtiene Turnos el turno qeudeberia hacer un mozo ahora
+        /// </summary>
+        /// <param name="mozoId">Data del mozo</param>
+        /// <returns> Data del turno actual del mozo, si no es su turno,null</returns>
+        public TurnoMozo OtenerTurnoActualMozo(int mozoId)
+        {
+            return _mapper.Map<TurnoMozo>(_servicioMozos.OtenerTurnoActualMozo(mozoId));
+        }
+
+        [HttpPut]
+        /// <summary>
+        /// Actualiza la data de un existente
+        /// </summary>
+        /// <param name="turno">data actualizada del turno</param>
+        /// <returns>data actualizada del turno</returns>
+        public TurnoMozo ActualizarTurnoMozo(TurnoMozo turno)
+        {
+            return _mapper.Map<TurnoMozo>(_servicioMozos.ActualizarTurnoMozo(_mapper.Map<Comun.Modelo.TurnoMozo>(turno)));
+        }
+
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        /// <summary>
+        /// Crea un nuevo turno par a un mozo
+        /// </summary>
+        /// <param name="turno">data del turno y del mozo</param>
+        /// <returns>turno con data final</returns>
+        public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            return _mapper.Map<TurnoMozo>(_servicioMozos.CrearNuevoTurnoMozo(_mapper.Map<Comun.Modelo.TurnoMozo>(turno)));
         }
 
-        // GET: Orden/Delete/5
-        public ActionResult Delete(int id)
-        {
-            return View();
-        }
-
-        // POST: Orden/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }

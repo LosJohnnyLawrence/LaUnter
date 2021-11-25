@@ -1,4 +1,5 @@
-﻿using CAECE.JL.Unter.Server.Comun.Modelo;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Comun.Modelo;
 using CAECE.JL.Unter.Server.Servicios.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -14,61 +15,65 @@ namespace CAECE.JL.Unter.Server.API.Controllers
     public class ControladorMesa : Controller
     {
         private readonly IServicioMesas _servicioMesas;
+        private readonly IMapper _mapper;
 
-        public ControladorMesa(IServicioMesas servicioMesas)
+        public ControladorMesa(IServicioMesas servicioMesas, IMapper mapper)
         {
             _servicioMesas = servicioMesas;
+            _mapper = mapper;
         }
 
-        /// <summary>
-        /// Inicia la transaccion de una estadia con datos del cliente y moso
-        /// </summary>
-        /// <param name="datosDeMesa"> datos de mesa a abrir</param>
         [HttpPost]
-        public void AbrirMesa(AbrirMesaDTO datosDeMesa)
-        {
-            throw new NotImplementedException();
+        /// <summary>
+        /// Crea una neuva mesa
+        /// </summary>
+        /// <param name="mesa">Datos de mesa a crear</param>
+        /// <returns>Mesa creada</returns>
+        public Mesa CrearMesa(Mesa mesa) {
+           return _mapper.Map<Mesa>( _servicioMesas.CrearMesa(_mapper.Map<Comun.Modelo.Mesa>(mesa)) );
         }
 
-        /// <summary>
-        /// Actualiza los datos configurables de una mesa
-        /// </summary>
-        /// <param name="mesa"></param>
-        /// <returns></returns>
         [HttpPut]
-        public ActionResult<MesaInformacionDTO> ActualizarMesa(CreateUpdateMesaDTO mesa)
-        {
-            throw new NotImplementedException();
+        /// <summary>
+        /// Crea una neuva mesa
+        /// </summary>
+        /// <param name="mesa">Datos de mesa a crear</param>
+        /// <returns>Mesa creada</returns>
+        public Mesa ActualizarMesa(Mesa mesa) {
+            return _mapper.Map<Mesa>(_servicioMesas.ActualizarMesa(_mapper.Map<Comun.Modelo.Mesa>(mesa)));
         }
 
+        [HttpGet]
         /// <summary>
-        /// Cierra una estadia en una mesa
+        /// Nos dice el mozo asignado a una mesa
         /// </summary>
-        /// <param name="mesa"></param>
+        /// <param name="mesa">Datos de mesa cuyo mozo queremos saber</param>
+        /// <returns>Mozo actal asignadoa a la mesa</returns>
+        public Mozo ObtenerMozo(Mesa mesa) { 
+            return _mapper.Map<Mozo>(_servicioMesas.ObtenerMozo(_mapper.Map<Comun.Modelo.Mesa>(mesa)));
+        }
+
+
         [HttpPost]
-        public ActionResult CerrarMesa(MesaQueryDTO mesa)
-        {
-            throw new NotImplementedException();
+        /// <summary>
+        /// Cambia estado de mesa a abierto
+        /// </summary>
+        /// <param name="mesaId"> Datos de mesa a Abrir </param>
+        /// <param name="cliente"> Cliente que va a estar en la mesa</param>
+        /// <param name="mozoId"> Mozo principal ateniendo a la mesa en esta estadia</param>
+        /// <returns></returns>
+        public Estadia AbrirMesa(int mesaId, Cliente cliente, int mozoId) {
+            return _mapper.Map<Estadia>(_servicioMesas.AbrirMesa(mesaId,_mapper.Map<Comun.Modelo.Cliente>(cliente), mozoId));
         }
 
-        /// <summary>
-        /// Crea una mesa nueva
-        /// </summary>
-        /// <param name="mesa"> data de la mesa a crear</param>
-        /// <returns></returns>
-        public ActionResult<MesaInformacionDTO> CrearMesa(CreateUpdateMesaDTO mesa)
-        {
-            throw new NotImplementedException();
-        }
 
+        [HttpPost]
         /// <summary>
-        /// Obtenmos el mozo que deberia estar asignado a una mesa ne prticular
+        /// Cambia estado de mesa a cerrado
         /// </summary>
-        /// <param name="mesa"> Datos de la mesa en cuesion</param>
-        /// <returns></returns>
-        public ActionResult<MozoInfoDTO> ObtenerMozo(MesaQueryDTO mesa)
-        {
-            throw new NotImplementedException();
-        }
+        /// <param name="mesa">Datos de mesa a Cerrar</param>
+        /// <returns>Mesa creada</returns>
+        public void CerrarMesa(Mesa mesa) {
+            _servicioMesas.CerrarMesa(_mapper.Map<Comun.Modelo.Mesa>(mesa)); }
     }
 }

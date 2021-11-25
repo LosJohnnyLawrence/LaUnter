@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using AutoMapper;
+using CAECE.JL.Unter.Server.Servicios.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,79 +13,63 @@ namespace CAECE.JL.Unter.Server.API.Controllers
     [ApiController]
     public class ControladorOrden : Controller
     {
-        // GET: Orden
-        public ActionResult Index()
+        private readonly IServicioAsmOrden _servicioAsmOrden;
+        private readonly IMapper _mapper;
+
+        public ControladorOrden(IServicioAsmOrden servicioAsmOrden, IMapper mapper)
         {
-            return View();
+            _servicioAsmOrden = servicioAsmOrden;
+            _mapper = mapper;
+
         }
 
-        // GET: Orden/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Orden/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Orden/Create
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+        /// <summary>
+        /// Crea un nuevo peido y perisiste su data, 
+        /// devuelve el Id para operar con ella a que la API es stateles
+        /// </summary>
+        /// <param name="pedido">Datos peara crear nuevo pedido, datos del cliente, moxo y mesa son requeridos </param>
+        /// <returns> Data nuevo Pedido</returns>
+        public Pedido NuevoPedido(Pedido pedido) {
+            return _mapper.Map<Pedido>( _servicioAsmOrden.NuevoPedido( _mapper.Map<Comun.Modelo.Pedido>(pedido)));
         }
 
-        // GET: Orden/Edit/5
-        public ActionResult Edit(int id)
+
+        [HttpPut]
+        /// <summary>
+        /// Añade un nuevo item al pedido ya seea Bebida,
+        /// comida o promocion
+        /// </summary>
+        /// <param name="pedidoId">Id del pedido para operar</param>
+        /// <param name="seleccion">Describe como se modifica el plato base</param>
+        public Pedido AgregarSeleccion(int pedidoId, Seleccion seleccion)
         {
-            return View();
+            return _mapper.Map<Pedido>(_servicioAsmOrden.AgregarSeleccion(pedidoId,_mapper.Map<Comun.Modelo.Seleccion>(seleccion)));
         }
 
-        // POST: Orden/Edit/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+
+        [HttpDelete]
+        /// <summary>
+        /// Elimina una seleccion de un pedido
+        /// </summary>
+        /// <param name="seleccionId">Id de la seleccion a eliminar</param>
+        /// <returns>El nuevo estado del pedido</returns>
+        public void EliminarSeleccion(int seleccionId)
         {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            _servicioAsmOrden.EliminarSeleccion(seleccionId);
         }
 
-        // GET: Orden/Delete/5
-        public ActionResult Delete(int id)
+
+        [HttpGet]
+        /// <summary>
+        /// Devuelve el pedido ensamblado
+        /// </summary>
+        /// <param name="pedidoId">d del pedido para obetener</param>
+        /// <returns>El pedido ensambaldo</returns>
+        public Pedido ObtenerPedido(int pedidoId)
         {
-            return View();
+            return _mapper.Map<Pedido>(_servicioAsmOrden.ObtenerPedido(pedidoId));
         }
 
-        // POST: Orden/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
     }
 }
