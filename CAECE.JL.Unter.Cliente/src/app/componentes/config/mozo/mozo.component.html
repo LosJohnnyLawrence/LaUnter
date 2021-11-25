@@ -34,25 +34,38 @@
         </div>
 
         <div layout="row">
+            <button mat-button (click)="agregarTurno(mozoData)"> 
+                <mat-icon>add</mat-icon>
+            </button>
             <mat-list *ngIf="mozoData && mozoData.turnos" color="primary">
                 <mat-list-item  *ngFor="let turno of mozoData.turnos" role="listitem">
+                    <button mat-button (click)="borrarTurno(mozoData, turno)"> 
+                        <mat-icon>close</mat-icon>
+                    </button>
                     <div flex="">
                         <mat-form-field appearance="fill">
                             <mat-label>Sector</mat-label>
-                            <mat-select>
-                                <mat-option value="one">First option</mat-option>
-                                <mat-option value="two">Second option</mat-option>
+                            <mat-select [(ngModel)]="turno.sector" [compareWith]="compareSect">
+                                <span *ngIf="!!listaSectores" >
+                                <mat-option *ngFor="let sec of listaSectores" [value]="sec" >
+                                    {{ sec.nombre }}
+                                </mat-option>
+                                </span>
                             </mat-select>
                         </mat-form-field>
                     </div>
-                    <div flex="">
+                    <div flex="">                        
                         <mat-form-field appearance="fill">
-                            <mat-label>Dia de la semana</mat-label>
-                            <mat-select>
-                                <mat-option value="one">Lunes</mat-option>
-                                <mat-option value="two">Second option</mat-option>
+                            <mat-label>Dia</mat-label>
+                            <mat-select [(ngModel)]="turno.dia" [compareWith]="compareDia">
+                                <span *ngIf="!!listaDias" >
+                                <mat-option *ngFor="let dia of listaDias" [value]="dia.numero" >
+                                    {{ dia.nombre }}
+                                </mat-option>
+                                </span>
                             </mat-select>
                         </mat-form-field>
+
                     </div>
                     <div flex="">
                         <mat-form-field appearance="fill">

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Mozo } from 'src/app/modelos/mozo.model';
+import { Sector } from 'src/app/modelos/mesa.model';
+import { Mozo, Turno } from 'src/app/modelos/mozo.model';
+import { MesaService } from 'src/app/servicios/mesa.service';
 import { MozoService } from 'src/app/servicios/mozo.service';
 
 
@@ -13,11 +15,12 @@ export class MozoComponent implements OnInit {
 
   listaMozos: Mozo[] = new Array<Mozo>();
   listaDias: {nombre:string, numero:number}[] = new Array<{nombre:string, numero:number}>();
+  listaSectores:Sector[]=new Array<Sector>();
   editing=false;
   mozoData:Mozo =new Mozo();
 
 
-  constructor(private mozoService: MozoService, private route:Router) { 
+  constructor(private mozoService: MozoService, private mesaService:MesaService,private route:Router) { 
     
   }
 
@@ -28,11 +31,27 @@ export class MozoComponent implements OnInit {
   actualizarMozos() {
     this.listaDias = this.mozoService.obtenerDias();
     this.mozoService.obtenerTodos().then(m=>this.listaMozos=m);
+    this.mesaService.obtenerSectores().then(s=>this.listaSectores=s);
   }
 
   inicioNuevo(){
     this.editing = true;
     this.mozoData =  new Mozo();
+  }
+
+  compareSect(sec1:Sector,sec2:Sector) {
+    return sec1!=null && sec2!=null && sec1.id==sec2.id;
+  }
+
+  compareDia(dia1:number,dia2:number) {
+    return dia1==dia2;
+  }
+
+  agregarTurno(mozo: Mozo){
+    mozo.turnos.push(new Turno());
+  }
+ borrarTurno(mozo: Mozo, turno: Turno){
+    mozo.turnos=mozo.turnos.filter(t=>t.id!=turno.id);
   }
 
   inicioEdit(mozo:Mozo|null){

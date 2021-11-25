@@ -16,12 +16,12 @@ export class MozoService {
 
   
   mozosIniciales: Mozo[] = [
-    { nombre: 'fafa', DNI:'123', id: 1, turnos: [{ sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' }] },
+    { nombre: 'fafa', DNI:'123', id: 1, turnos: [{id:1, sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' }] },
     { nombre: 'lala', DNI:'123', id: 2, turnos:[] },
     {
       nombre: 'tata', DNI:'123', id: 9, turnos: [
-        { sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' },
-        { sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 3, entrada: '11:32', salida: '15:00' },
+        { id:2,sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' },
+        { id:3,sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 3, entrada: '11:32', salida: '15:00' },
       ]
     }
 
@@ -63,6 +63,8 @@ export class MozoService {
     let mozo = this.mozosIniciales.find(m=>m.id == mozoId);
     return Promise.resolve(mozo==null?null:new Mozo(mozo));
   }
+
+  
 
   public borrarMozo(mozoId:number): Promise<void> {  
     if( mozoId == null ){
