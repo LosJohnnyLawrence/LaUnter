@@ -17,6 +17,7 @@ namespace CAECE.JL.Unter.Server.Servicios
             CreateMap<Comun.Modelo.Mozo, Datos.Mozo>().ReverseMap();
             CreateMap<Comun.Modelo.Mesa, Datos.Mesa>().ReverseMap();
             CreateMap<Comun.Modelo.Ingrediente, Datos.Ingrediente>().ReverseMap();
+            CreateMap<Comun.Modelo.Item, Datos.Item>().ReverseMap();
             CreateMap<Comun.Modelo.Plato, Datos.Plato>().ReverseMap();
             CreateMap<Comun.Modelo.Bebida, Datos.Bebida>().ReverseMap();
             CreateMap<Comun.Modelo.Sector, Datos.Sector>().ReverseMap();

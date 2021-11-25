@@ -13,8 +13,8 @@ namespace CAECE.JL.Unter.Server.Datos
         public int Id { get; set; }
         public string Nombre { get; set; }
         public Mesa Mesa { get; set; }
-        public string Notas { get; set; }        
-        public Seleccion[] Selecciones { get; set; }
+        public string Notas { get; set; }
+        public IList<Seleccion> Selecciones { get; set; } = new List<Seleccion>();
         public Mozo Mozo { get; set; }
         public Cliente Cliente { get; set; }
         public EstadoPreparacion Estado { get; set; }

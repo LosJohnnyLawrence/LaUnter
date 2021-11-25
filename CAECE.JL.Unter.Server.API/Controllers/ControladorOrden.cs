@@ -71,5 +71,26 @@ namespace CAECE.JL.Unter.Server.API.Controllers
             return _mapper.Map<Pedido>(_servicioAsmOrden.ObtenerPedido(pedidoId));
         }
 
+        [HttpGet]
+        /// Obtiene datos de todos los pedidos
+        /// </summary>
+        /// <returns>Array de datos de los pedidos</returns>
+        public IList<Pedido> ObtenerPedidos()
+        {
+            return _mapper.Map<IList<Pedido>>(_servicioAsmOrden.ObtenerPedidos());
+        }
+
+
+        [HttpGet]
+        /// <summary>
+        /// Obtiene  todos los estado
+        /// </summary>
+        /// <returns>Array de datos de los estados</returns>
+        public IList<EstadoPreparacion> ObtenerEstados()
+        {
+            return _mapper.Map<IList<EstadoPreparacion>>(_servicioAsmOrden.ObtenerEstados());
+        }
+
+
     }
 }

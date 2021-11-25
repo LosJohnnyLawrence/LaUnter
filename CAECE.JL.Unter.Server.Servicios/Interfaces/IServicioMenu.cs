@@ -60,11 +60,48 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         public void BorrarItem (int itemId);
 
 
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <returns>Lista con lazy loading de items del menu elegido</returns>
+        public IList<Bebida> ObtenerBebidas();
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <returns>Lista con lazy loading de items del menu elegido</returns>
+        public IList<Plato> ObtenerPlatos();
+        /// <summary>
+        /// Obtiene list de ingredientes posible del menu
+        /// </summary>
+        /// <returns>Ingredientes del menu</returns>
+        public IList<Ingrediente> ObtenerTodosLosIngredientes();
+
+        /// <summary>
+        /// Obtiene detalles de una bebida del menu
+        /// </summary>
+        /// <param name="itemId"> Id de la bebida la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Bebida ObtenerBebida(int itemId);
+
+        /// <summary>
+        /// Obtiene detalles de un plato del menu
+        /// </summary>
+        /// <param name="itemId"> Id del plato la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Plato ObtenerPlato(int itemId);
+
+        /// <summary>
+        /// Obtiene detalles de un ingrediente posible del menu
+        /// </summary>
+        /// <param name="itemId"> Id del ingrediente la cual deseamos obtener datos</param>
+        /// <returns>Plato ya actualizado</returns>
+        public Ingrediente ObtenerIngrediente(int itemId);
 
 
 
 
-    
+
 
     }
 }

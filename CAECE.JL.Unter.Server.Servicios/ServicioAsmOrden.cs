@@ -52,5 +52,21 @@ namespace CAECE.JL.Unter.Server.Servicios
             
         }
 
+        /// Obtiene datos de todos los pedidos
+        /// </summary>
+        /// <returns>Array de datos de los pedidos</returns>
+        public IList<Pedido> ObtenerPedidos() {
+            return _mapper.Map<IList<Pedido>>(_repoOrden.ObtenerPedidos());
+        }
+
+
+        /// <summary>
+        /// Obtiene  todos los estado
+        /// </summary>
+        /// <returns>Array de datos de los estados</returns>
+        public IList<EstadoPreparacion> ObtenerEstados() {
+            return _mapper.Map<IList<EstadoPreparacion>>(_repoOrden.ObtenerEstados());
+        }
+
     }
 }

@@ -18,6 +18,7 @@ namespace CAECE.JL.Unter.Server.API
             CreateMap<Comun.Modelo.Ingrediente, Controllers.Ingrediente>().ReverseMap();
             CreateMap<Comun.Modelo.Plato, Controllers.Plato>().ReverseMap();
             CreateMap<Comun.Modelo.Bebida, Controllers.Bebida>().ReverseMap();
+            CreateMap<Comun.Modelo.Item, Controllers.Item>().ReverseMap();
             CreateMap<Comun.Modelo.Sector, Controllers.Sector>().ReverseMap();
             CreateMap<Comun.Modelo.Pedido, Controllers.Pedido>().ReverseMap();
             CreateMap<Comun.Modelo.Categoria, Controllers.Categoria>().ReverseMap();

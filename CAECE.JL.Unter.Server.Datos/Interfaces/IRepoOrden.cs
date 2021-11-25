@@ -23,6 +23,20 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <returns>Array de datos de los pedidos</returns>
         public IQueryable<Pedido> ObtenerPedidosPorMozo(int idDeMozo, int? idEstado = null);
 
+        /// <summary>
+        /// Obtiene datos de todos los pedidos
+        /// </summary>
+        /// <returns>Array de datos de los pedidos</returns>
+        public IQueryable<Pedido> ObtenerPedidos();
+
+
+        /// <summary>
+        /// Obtiene  todos los estado
+        /// </summary>
+        /// <returns>Array de datos de los estados</returns>
+        public IQueryable<EstadoPreparacion> ObtenerEstados();
+
+
 
         /// <summary>
         /// Obtiene datos de pedidos por una mesa en particlar

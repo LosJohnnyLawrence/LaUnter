@@ -9,15 +9,19 @@ using System.Threading.Tasks;
 namespace CAECE.JL.Unter.Server.Datos
 {
     [Table("Item")]
-    public abstract class Item
+    public  class Item
     {
+        public Item()
+        {
+
+        }
         [Key]
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }
         public decimal Precio { get; set; }
 
-        public Item[] Componentes { get; set; }
+        public IList<Item> Componentes { get; set; }
 
 
     }

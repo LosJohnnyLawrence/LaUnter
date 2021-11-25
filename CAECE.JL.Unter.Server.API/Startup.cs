@@ -36,7 +36,8 @@ namespace CAECE.JL.Unter.Server.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(a=>a.SerializerSettings.ReferenceLoopHandling =
+            Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddDbContext<ContextoDatosUnter>(builder => builder.UseSqlServer(Configuration.GetConnectionString("MainDB")));
            
             services.AgregarServiciosCore<ServicioFacturacion, ServicioAsmOrden, ServicioTrackOrden, ServicioMenu, ServicioMesas, ServicioMozos>();

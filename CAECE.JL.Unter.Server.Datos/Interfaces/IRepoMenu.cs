@@ -82,7 +82,7 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// </summary>
         /// <param name="itemId"> Id del ingrediente la cual deseamos obtener datos</param>
         /// <returns>Plato ya actualizado</returns>
-        public Plato ObtenerIngrediente(int itemId);
+        public Ingrediente ObtenerIngrediente(int itemId);
 
         /// <summary>
         /// Obtiene list de ingredientes posible del menu
@@ -110,6 +110,20 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// </summary>
         /// <returns>Lista con lazy loading de categorias de los Items Menu Existentes</returns>
         public IQueryable<Categoria> ObtenerCategorias();
+
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <returns>Lista con lazy loading de items del menu elegido</returns>
+        public IQueryable<Bebida> ObtenerBebidas();
+
+        /// <summary>
+        /// Obtiene los platos y bebidas del menu con datos agregados y paginados
+        /// </summary>
+        /// <returns>Lista con lazy loading de items del menu elegido</returns>
+        public IQueryable<Plato> ObtenerPlatos();
+
 
 
 

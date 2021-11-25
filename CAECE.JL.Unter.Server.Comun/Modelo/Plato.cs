@@ -10,10 +10,10 @@ namespace CAECE.JL.Unter.Server.Comun.Modelo
     {
      
 
-        public IList<Item> PosiblesExtras { get; set; } = new List<Item>();
+        public IList<Item> PosiblesExtras { get; set; } 
         public Categoria Categoria { get; set; }
 
-        public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }
+        public IList<RestriccionAlimentaria> RestriccionesAlimentarias { get; set; }
 
         public override bool SePuedeAgregar(Item item) =>
            PosiblesExtras.Contains(item);

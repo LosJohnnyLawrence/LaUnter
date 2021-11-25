@@ -8,12 +8,15 @@ namespace CAECE.JL.Unter.Server.API.Controllers
 {
     public class Plato : Item
     {
-     
 
-        public IList<Item> PosiblesExtras { get; set; } = new List<Item>();
+        public Plato()
+        {
+        }
+
+        public IList<Item> PosiblesExtras { get; set; }
         public Categoria Categoria { get; set; }
 
-        public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }
+        public IList<RestriccionAlimentaria> RestriccionesAlimentarias { get; set; }
 
         public override bool SePuedeAgregar(Item item) =>
            PosiblesExtras.Contains(item);

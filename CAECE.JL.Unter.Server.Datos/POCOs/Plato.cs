@@ -13,7 +13,7 @@ namespace CAECE.JL.Unter.Server.Datos
         public IList<Item> PosiblesExtras { get; set; } = new List<Item>();
         public Categoria Categoria { get; set; }
 
-        public RestriccionAlimentaria[] RestriccionesAlimentarias { get; set; }
+        public IList<RestriccionAlimentaria> RestriccionesAlimentarias { get; set; }
 
     }
 }

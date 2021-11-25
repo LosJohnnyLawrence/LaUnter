@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
@@ -11,8 +12,13 @@ namespace CAECE.JL.Unter.Server.API.Controllers
     /// puede ser un ingrediente de algo,
     /// un plato o una bebida
     /// </summary>
-    public abstract class Item
+    public class Item
     {
+        [JsonConstructorAttribute]
+        public Item()
+        {
+
+        }
         public int Id { get; set; }
         public string Nombre { get; set; }
         public string Descripcion { get; set; }

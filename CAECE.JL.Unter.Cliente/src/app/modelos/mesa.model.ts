@@ -13,6 +13,14 @@ export class Mesa {
     public descripcion:string|null=null;
     public sector:Sector|null=null;
     public cantComensales:number|null=null;
+    public estado:EstadoMesa|null=null;
+
+}
+
+export class EstadoMesa {
+    public id:number|null=null;
+    public nombre: string|null|undefined=null;
+    public descripcion: string|null|undefined=null;
 }
 
 export class Sector {

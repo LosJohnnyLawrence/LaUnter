@@ -1,4 +1,5 @@
 ﻿using CAECE.JL.Unter.Server.Datos.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -69,19 +70,24 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return _contextoDatosUnter.Bebidas.Find(itemId);
         }
 
+        public IQueryable<Bebida> ObtenerBebidas()
+        {
+            return _contextoDatosUnter.Bebidas.Include(i => i.Componentes).Include(i => i.Categoria).AsQueryable();
+        }
+
         public IQueryable<Categoria> ObtenerCategorias()
         {
             return _contextoDatosUnter.Categorias;
         }
 
-        public Plato ObtenerIngrediente(int itemId)
+        public Ingrediente ObtenerIngrediente(int itemId)
         {
-            return _contextoDatosUnter.Platos.Find(itemId);
+            return _contextoDatosUnter.Ingredientes.Find(itemId);
         }
 
         public IQueryable<Item> ObtenerMenuPaginado(int numPag, int tamDePagina)
         {
-            throw new NotImplementedException();
+            return ObtenerBebidas().Cast<Item>().Union(ObtenerPlatos().Cast<Item>()).Skip(numPag * (tamDePagina - 1)).Take(numPag * tamDePagina);
         }
 
         public IQueryable<Item> ObtenerMenuPorCategoria(int idCategoria)
@@ -100,9 +106,14 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return _contextoDatosUnter.Platos.Find(itemId);
         }
 
+        public IQueryable<Plato> ObtenerPlatos()
+        {
+            return _contextoDatosUnter.Platos.Include(i => i.Componentes).Include(i => i.PosiblesExtras).Include(i => i.Categoria).AsQueryable();
+        }
+
         public IQueryable<Ingrediente> ObtenerTodosLosIngredientes()
         {
-            return _contextoDatosUnter.Ingredientes;
+            return _contextoDatosUnter.Ingredientes.Include(i =>i.Componentes);
         }
     }
 }

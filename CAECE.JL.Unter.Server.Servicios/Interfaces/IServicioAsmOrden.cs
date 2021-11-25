@@ -44,5 +44,17 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// <param name="pedidoId">d del pedido para obetener</param>
         /// <returns>El pedido ensambaldo</returns>
         public Pedido ObtenerPedido(int pedidoId);
+
+        /// Obtiene datos de todos los pedidos
+        /// </summary>
+        /// <returns>Array de datos de los pedidos</returns>
+        public IList<Pedido> ObtenerPedidos();
+
+
+        /// <summary>
+        /// Obtiene  todos los estado
+        /// </summary>
+        /// <returns>Array de datos de los estados</returns>
+        public IList<EstadoPreparacion> ObtenerEstados();
     }
 }

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Mesa, Sector } from '../modelos/mesa.model';
 
 @Injectable({
@@ -14,11 +15,11 @@ export class MesaService {
   ];
   mesasIniciales: Mesa[] =  [
     {
-      id:1, nombre:'Mesa1',descripcion:'ventana',
+      id:1, nombre:'Mesa1',descripcion:'ventana', estado:null,
       cantComensales:1, sector: this.sectoresIniciales.find(s => s.id==1)??new Sector()
     },
     {
-      id:2, nombre:'Mesa2',descripcion:null,
+      id:2, nombre:'Mesa2',descripcion:null,estado:null,
       cantComensales:1,sector: this.sectoresIniciales.find(s => s.id==2)??new Sector()
     }
   ];
@@ -66,9 +67,8 @@ export class MesaService {
     if(nuevosDatos == null ){
       return Promise.resolve(null); 
     }
-    nuevosDatos.id = this.mesasIniciales.reduce((acc,curr)=>(acc<(curr?.id??0)?curr?.id??0:acc),1)+1;
-    this.mesasIniciales = this.mesasIniciales.concat(nuevosDatos);
-    return Promise.resolve(nuevosDatos);
+    return this.httpClient.post<Mesa>(environment.apiUrlBase+"/api/mesa/CrearMesa", nuevosDatos).
+    toPromise();
   }
 
   public obtenerSectores(): Promise<Sector[]> {

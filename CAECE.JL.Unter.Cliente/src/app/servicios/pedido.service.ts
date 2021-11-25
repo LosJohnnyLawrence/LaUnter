@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { ArrayType } from '@angular/compiler';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { Estadia } from '../modelos/estadia.model';
 import { Item } from '../modelos/item.model';
 import { Mesa, Sector } from '../modelos/mesa.model';
@@ -23,7 +24,7 @@ export class PedidoService {
   ];
 
 pedidosIniciales: Pedido[] =  [
- {notas:'adads',nombre:'sdsd',id:1, mesa:new Mesa({id:1,nombre:'',descripcion:'',sector:new Sector(),cantComensales:1}),
+ {notas:'adads',nombre:'sdsd',id:1, mesa:new Mesa({id:1,nombre:'',descripcion:'',sector:new Sector(),cantComensales:1,estado:null}),
  cliente: new Cliente(), mozo: new Mozo(),
  estado: this.estadosIniciales.find(e=>e.nombre=="Listo")??new EstadoPreparacion(),
  seleccions:[{item:new Item(),id:1, cantidad:2, agregar:new Array<Item>(),
@@ -47,31 +48,15 @@ constructor(private httpClient: HttpClient) { }
 
 /**Nueva estadia */
 public AbrirMesa(mesa:Mesa|null,cliente:Cliente|null,mozo:Mozo|null): Promise<Estadia> {
-  const estadia = new Estadia();
-  estadia.mesa = mesa;
-  estadia.cliente = cliente;
-  estadia.fechaInicio = new Date(Date.now());
-  estadia.mozo = mozo;
-  estadia.pedidos = new Array<Pedido>();
-  estadia.id = this.estadiasIniciales.reduce((max,est)=>(est?.id??0)>max?(est?.id??0):max,0)+1;
-  this.estadiasIniciales.push(estadia);
-  return Promise.resolve(estadia);
+  
+  return this.httpClient.post<Estadia>(environment.apiUrlBase+"/api/mesa/AbrirMesa",
+    {mesaId:mesa?.id,cliente:cliente, mozoId: mozo?.id}).toPromise();
 }
 
 /**Cierra estadia */
 public CerrarMesa(mesa:Mesa): Promise<Estadia|null> {
-  let estadiaAct = null;
-  for(let estInd in this.estadiasIniciales) {
-    if(this.estadiasIniciales[estInd].mesa?.id==mesa.id && this.estadiasIniciales[estInd].fechaFin!=null) {
-      this.estadiasIniciales[estInd].fechaFin == new Date(Date.now());
-      estadiaAct = this.estadiasIniciales[estInd];
-      const pedidos =  estadiaAct.pedidos;
-      for(let pedInd in pedidos) {
-        pedidos[pedInd].estado = this.estadosIniciales.find(e=>e.nombre=="Entregado")??new EstadoPreparacion();
-      }
-    }
-  }
-  return Promise.resolve(estadiaAct);
+  return this.httpClient.post<Estadia>(environment.apiUrlBase+"/api/mesa/AbrirMesa",
+  mesa).toPromise();
 }
 
 
