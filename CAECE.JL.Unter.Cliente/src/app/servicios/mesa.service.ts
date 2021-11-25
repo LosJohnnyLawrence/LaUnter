@@ -1,53 +1,73 @@
 import { Injectable } from '@angular/core';
-import { Mesa } from '../modelos/mesa.model';
+import { Mesa, Sector } from '../modelos/mesa.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MesaService {
 
-  mesasIniciales: Mesa[] =  [
-    {nombre:'ventana',descripcion:'ventana',id:1, cantComensales:1,sectorId:1},
-    {nombre:'cocina',descripcion:null,id:2, cantComensales:1,sectorId:2}
+    /* TODO: Remover lo de abajo cuando este integrado Hasta aca */
+  sectoresIniciales: Sector[] =  [
+    {nombre:'ventana',descripcion:'ventana',id:1},
+    {nombre:'cocina',descripcion:null,id:2}
   ];
+  mesasIniciales: Mesa[] =  [
+    {
+      id:1, nombre:'Mesa1',descripcion:'ventana',
+      cantComensales:1, sector: this.sectoresIniciales.find(s => s.id==1)??new Sector()
+    },
+    {
+      id:2, nombre:'Mesa2',descripcion:null,
+      cantComensales:1,sector: this.sectoresIniciales.find(s => s.id==2)??new Sector()
+    }
+  ];
+
+    /* TODO: Remover lo de arriba cuando este integrado Hasta aca */
+
   constructor() { }
 
-  public actualizarMesa(nuevosDatos:Mesa): Mesa | null{
+  public actualizarMesa(nuevosDatos:Mesa): Promise<Mesa|null>{
     if(nuevosDatos?.id == null ){
-      return null; 
+      return Promise.resolve(null); 
     }
     let mesaInd = this.mesasIniciales.findIndex(m=>m.id == nuevosDatos.id);
     if( mesaInd == -1 ){
-      return null; 
+      return Promise.resolve(null); 
     }
     this.mesasIniciales[mesaInd]=nuevosDatos;
-    return nuevosDatos;
+    return Promise.resolve(nuevosDatos);
   }
 
-  public obtenerTodos(): Mesa[]{
-    return this.mesasIniciales;
+  public obtenerTodos(): Promise<Mesa[]>{
+    return Promise.resolve(this.mesasIniciales);
   }
 
-  public obtenerMesa(mesaId:number|null): Mesa | null{
+  public obtenerMesa(mesaId:number|null): Promise<Mesa|null> {
     if(mesaId == null ){
-      return null; 
+      return Promise.resolve(null);
     }
-    return this.mesasIniciales.find(m=>m.id == mesaId)??null;
+    const mesa = this.mesasIniciales.find(m=>m.id == mesaId);
+    return Promise.resolve(mesa==null?null: new Mesa(mesa));
   }
 
-  public borrarMesa(mesaId:number){  
+  public borrarMesa(mesaId:number):Promise<void>{  
     if( mesaId == null ){
-      return; 
+      return Promise.resolve(); 
     }
-    this.mesasIniciales = this.mesasIniciales.filter(m=>m.id != mesaId)
+    this.mesasIniciales = this.mesasIniciales.filter(m=>m.id != mesaId);
+    return Promise.resolve();
   }
 
-  public crearMesa(nuevosDatos:Mesa): Mesa|null {
+  public crearMesa(nuevosDatos:Mesa): Promise<Mesa|null> {
     if(nuevosDatos == null ){
-      return null; 
+      return Promise.resolve(null); 
     }
     nuevosDatos.id = this.mesasIniciales.reduce((acc,curr)=>(acc<(curr?.id??0)?curr?.id??0:acc),1)+1;
     this.mesasIniciales = this.mesasIniciales.concat(nuevosDatos);
-    return nuevosDatos;
+    return Promise.resolve(nuevosDatos);
+  }
+
+  public obtenerSectores(): Promise<Sector[]> {
+    return Promise.resolve(this.sectoresIniciales);
   }
 }

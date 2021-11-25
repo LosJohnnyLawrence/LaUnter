@@ -12,11 +12,11 @@ namespace CAECE.JL.Unter.Server.API
     {
         public PerfilMappingDTOs()
         {
-            CreateMap<Mesa, AbrirMesaDTO>();
-            CreateMap<Mesa, CreateUpdateMesaDTO>();
-            CreateMap<Mesa, MesaInformacionDTO>();
-            CreateMap<Mesa, MesaQueryDTO>();
-            CreateMap<Mozo, MozoInfoDTO>();
+            CreateMap<Mesa, AbrirMesaDTO>().ReverseMap();
+            CreateMap<Mesa, CreateUpdateMesaDTO>().ReverseMap();
+            CreateMap<Mesa, MesaInformacionDTO>().ReverseMap();
+            CreateMap<Mesa, MesaQueryDTO>().ReverseMap();
+            CreateMap<Mozo, MozoInfoDTO>().ReverseMap();
         }
     }
 }

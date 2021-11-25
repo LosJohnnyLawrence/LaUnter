@@ -2,9 +2,15 @@
 <div layout="row" layout-wrap="">
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <mat-list color="primary">
-                <mat-list-item role="listitem" *ngFor="let mesa of obtenerMesas()" (click)="inicioEdit(mesa.id)">
-                    {{mesa.nombre}}
+            <mat-list color="primary" class="lista-mesas">
+                <mat-list-item role="listitem" *ngFor="let mesa of listaMesas" >
+                    <button mat-button (click)="inicioEdit(mesa)"> {{mesa.nombre}}</button>
+                    <span>
+                         <button mat-button (click)="borrarMesa(mesa)"> 
+                             <mat-icon>close</mat-icon>
+                         </button>
+                    </span>
+                    
                 </mat-list-item>
             </mat-list>
         </div>
@@ -31,9 +37,12 @@
             <div flex="">
                 <mat-form-field appearance="fill">
                     <mat-label>Sector</mat-label>
-                    <mat-select>
-                        <mat-option value="one">First option</mat-option>
-                        <mat-option value="two">Second option</mat-option>
+                    <mat-select [(ngModel)]="mesaData.sector" [compareWith]="compareSect">
+                        <span *ngIf="!!listaSectores" >
+                        <mat-option *ngFor="let sec of listaSectores" [value]="sec" >
+                            {{ sec.nombre }}
+                        </mat-option>
+                        </span>
                     </mat-select>
                 </mat-form-field>
             </div>
