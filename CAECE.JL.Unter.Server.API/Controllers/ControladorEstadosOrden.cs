@@ -48,7 +48,7 @@ namespace CAECE.JL.Unter.Server.API.Controllers
         /// <param name="motivo">motivo para retroceder el estaso</param>
         public void DevolverEstadoPedido(Pedido pedido, string motivo)
         {
-            _servicioTrackOrden.DevolverEstadoPedido(_mapper.Map<Comun.Modelo.Pedido>(pedido));
+            _servicioTrackOrden.DevolverEstadoPedido(_mapper.Map<Comun.Modelo.Pedido>(pedido), motivo);
         }
 
 
