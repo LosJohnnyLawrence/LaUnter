@@ -6,6 +6,7 @@ import { Bebida, Categoria, Ingrediente, Item, Plato, RestriccionAlimentaria } f
   providedIn: 'root'
 })
 export class ItemService {
+  
   /* TODO: Remover lo de abajo cuando este integrado Hasta aca */
   restriccionesIniciales: RestriccionAlimentaria[] = [
     { id: 1, descripcion: 'apto diabeticos', nombre: 'diabeticos' },

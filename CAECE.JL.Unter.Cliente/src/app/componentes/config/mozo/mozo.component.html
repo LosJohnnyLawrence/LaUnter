@@ -2,9 +2,14 @@
 <div layout="row" layout-wrap="">
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <mat-list color="primary">
-                <mat-list-item role="listitem" *ngFor="let mozo of obtenerMozos()" (click)="inicioEdit(mozo.id)">
-                    {{mozo.nombre}}
+            <mat-list color="primary" class="lista-mozos">
+                <mat-list-item role="listitem" *ngFor="let mozo of listaMozos">                    
+                    <button mat-button (click)="inicioEdit(mozo)"> {{mozo.nombre}}</button>
+                    <span>
+                         <button mat-button (click)="borrarMozo(mozo)"> 
+                             <mat-icon>close</mat-icon>
+                         </button>
+                    </span>
                 </mat-list-item>
             </mat-list>
         </div>

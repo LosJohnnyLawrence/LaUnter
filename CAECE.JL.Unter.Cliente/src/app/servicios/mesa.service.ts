@@ -70,4 +70,9 @@ export class MesaService {
   public obtenerSectores(): Promise<Sector[]> {
     return Promise.resolve(this.sectoresIniciales);
   }
+  
+  public obtenerSectorPorId(id:number|null): Promise<Sector|null> {
+    let sector = this.sectoresIniciales.find(s => s.id == id);
+    return Promise.resolve(sector==null?null:sector);
+  }
 }

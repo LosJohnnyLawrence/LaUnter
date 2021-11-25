@@ -1,59 +1,83 @@
 import { Injectable } from '@angular/core';
+import { Sector } from '../modelos/mesa.model';
 import { Mozo } from '../modelos/mozo.model';
+import { MesaService } from './mesa.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MozoService {
+
+  sectoresIniciales:Sector[] = new Array<Sector>();
+
+  constructor(private mesaService:MesaService) {
+    this.mesaService.obtenerSectores().then(s=> this.sectoresIniciales=s);
+   }
+
+  
   mozosIniciales: Mozo[] = [
-    { nombre: 'fafa', DNI:'123', id: 1, turnos: [{ sector: 1, dia: 2, entrada: '11:32', salida: '15:00' }] },
+    { nombre: 'fafa', DNI:'123', id: 1, turnos: [{ sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' }] },
     { nombre: 'lala', DNI:'123', id: 2, turnos:[] },
     {
       nombre: 'tata', DNI:'123', id: 9, turnos: [
-        { sector: 1, dia: 2, entrada: '11:32', salida: '15:00' },
-        { sector: 1, dia: 3, entrada: '11:32', salida: '15:00' },
+        { sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 2, entrada: '11:32', salida: '15:00' },
+        { sector: this.sectoresIniciales.find(s=>s.id==1)??new Sector(), dia: 3, entrada: '11:32', salida: '15:00' },
       ]
     }
 
   ];
-  constructor() { }
+ 
 
-  public actualizarMozo(nuevosDatos:Mozo): Mozo | null{
+  public actualizarMozo(nuevosDatos:Mozo): Promise<Mozo|null> {
     if(nuevosDatos?.id == null ){
-      return null; 
+      return Promise.resolve(null); 
     }
     let mozoInd = this.mozosIniciales.findIndex(m=>m.id == nuevosDatos.id);
     if( mozoInd == -1 ){
-      return null; 
+      return Promise.resolve(null); 
     }
     this.mozosIniciales[mozoInd]=nuevosDatos;
-    return nuevosDatos;
+    return Promise.resolve(nuevosDatos);
   }
 
-  public obtenerTodos(): Mozo[]{
-    return this.mozosIniciales;
+  public obtenerTodos(): Promise<Mozo[]>{
+    return Promise.resolve(this.mozosIniciales);
   }
 
-  public obtenerMozo(mozoId:number|null): Mozo | null{
+  public obtenerDias(): {nombre:string, numero:number}[]{
+    return [ 
+      {nombre:'domingo', numero:1},
+      {nombre:'lunes', numero:2},
+      {nombre:'martes', numero:3},
+      {nombre:'miercoles', numero:4},
+      {nombre:'jueves', numero:5},
+      {nombre:'viernes', numero:6},
+      {nombre:'sabado', numero:7},
+    ]
+  }
+
+  public obtenerMozo(mozoId:number|null): Promise<Mozo|null> {
     if(mozoId == null ){
-      return null; 
+      return Promise.resolve(null); 
     }
-    return this.mozosIniciales.find(m=>m.id == mozoId)??null;
+    let mozo = this.mozosIniciales.find(m=>m.id == mozoId);
+    return Promise.resolve(mozo==null?null:new Mozo(mozo));
   }
 
-  public borrarMozo(mozoId:number){  
+  public borrarMozo(mozoId:number): Promise<void> {  
     if( mozoId == null ){
-      return; 
+      return Promise.resolve(); 
     }
-    this.mozosIniciales = this.mozosIniciales.filter(m=>m.id != mozoId)
+    this.mozosIniciales = this.mozosIniciales.filter(m=>m.id != mozoId);
+    return Promise.resolve();
   }
 
-  public crearMozo(nuevosDatos:Mozo): Mozo|null {
+  public crearMozo(nuevosDatos:Mozo): Promise<Mozo|null> {
     if(nuevosDatos == null ){
-      return null; 
+      return Promise.resolve(null); 
     }
     nuevosDatos.id = this.mozosIniciales.reduce((acc,curr)=>(acc<(curr?.id??0)?curr?.id??0:acc),1)+1;
     this.mozosIniciales = this.mozosIniciales.concat(nuevosDatos);
-    return nuevosDatos;
+    return Promise.resolve(nuevosDatos);
   }
 }

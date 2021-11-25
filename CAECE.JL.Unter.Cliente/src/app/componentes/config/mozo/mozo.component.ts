@@ -11,35 +11,34 @@ import { MozoService } from 'src/app/servicios/mozo.service';
 })
 export class MozoComponent implements OnInit {
 
-  mozoEditId:number|null=null;
+  listaMozos: Mozo[] = new Array<Mozo>();
+  listaDias: {nombre:string, numero:number}[] = new Array<{nombre:string, numero:number}>();
   editing=false;
   mozoData:Mozo =new Mozo();
 
 
-  constructor(private mozoService: MozoService, private route:Router) { }
+  constructor(private mozoService: MozoService, private route:Router) { 
+    
+  }
 
   ngOnInit(): void {
+    this.actualizarMozos();
+  }
+
+  actualizarMozos() {
+    this.listaDias = this.mozoService.obtenerDias();
+    this.mozoService.obtenerTodos().then(m=>this.listaMozos=m);
   }
 
   inicioNuevo(){
     this.editing = true;
-    this.mozoEditId = null;
     this.mozoData =  new Mozo();
   }
 
-  inicioEdit(id:number|null){
+  inicioEdit(mozo:Mozo|null){
     this.editing = true;
-    this.mozoEditId = id;
-    this.mozoData = this.obtenerMozoPorId(id) ?? new Mozo();
-  }
-
-  obtenerMozoPorId(id:number|null): Mozo |null{
-    let item =this.mozoService.obtenerMozo(id)??new Mozo();
-    return {...item};
-  }
-
-  obtenerMozos(): Mozo[]{
-    return this.mozoService.obtenerTodos();
+    const id = mozo?.id??-1;
+    this.mozoService.obtenerMozo(id).then(m=>this.mozoData= m??new Mozo());
   }
 
   guardar(){
@@ -53,6 +52,10 @@ export class MozoComponent implements OnInit {
     this.mozoData = new Mozo();
   }
 
- 
+  borrarMozo(mozo:Mozo|null){
+    if(confirm("Seguro que queres borrar "+ mozo?.nombre??""+"?")) {
+    this.mozoService.borrarMozo(mozo?.id??-1).then(_=>this.actualizarMozos());
+    }
+  } 
 
 }
