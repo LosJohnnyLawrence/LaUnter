@@ -10,6 +10,8 @@ export class ItemListComponent implements OnInit {
 
   @Input() items:Item[] = new Array<Item>();
   @Output() accionDeLista = new EventEmitter<Item>();
+  @Output() accionDeBorrado = new EventEmitter<Item>();
+
 
   constructor() { }
 
@@ -18,6 +20,11 @@ export class ItemListComponent implements OnInit {
 
   handlerAccion(item:Item){
     this.accionDeLista.emit(item);
+  }
+  handlerDelete(item:Item){
+    if(confirm("Seguro que queres borrar "+item.nombre??""+"?")) {
+      this.accionDeBorrado.emit(item);
+    }   
   }
 
 }

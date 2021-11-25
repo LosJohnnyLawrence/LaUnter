@@ -12,7 +12,7 @@ export class PlatoFormComponent implements OnInit {
   @Input() posiblesCategorias: Categoria[]|null = null; 
   @Input() platoData: Plato = new Plato();
   @Input() editing = false;
-  @Output() guardar = new EventEmitter<Plato>();
+  @Output() guardar = new EventEmitter<Plato|null>();
   @Output() cancelar = new EventEmitter();
   
   constructor() { }
@@ -30,7 +30,7 @@ export class PlatoFormComponent implements OnInit {
     return item != null && comp != null && (item?.id == comp?.id);
   }
 
-  guardarHandler (item:Item){
+  guardarHandler (item:Item|null){
     let nuevo = new Plato(item); 
     nuevo.categoria = this.platoData.categoria;
     nuevo.restriccionesAlimentarias = this.platoData.restriccionesAlimentarias;

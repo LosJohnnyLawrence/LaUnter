@@ -1,5 +1,5 @@
 <app-item-form [posiblesComponentes]="posiblesComponentes" [itemData]="ingredienteData" 
-[editing]="editing" (guardar)="guardarHandler"  (cancelar)="cancelarHandler" >
+[editing]="editing" (guardar)="guardarHandler($event)"  (cancelar)="cancelarHandler()" >
 </app-item-form>
 
 <div flex="">

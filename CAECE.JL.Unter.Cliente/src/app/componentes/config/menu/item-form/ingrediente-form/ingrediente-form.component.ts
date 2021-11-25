@@ -10,7 +10,7 @@ export class IngredienteFormComponent implements OnInit {
   @Input() posiblesComponentes: Item[]|null = null; 
   @Input() ingredienteData: Ingrediente = new Ingrediente();
   @Input() editing = false;
-  @Output() guardar = new EventEmitter<Ingrediente>();
+  @Output() guardar = new EventEmitter<Ingrediente|null>();
   @Output() cancelar = new EventEmitter();
   
   constructor() { }
@@ -22,7 +22,7 @@ export class IngredienteFormComponent implements OnInit {
   //   return item != null && comp != null && (item?.id == comp?.id);
   // }
 
-  guardarHandler (item:Item){
+  guardarHandler (item:Item|null){
     let nuevo = new Ingrediente(item); 
     nuevo.costo = this.ingredienteData.costo;
     nuevo.cantidadStock = this.ingredienteData.cantidadStock;

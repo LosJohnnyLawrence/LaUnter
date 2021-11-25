@@ -43,12 +43,12 @@ export class ItemService {
   bebidasIniciales: Bebida[] = [
     {
       id: 1, nombre: 'coca', descripcion: 'coca',
-      precio: 10.09, componentes: [], categoria: this.categoriasIniciales.find(c=>c.id==1)??new Categoria() ,
+      precio: 10.09, componentes: [], categoria: this.categoriasIniciales.find(c => c.id == 1) ?? new Categoria(),
       restriccionesAlimentarias: [],
     },
     {
       id: 2, nombre: 'agua', descripcion: 'agua',
-      precio: 22.09, componentes: [], categoria: this.categoriasIniciales.find(c=>c.id==2)??new Categoria(),
+      precio: 22.09, componentes: [], categoria: this.categoriasIniciales.find(c => c.id == 2) ?? new Categoria(),
       restriccionesAlimentarias: [{ id: 1, descripcion: 'apto diabeticos', nombre: 'diabeticos' }],
     },
   ];
@@ -64,8 +64,8 @@ export class ItemService {
       id: 4, nombre: 'sanguche', descripcion: 'sanguche',
       precio: 22.09, componentes:
         this.ingredientesIniciales.filter(i => [5, 6].includes(i.id ?? -1)),
-      categoria:this.categoriasIniciales.find(c=>c.id==3)??new Categoria() ,
-      restriccionesAlimentarias: this.restriccionesIniciales.filter(c=>c.id==1),
+      categoria: this.categoriasIniciales.find(c => c.id == 3) ?? new Categoria(),
+      restriccionesAlimentarias: this.restriccionesIniciales.filter(c => c.id == 1),
       posiblesExtras: this.ingredientesIniciales.filter(i => [9, 8].includes(i.id ?? -1))
     },
   ];
@@ -103,7 +103,8 @@ export class ItemService {
     if (platoId == null) {
       return Promise.resolve(null);
     }
-    return Promise.resolve(this.platosIniciales.find(m => m.id == platoId) ?? null);
+    const plato = this.platosIniciales.find(m => m.id == platoId);
+    return Promise.resolve(plato == null ? null : Plato.clonar(plato));
   }
 
   public borrarPlato(platoId: number): Promise<void> {
@@ -143,7 +144,8 @@ export class ItemService {
     if (bebidaId == null) {
       return Promise.resolve(null);
     }
-    return Promise.resolve(this.bebidasIniciales.find(m => m.id == bebidaId) ?? null);
+    const bebida = this.bebidasIniciales.find(m => m.id == bebidaId);
+    return Promise.resolve(bebida == null ? null : Bebida.clonar(bebida));
   }
 
   public borrarBebida(bebidaId: number): Promise<void> {
@@ -184,7 +186,8 @@ export class ItemService {
     if (ingredienteId == null) {
       return Promise.resolve(null);
     }
-    return Promise.resolve(this.ingredientesIniciales.find(m => m.id == ingredienteId) ?? null);
+    const ingrediente = this.ingredientesIniciales.find(m => m.id == ingredienteId);
+    return Promise.resolve(ingrediente == null ? null : Ingrediente.clonar(ingrediente));
   }
 
   public borrarIngrediente(ingredienteId: number): Promise<void> {

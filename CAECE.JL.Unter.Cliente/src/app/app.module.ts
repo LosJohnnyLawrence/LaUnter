@@ -18,6 +18,7 @@ import { MozoService } from './servicios/mozo.service';
 import { PedidoService } from './servicios/pedido.service';
 import { MesaService } from './servicios/mesa.service';
 import { ItemService } from './servicios/item.service';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
   
 
 @NgModule({
@@ -36,14 +37,15 @@ import { ItemService } from './servicios/item.service';
     BrowserAnimationsModule,
     ComunModule,
     ConfigModule,
-    MozoModule
-
+    MozoModule,
+    HttpClientModule
   ],
   providers: [
     MozoService,
     PedidoService,
     MesaService,
-    ItemService
+    ItemService,
+    HttpClient    
   ],
   bootstrap: [AppComponent]
 })

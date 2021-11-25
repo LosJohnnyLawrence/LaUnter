@@ -12,7 +12,7 @@ export class BebidaFormComponent implements OnInit {
   @Input() posiblesCategorias: Categoria[]|null = null; 
   @Input() bebidaData: Bebida = new Bebida();
   @Input() editing = false;
-  @Output() guardar = new EventEmitter<Bebida>();
+  @Output() guardar = new EventEmitter<Bebida|null>();
   @Output() cancelar = new EventEmitter();
   
   constructor() { }
@@ -27,7 +27,7 @@ export class BebidaFormComponent implements OnInit {
     return res1 != null && res2 != null && (res1?.id == res2?.id);
   }
 
-  guardarHandler (item:Item){
+  guardarHandler (item:Item|null){
     let nuevo = new Bebida(item); 
     nuevo.categoria = this.bebidaData.categoria;
     nuevo.restriccionesAlimentarias = this.bebidaData.restriccionesAlimentarias;

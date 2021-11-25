@@ -3,7 +3,8 @@
     <h3>Platos</h3>
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <app-item-list [items]="listaPlato" (accionDeLista)="inicioEditPlato">
+            <app-item-list [items]="listaPlato" (accionDeBorrado)="borrarPlato($event)"
+            (accionDeLista)="inicioEditPlato($event)">
             </app-item-list>
             
         </div>
@@ -17,8 +18,8 @@
         [posiblesCategorias]="listaCategorias"
         [platoData]="dataPlato"
         [editing]="editingPlato"
-        (guardar)="guardarPlato"
-        (cancelar)="cancelEditPlato"
+        (guardar)="guardarPlato($event)"
+        (cancelar)="cancelEditPlato()"
     ></app-plato-form>    
     </div>
 </div>
@@ -27,7 +28,8 @@
     <h3>Bebidas</h3>
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <app-item-list [items]="listaBebida" (accionDeLista)="inicioEditBebida">
+            <app-item-list [items]="listaBebida" (accionDeBorrado)="borrarBebida($event)"
+             (accionDeLista)="inicioEditBebida($event)">
             </app-item-list>
             
         </div>
@@ -41,8 +43,8 @@
         [posiblesCategorias]="listaCategorias"
         [bebidaData]="dataBebida"
         [editing]="editingBebida"
-        (guardar)="guardarBebida"
-        (cancelar)="cancelEditBebida"
+        (guardar)="guardarBebida($event)"
+        (cancelar)="cancelEditBebida()"
     ></app-bebida-form>    
     </div>
 </div>
@@ -51,7 +53,8 @@
     <h3>Ingredientes</h3>
     <div layout="column" layout-wrap="">
         <div flex="33">
-            <app-item-list [items]="listIngrediente" (accionDeLista)="inicioEditIngrediente">
+            <app-item-list [items]="listIngrediente" (accionDeBorrado)="borrarIngrediente($event)"
+            (accionDeLista)="inicioEditIngrediente($event)">
             </app-item-list>
             
         </div>
@@ -63,8 +66,8 @@
     <app-ingrediente-form [posiblesComponentes]="listIngrediente"
         [ingredienteData]="dataIngrediente"
         [editing]="editingIngrediente"
-        (guardar)="guardarIngrediente"
-        (cancelar)="cancelEditIngrediente"
+        (guardar)="guardarIngrediente($event)"
+        (cancelar)="cancelEditIngrediente()"
     ></app-ingrediente-form>    
     </div>
 </div>

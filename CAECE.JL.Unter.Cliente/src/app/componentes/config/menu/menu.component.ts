@@ -87,7 +87,7 @@ export class MenuComponent implements OnInit {
   }
 
 
-  guardarPlato(plato: Plato) {
+  guardarPlato(plato: Plato|null) {
     this.editingPlato = false;
     if (plato == null) { return; }
     if (plato?.id == null) {
@@ -99,7 +99,7 @@ export class MenuComponent implements OnInit {
     this.dataPlato = new Plato();
   }
 
-  guardarBebida(bebida: Bebida) {
+  guardarBebida(bebida: Bebida|null) {
     this.editingBebida = false;
     if (bebida == null) { return; }
     if (bebida?.id == null) {
@@ -111,7 +111,7 @@ export class MenuComponent implements OnInit {
     this.dataBebida = new Bebida();
   }
 
-  guardarIngrediente(ingrediente: Ingrediente) {
+  guardarIngrediente(ingrediente: Ingrediente|null) {
     this.editingIngrediente = false;
     if (ingrediente == null) { return; }
     if (ingrediente?.id == null) {
@@ -122,5 +122,20 @@ export class MenuComponent implements OnInit {
     this.actualizarIngredientes();
     this.dataIngrediente = new Ingrediente();
   }
+
+
+  
+  borrarPlato(item: Item) {
+    this.itemService.borrarPlato(item?.id??-1).then(b => this.actualizarIngredientes());
+  }
+
+  borrarBebida(item: Item) {
+    this.itemService.borrarBebida(item?.id??-1).then(b => this.actualizarIngredientes());
+  }
+
+  borrarIngrediente(item: Item) {
+    this.itemService.borrarIngrediente(item?.id??-1).then(b => this.actualizarIngredientes());
+  }
+
 
 }
