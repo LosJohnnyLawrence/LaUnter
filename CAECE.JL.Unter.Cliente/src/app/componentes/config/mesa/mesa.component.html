@@ -4,7 +4,10 @@
         <div flex="33">
             <mat-list color="primary" class="lista-mesas">
                 <mat-list-item role="listitem" *ngFor="let mesa of listaMesas" >
-                    <button mat-button (click)="inicioEdit(mesa)"> {{mesa.nombre}}</button>
+                    <button mat-button (click)="inicioEdit(mesa)"> 
+                        <span *ngIf="!!mesa.nombre">{{mesa.nombre}}</span>
+                        <span *ngIf="!mesa.nombre">-</span>
+                    </button>
                     <span>
                          <button mat-button (click)="borrarMesa(mesa)"> 
                              <mat-icon>close</mat-icon>

@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Mesa } from 'src/app/modelos/mesa.model';
+import { EstadoPreparacion, Pedido } from 'src/app/modelos/pedido.model';
+import { MesaService } from 'src/app/servicios/mesa.service';
+import { PedidoService } from 'src/app/servicios/pedido.service';
 
 @Component({
   selector: 'app-mozo',
@@ -7,13 +11,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MozoComponent implements OnInit {
 
-  pedidosOrdenes=[
-    { id:1,descripcion:"sarasa 1"},
-    { id:3,descripcion:"sarasa 2"}
-]
-  constructor() { }
+  listaMesas:Mesa[]=[];
+  listPedidos:Pedido[]=[];
+  listEstados:EstadoPreparacion[]=[];
+
+  displayedColumns = ['id','item','editar','estado'];
+
+  constructor(private pedidosService:PedidoService, private mesaService:MesaService) { }
 
   ngOnInit(): void {
+    this.actualizarPedidos();
   }
 
+  obtenerSource(){return this.listPedidos ?? new Array<Pedido>();}
+
+  actualizarPedidos(){
+    this.pedidosService.ObtenerPedidos().then(p=> this.listPedidos=p);
+    this.pedidosService.ObetenerEstados().then(e=> this.listEstados=e);
+    this.mesaService.obtenerTodos().then(m=>this.listaMesas=m);
+
+  }
 }

@@ -1,6 +1,9 @@
 <mat-list color="primary" class="lista-items">
     <mat-list-item role="listitem" *ngFor="let item of items" >
-       <button mat-button (click)="handlerAccion(item)"> {{item.nombre}}</button>
+       <button mat-button (click)="handlerAccion(item)"> 
+           <span *ngIf="!!item.nombre">{{item.nombre}}</span>
+           <span *ngIf="!item.nombre">-</span>
+        </button>
         <span>
              <button mat-button (click)="handlerDelete(item)"> 
                  <mat-icon>close</mat-icon>

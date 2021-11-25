@@ -12,16 +12,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatTableModule } from '@angular/material/table';
 import {MatExpansionModule} from '@angular/material/expansion';
-
 import { ComunRoutingModule } from './comun-routing.module';
-import { CarroComponent } from './carro/carro.component';
 import { ListaSeleccionComponent } from './lista-seleccion/lista-seleccion.component';
 import { DetalleSeleccionComponent } from './detalle-seleccion/detalle-seleccion.component';
 import { DetalleItemComponent } from './detalle-item/detalle-item.component';
 import { DetalleMesaComponent } from './detalle-mesa/detalle-mesa.component';
 import { DetallePedidoComponent } from './detalle-pedido/detalle-pedido.component';
-import { ListadoItemsComponent } from './listado-items/listado-items.component';
-import { ListadoMesasComponent } from './listado-mesas/listado-mesas.component';
 import { ListadoPedidosComponent } from './listado-pedidos/listado-pedidos.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -30,15 +26,12 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
-  declarations: [    
-    CarroComponent,
+  declarations: [   
     ListaSeleccionComponent,
     DetalleSeleccionComponent,
     DetalleItemComponent,
     DetalleMesaComponent,
     DetallePedidoComponent,
-    ListadoItemsComponent,
-    ListadoMesasComponent,
     ListadoPedidosComponent
   ],
   imports: [   
@@ -72,14 +65,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatTableModule, 
     FlexLayoutModule ,
     ComunRoutingModule,
-    CarroComponent,
     ListaSeleccionComponent,
     DetalleSeleccionComponent,
     DetalleItemComponent,
     DetalleMesaComponent,
     DetallePedidoComponent,
-    ListadoItemsComponent,
-    ListadoMesasComponent,
     ListadoPedidosComponent,
     MatDialogModule,
     MatInputModule,

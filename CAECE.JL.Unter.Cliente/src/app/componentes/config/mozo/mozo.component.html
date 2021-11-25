@@ -4,7 +4,10 @@
         <div flex="33">
             <mat-list color="primary" class="lista-mozos">
                 <mat-list-item role="listitem" *ngFor="let mozo of listaMozos">                    
-                    <button mat-button (click)="inicioEdit(mozo)"> {{mozo.nombre}}</button>
+                    <button mat-button (click)="inicioEdit(mozo)">
+                        <span *ngIf="!!mozo.nombre"> {{mozo.nombre}}</span>
+                        <span *ngIf="!mozo.nombre">-</span>                        
+                        </button>
                     <span>
                          <button mat-button (click)="borrarMozo(mozo)"> 
                              <mat-icon>close</mat-icon>
