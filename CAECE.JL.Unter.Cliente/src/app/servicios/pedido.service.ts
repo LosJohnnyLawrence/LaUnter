@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { ArrayType } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 import { Estadia } from '../modelos/estadia.model';
@@ -41,7 +42,7 @@ estadiasIniciales: Estadia[] =  [
 
   /* TODO: Remover lo de arriba cuando este integrado Hasta aca */
 
-constructor() { }
+constructor(private httpClient: HttpClient) { }
 
 
 /**Nueva estadia */

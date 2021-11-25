@@ -10,7 +10,7 @@ using AutoMapper;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    [Route("api/estados")]
+    [Route("api/estados/[action]", Name = "[controller]_[action]")]
     [ApiController]
     public class ControladorEstadosOrden : Controller
     {

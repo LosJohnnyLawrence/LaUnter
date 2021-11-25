@@ -25,7 +25,19 @@ namespace CAECE.JL.Unter.Server.Servicios
         }
 
         ///  <inheritdoc/>
-       public Estadia AbrirMesa(int mesaId, Cliente cliente, int mozoId)
+        public Mesa ObtenerMesaPorId(int mesaId) {
+            return _mapper.Map<Mesa>(_repoMesa.ObtenerMesa(mesaId));
+        }
+
+        ///  <inheritdoc/>
+        public IList<Mesa> ObtenerMesas()
+        {
+            return _mapper.Map<IList<Mesa>>(_repoMesa.ObtenerMesas());
+        }
+
+
+        ///  <inheritdoc/>
+        public Estadia AbrirMesa(int mesaId, Cliente cliente, int mozoId)
         {
 
             var mesa = _repoMesa.ObtenerMesa(mesaId);

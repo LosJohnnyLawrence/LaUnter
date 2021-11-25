@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    [Route("api/mozo")]
+    [Route("api/mozo/[action]", Name = "[controller]_[action]")]
     [ApiController]
     public class ControladorMozo : Controller
     {

@@ -54,6 +54,12 @@ namespace CAECE.JL.Unter.Server.Datos.Interfaces
         /// <returns>Mesa obtenida</returns>
         public Mesa ObtenerMesa(int mesaId);
 
+        /// <summary>
+        /// Obtienedatos de todas las mesas
+        /// </summary>
+        /// <returns>Mesas obtenida con lazy loading<</returns>
+        public IQueryable<Mesa> ObtenerMesas();
+
 
         /// <summary>
         /// Elimina una mesa

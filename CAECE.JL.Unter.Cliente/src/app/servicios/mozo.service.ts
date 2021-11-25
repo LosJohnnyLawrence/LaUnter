@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Sector } from '../modelos/mesa.model';
 import { Mozo } from '../modelos/mozo.model';
@@ -10,7 +11,7 @@ export class MozoService {
 
   sectoresIniciales:Sector[] = new Array<Sector>();
 
-  constructor(private mesaService:MesaService) {
+  constructor(private mesaService:MesaService, private httpClient: HttpClient) {
     this.mesaService.obtenerSectores().then(s=> this.sectoresIniciales=s);
    }
 

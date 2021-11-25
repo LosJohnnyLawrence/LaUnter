@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    [Route("api/orden")]
+    [Route("api/orden/[action]", Name = "[controller]_[action]")]
     [ApiController]
     public class ControladorOrden : Controller
     {

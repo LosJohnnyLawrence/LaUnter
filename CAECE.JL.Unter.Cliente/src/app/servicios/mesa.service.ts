@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Mesa, Sector } from '../modelos/mesa.model';
 
@@ -24,7 +25,10 @@ export class MesaService {
 
     /* TODO: Remover lo de arriba cuando este integrado Hasta aca */
 
-  constructor() { }
+    constructor(private httpClient: HttpClient) {
+      // httpClient.get('').
+    }
+  
 
   public actualizarMesa(nuevosDatos:Mesa): Promise<Mesa|null>{
     if(nuevosDatos?.id == null ){

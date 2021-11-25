@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    [Route("api/menu")]
+    [Route("api/menu/[action]", Name = "[controller]_[action]")]
     [ApiController]
     public class ControladorMenu : Controller
     {

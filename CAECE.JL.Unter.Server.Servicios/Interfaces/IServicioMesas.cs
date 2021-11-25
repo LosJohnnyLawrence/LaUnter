@@ -30,6 +30,19 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// <returns>Mozo actal asignadoa a la mesa</returns>
         public Mozo ObtenerMozo(Mesa mesa);
 
+        /// <summary>
+        /// Nos dice los datos de una mesa en base a su id
+        /// </summary>
+        /// <param name="mesaId">Id de mesa cuyo mozo queremos saber</param>
+        /// <returns>Datos de la mesa</returns>
+        public Mesa ObtenerMesaPorId(int mesaId);
+
+
+        /// <summary>
+        /// Nos dice los datos de todas las mesas
+        /// </summary>
+        /// <returns>Array de datos de las mesas</returns>
+        public IList<Mesa> ObtenerMesas();
 
         /// <summary>
         /// Cambia estado de mesa a abierto

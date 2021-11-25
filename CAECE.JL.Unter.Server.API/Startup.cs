@@ -20,6 +20,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using CAECE.JL.Unter.Notificaciones;
 using CAECE.JL.Unter.Notificaciones.Helpers;
+using CAECE.JL.Unter.Server.API.Helpers;
 
 namespace CAECE.JL.Unter.Server.API
 {
@@ -44,7 +45,9 @@ namespace CAECE.JL.Unter.Server.API
 
             services.AgregarReposCore<RepoEstadoPreparacion, RepoMenu, RepoMesa, RepoMozos, RepoOrden>();
             services.AgregarPerfilesNegocioAutomapper();
-          
+            services.AgregarPerfilesPresAutomapper();
+
+
 
 
             services.AddSwaggerGen(c =>

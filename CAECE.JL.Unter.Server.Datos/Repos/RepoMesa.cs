@@ -39,6 +39,10 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return base.Crear(estadia);
         }
 
+        public IQueryable<Mesa> ObtenerMesas() {
+            return _contextoDatosUnter.Mesas.AsQueryable();
+        }
+
         public Estadia ActualizarEstadia(Estadia estadia)
         {
             return base.Actualizar(estadia);

@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CAECE.JL.Unter.Server.API.Controllers
 {
-    [Route("api/mesa")]
+    [Route("api/mesa/[action]", Name = "[controller]_[action]")]
     [ApiController]
     public class ControladorMesa : Controller
     {
@@ -31,6 +31,17 @@ namespace CAECE.JL.Unter.Server.API.Controllers
         /// <returns>Mesa creada</returns>
         public Mesa CrearMesa(Mesa mesa) {
            return _mapper.Map<Mesa>( _servicioMesas.CrearMesa(_mapper.Map<Comun.Modelo.Mesa>(mesa)) );
+        }
+
+
+        [HttpGet]
+        /// <summary>
+        /// Nos dice los datos de una mesa en base a su id
+        /// </summary>
+        /// <param name="mesaId">Id de mesa cuyo mozo queremos saber</param>
+        /// <returns>Datos de la mesa</returns>
+        public Mesa ObtenerMesaPorId(int mesaId) {
+            return _mapper.Map<Mesa>(_servicioMesas.ObtenerMesaPorId(mesaId));
         }
 
         [HttpPut]
