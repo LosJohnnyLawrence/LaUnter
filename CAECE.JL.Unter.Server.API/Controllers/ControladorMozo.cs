@@ -23,6 +23,24 @@ namespace CAECE.JL.Unter.Server.API.Controllers
 
         }
 
+        [HttpGet]
+        /// <summary>
+        /// Obtiene la data de un mozo existente
+        /// </summary>
+        /// <param name="idMozo">id del mozo a buscar</param>
+        public Mozo ObtenerMozo(int idMozo) {
+            return _mapper.Map<Mozo>(_servicioMozos.ObtenerMozo(idMozo));
+        }
+
+        [HttpGet]
+        /// <summary>
+        /// Obtiene la data de los mozos existentes
+        /// </summary>
+        public IList<Mozo> ObtenerMozos() {
+            return _mapper.Map<IList<Mozo>>(_servicioMozos.ObtenerMozos());
+        }
+
+
         [HttpPost]
         /// <summary>
         /// Persiste la data de un nuevo mozo
@@ -61,9 +79,9 @@ namespace CAECE.JL.Unter.Server.API.Controllers
         /// Obtiene Turnos de todos los mozos actuales
         /// </summary>
         /// <returns>Lista de turnos</returns>
-        public IList<TurnoMozo> OtenerTurnosMozo()
+        public IList<TurnoMozo> OtenerTurnosMozos()
         {
-            return _mapper.Map<IList<TurnoMozo>>(_servicioMozos.OtenerTurnosMozo());
+            return _mapper.Map<IList<TurnoMozo>>(_servicioMozos.OtenerTurnosMozos());
         }
 
         [HttpGet]
@@ -97,6 +115,15 @@ namespace CAECE.JL.Unter.Server.API.Controllers
         public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno)
         {
             return _mapper.Map<TurnoMozo>(_servicioMozos.CrearNuevoTurnoMozo(_mapper.Map<Comun.Modelo.TurnoMozo>(turno)));
+        }
+
+
+        [HttpGet]
+        /// <summary>
+        /// Obtiene la data de todos los turnos que exiten
+        /// </summary>
+        public IList<TurnoMozo> ObtenerTodosLosTurnos() {
+            return _mapper.Map<IList<TurnoMozo>>(_servicioMozos.ObtenerTodosLosTurnos());
         }
 
     }

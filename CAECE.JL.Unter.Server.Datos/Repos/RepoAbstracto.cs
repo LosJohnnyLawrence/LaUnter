@@ -32,6 +32,28 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return nuevoRegistro?.Entity;
         }
 
+        public void Attach<T>(T prop) where T : class
+        {
+            if (prop != null)
+            {
+                _contextoDatosUnter.Set<T>().Attach(prop);
+            }
+        }
+        public void AttachRange<T>(IEnumerable<T> prop) where T : class
+        {
+            if (prop != null)
+            {
+                _contextoDatosUnter.Set<T>().AttachRange(prop);
+            }
+        }
+        public void AttachRange<T>(T[] prop) where T : class
+        {
+            if (prop != null)
+            {
+                _contextoDatosUnter.Set<T>().AttachRange(prop);
+            }
+        }
+
         /// <summary>
         /// Metodo genrico para evitar repetir codigo boiler plate para actualizar un item
         /// </summary>

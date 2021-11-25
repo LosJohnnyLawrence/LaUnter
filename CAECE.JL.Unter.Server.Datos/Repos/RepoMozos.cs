@@ -1,4 +1,5 @@
 ﻿using CAECE.JL.Unter.Server.Datos.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -34,8 +35,13 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             return base.Crear(mozo);
         }
 
+    
+
         public TurnoMozo CrearNuevoTurnoMozo(TurnoMozo turno)
         {
+            base.Attach(turno.Mozo);
+            base.Attach(turno.Sector);
+
             return base.Crear(turno);
         }
 
@@ -44,12 +50,27 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
            return  _contextoDatosUnter.Mozos.Find(idMozo);
         }
 
+        public IQueryable<Mozo> ObtenerMozos()
+        {
+            return _contextoDatosUnter.Mozos.AsQueryable();
+        }
+
+        public TurnoMozo ObtenerTurnoPorId(int idTurno)
+        {
+            return _contextoDatosUnter.TurnoMozos.Include(tm => tm.Sector).Include(tm => tm.Mozo).FirstOrDefault(tm=>tm.Id==idTurno);
+        }
+        public IQueryable<TurnoMozo> ObtenerTodosLosTurnos() {
+
+            return _contextoDatosUnter.TurnoMozos.AsQueryable().Include(tm => tm.Sector).Include(tm => tm.Mozo);
+        }
+
+
         public TurnoMozo OtenerTurnoActualMozo(int mozoId)
         {
             var diaActual = DateTime.Now.DayOfWeek;
             var horaActual = DateTime.Now.TimeOfDay;
             //obtngo un turno para este mozo particular dentro del dia y horarios actuales
-           return _contextoDatosUnter.TurnoMozos.FirstOrDefault(turno => turno.Mozo.Id == mozoId &&
+           return _contextoDatosUnter.TurnoMozos.Include(tm => tm.Sector).Include(tm => tm.Mozo).FirstOrDefault(turno => turno.Mozo.Id == mozoId &&
                                         turno.Dia == diaActual && horaActual < turno.FinTurno && horaActual > turno.InicioTurno);
         }
 
@@ -58,13 +79,13 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
             var diaActual = DateTime.Now.DayOfWeek;
             var horaActual = DateTime.Now.TimeOfDay;
             //obtngo un turno para este mozo particular dentro del dia y horarios actuales
-            return _contextoDatosUnter.TurnoMozos.Where(turno => 
+            return _contextoDatosUnter.TurnoMozos.Include(tm => tm.Sector).Include(tm => tm.Mozo).Where(turno => 
                                          turno.Dia == diaActual && horaActual < turno.FinTurno && horaActual > turno.InicioTurno);
         }
 
         public IQueryable<TurnoMozo> OtenerTurnosMozo(Mozo mozo)
         {
-            return _contextoDatosUnter.TurnoMozos.Where(turno => turno.Mozo.Id == mozo.Id);
+            return _contextoDatosUnter.TurnoMozos.Include(tm => tm.Sector).Include(tm => tm.Mozo).Where(turno => turno.Mozo.Id == mozo.Id);
 
         }
     }

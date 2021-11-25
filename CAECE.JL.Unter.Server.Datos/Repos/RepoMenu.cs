@@ -33,16 +33,27 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
 
         public Bebida AgregarBebida(Bebida bebida)
         {
+            base.Attach(bebida.Categoria);
+            base.AttachRange(bebida.RestriccionesAlimentarias);
+            base.AttachRange(bebida.Componentes);
+
             return base.Crear(bebida);
         }
 
         public Ingrediente AgregarIngrediente(Ingrediente ingrediente)
         {
+            base.AttachRange(ingrediente.Componentes);
+
             return base.Crear(ingrediente);
         }
 
         public Plato AgregarPlato(Plato plato)
         {
+            base.Attach(plato.Categoria);
+            base.AttachRange(plato.RestriccionesAlimentarias);
+            base.AttachRange(plato.PosiblesExtras);
+            base.AttachRange(plato.Componentes);
+
             return base.Crear(plato);
         }
 

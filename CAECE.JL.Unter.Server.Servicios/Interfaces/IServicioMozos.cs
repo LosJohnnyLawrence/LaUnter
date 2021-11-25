@@ -33,7 +33,29 @@ namespace CAECE.JL.Unter.Server.Servicios.Interfaces
         /// Obtiene Turnos de todos los mozos actuales
         /// </summary>
         /// <returns>Lista de turnos</returns>
-        public IList<TurnoMozo> OtenerTurnosMozo();
+        public IList<TurnoMozo> OtenerTurnosMozos();
+
+        /// <summary>
+        /// Obtiene la data de un mozo existente
+        /// </summary>
+        /// <param name="idMozo">id del mozo a buscar</param>
+        public Mozo ObtenerMozo(int idMozo);
+
+        /// <summary>
+        /// Obtiene la data de un turno existente
+        /// </summary>
+        /// <param name="idTurno">id del truno a buscar</param>
+        public TurnoMozo ObtenerTurnoPorId(int idTurno);
+
+        /// <summary>
+        /// Obtiene la data de los mozos existentes
+        /// </summary>
+        public IList<Mozo> ObtenerMozos();
+
+        /// <summary>
+        /// Obtiene la data de todos los turnos que exiten
+        /// </summary>
+        public IList<TurnoMozo> ObtenerTodosLosTurnos();
 
         /// <summary>
         /// Obtiene Turnos el turno qeudeberia hacer un mozo ahora

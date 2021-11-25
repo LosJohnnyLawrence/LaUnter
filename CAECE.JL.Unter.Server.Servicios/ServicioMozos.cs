@@ -32,10 +32,28 @@ namespace CAECE.JL.Unter.Server.Servicios
             return _mapper.Map<TurnoMozo>(_repoMozos.ActualizarTurnoMozo(_mapper.Map<Datos.TurnoMozo>(turno)));
         }
 
+
+        ///  <inheritdoc/>
+        public TurnoMozo ObtenerTurnoPorId(int idTurno) {
+            return _mapper.Map<TurnoMozo>(_repoMozos.ObtenerTurnoPorId(idTurno));
+        }
+
         ///  <inheritdoc/>
         public void BorrarMozo(int mozoId)
         {
             _repoMozos.BorrarMozo(mozoId);
+        }
+
+        ///  <inheritdoc/>
+        public IList<Mozo> ObtenerMozos()
+        {
+            return _mapper.Map<IList<Mozo>>(_repoMozos.ObtenerMozos());
+        }
+
+        ///  <inheritdoc/>
+        public Mozo ObtenerMozo(int idMozo)
+        {
+            return _mapper.Map<Mozo>(_repoMozos.ObtenerMozo(idMozo));
         }
 
         ///  <inheritdoc/>
@@ -57,9 +75,14 @@ namespace CAECE.JL.Unter.Server.Servicios
         }
 
         ///  <inheritdoc/>
-        public IList<TurnoMozo> OtenerTurnosMozo()
+        public IList<TurnoMozo> OtenerTurnosMozos()
         {
             return _mapper.Map<IList<TurnoMozo>>(_repoMozos.OtenerTurnoMozosActuales().ToList());
+        }
+
+        public IList<TurnoMozo> ObtenerTodosLosTurnos()
+        {
+            return _mapper.Map<IList<TurnoMozo>>(_repoMozos.ObtenerTodosLosTurnos());
         }
     }
 }

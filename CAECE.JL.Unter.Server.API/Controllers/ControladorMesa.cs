@@ -44,6 +44,16 @@ namespace CAECE.JL.Unter.Server.API.Controllers
             return _mapper.Map<Mesa>(_servicioMesas.ObtenerMesaPorId(mesaId));
         }
 
+        [HttpGet]
+        /// <summary>
+        /// Nos dice los datos de todas las mesas
+        /// </summary>
+        /// <returns>Lista de datos de la mesa</returns>
+        public IList<Mesa> ObtenerMesas()
+        {
+            return _mapper.Map<IList<Mesa>>(_servicioMesas.ObtenerMesas());
+        }
+
         [HttpPut]
         /// <summary>
         /// Crea una neuva mesa

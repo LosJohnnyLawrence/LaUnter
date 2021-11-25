@@ -36,10 +36,16 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
 
         public Pedido CrearUnPedido(Pedido pedido)
         {
+            base.Attach(pedido.Mesa);
+            base.Attach(pedido.Mozo);
+            base.Attach(pedido.Estado);
+            base.Attach(pedido.Cliente);
+            base.AttachRange(pedido.Selecciones);
+
             return base.Crear(pedido);
         }
-
-
+       
+    
         public void EliminarPedido(int idPedido)
         {
             var pedido = _contextoDatosUnter.Pedidos.Find(idPedido);

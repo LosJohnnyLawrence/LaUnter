@@ -31,6 +31,9 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
 
         public void PersistirMotivo(string motivo, Pedido pedido, Seleccion seleccion = null)
         {
+            base.Attach(seleccion);
+            base.Attach(pedido);
+
             base.Crear(new MotivoDevolucion { Comentario = motivo, Pedido = pedido , Seleccion = seleccion});
         }
     }

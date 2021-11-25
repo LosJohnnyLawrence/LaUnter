@@ -1,4 +1,5 @@
 ﻿using CAECE.JL.Unter.Server.Datos.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,18 +30,27 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
 
         public Mesa CrearMesa(Mesa mesa)
         {
+            base.Attach(mesa.Sector);
+            base.Attach(mesa.Estado);
+
             return base.Crear(mesa);
         }
    
 
         public Estadia CrearEstadia(Estadia estadia, Mesa mesa)
-        {
+        {    
+
             _contextoDatosUnter.Mesas.Update(mesa);
+            base.Attach(estadia.Mesa);
+            base.Attach(estadia.Cliente);
+            base.Attach(estadia.Mozo);
+            base.AttachRange(estadia.Pedidos);
+
             return base.Crear(estadia);
         }
 
-        public IQueryable<Mesa> ObtenerMesas() {
-            return _contextoDatosUnter.Mesas.AsQueryable();
+    public IQueryable<Mesa> ObtenerMesas() {
+            return _contextoDatosUnter.Mesas.AsQueryable().Include(m=>m.Sector).Include(m => m.Estado);
         }
 
         public Estadia ActualizarEstadia(Estadia estadia)
@@ -58,7 +68,7 @@ namespace CAECE.JL.Unter.Server.Datos.Repo
 
         public Mesa ObtenerMesa(int mesaId)
         {
-            return _contextoDatosUnter.Mesas.Find(mesaId);
+            return _contextoDatosUnter.Mesas.Include(m => m.Sector).Include(m => m.Estado).FirstOrDefault(m => m.Id==mesaId);
         }
     }
 }
