@@ -15,82 +15,113 @@ namespace CAECE.JL.Unter.Server.API.Controllers
     {
 
         private readonly IServicioTrackOrden _servicioTrackOrden;
+        private readonly IMapper _mapper;
+
         //private readonly ILogger _servicioTrackOrden;
 
 
-        public ControladorEstadosOrden(IServicioTrackOrden servicioTrackOrden)
+        public ControladorEstadosOrden(IServicioTrackOrden servicioTrackOrden, IMapper mapper)
         {
-            throw new NotImplementedException();
+            _mapper = mapper;
+            _servicioTrackOrden = servicioTrackOrden;
 
         }
-        [HttpPut]
-        public IActionResult CompletarPedido(int pedidoId)
-        {
 
-            throw new NotImplementedException();
+        [HttpPut]
+        /// <summary>
+        /// Avanza al proximo estado del flujo normal dependiendo del estado actual
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="pedido">pedido a operar</param>
+        public void PasarEstadoPedido(Pedido pedido)
+        {
+            _servicioTrackOrden.PasarEstadoPedido(_mapper.Map<Comun.Modelo.Pedido>(pedido));
         }
 
-       
         [HttpPut]
-        public IActionResult CompletarSeleccion(Seleccion seleccion)
+        /// <summary>
+        /// Retrocede a un estado de error dependiendo del estado actual
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="pedido">pedido a operar</param>
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void DevolverEstadoPedido(Pedido pedido, string motivo)
         {
-            throw new NotImplementedException();
+            _servicioTrackOrden.DevolverEstadoPedido(_mapper.Map<Comun.Modelo.Pedido>(pedido));
         }
 
-       
+
         [HttpPut]
-        public IActionResult DevolverPedido(Pedido pedido, string motivo)
+        /// <summary>
+        /// Lleava al estado terminal de error "cancelado" 
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="pedido">pedido a operar</param>
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void CancelarPedido(Pedido pedido, string motivo)
         {
-            throw new NotImplementedException();
+            _servicioTrackOrden.CancelarPedido(_mapper.Map<Comun.Modelo.Pedido>(pedido), motivo);
         }
 
-       
+
+
+
         [HttpPut]
-        public IActionResult DevolverSeleccion(Seleccion seleccion, string motivo)
+        /// <summary>
+        /// Avanza al proximo estado del flujo normal dependiendo del estado actual
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="seleccion">seleccion a operar</param>
+        public void PasarEstadoSeleccion(Seleccion seleccion)
         {
-            throw new NotImplementedException();
+            _servicioTrackOrden.PasarEstadoSeleccion(_mapper.Map<Comun.Modelo.Seleccion>(seleccion));
         }
 
-       
         [HttpPut]
-        public IActionResult ObtenerEstadoDePedido(Pedido pedido)
+        /// <summary>
+        /// Retrocede a un estado de error dependiendo del estado actual
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="seleccion">seleccion a operar</param>
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void DevolverEstadoSeleccion(Seleccion seleccion, string motivo)
         {
-            throw new NotImplementedException();
+            _servicioTrackOrden.DevolverEstadoSeleccion(_mapper.Map<Comun.Modelo.Seleccion>(seleccion), motivo);
         }
 
-       
+
         [HttpPut]
-        public IActionResult ObtenerEstadoDeSeleccion(Seleccion seleccion)
+        /// <summary>
+        /// Lleava al estado terminal de error "cancelado" 
+        /// y aplicacciones necesarias
+        /// </summary>
+        /// <param name="seleccion">seleccion a operar</param>
+        /// <param name="motivo">motivo para retroceder el estaso</param>
+        public void CancelarSeleccion(Seleccion seleccion, string motivo)
         {
-            throw new NotImplementedException();
+            _servicioTrackOrden.CancelarSeleccion(_mapper.Map<Comun.Modelo.Seleccion>(seleccion), motivo);
         }
 
-       
         [HttpPut]
-        public IActionResult PedidoListoEntregar(Pedido pedido)
+        /// <summary>
+        /// Obtiene el estado actual de un pedido
+        /// </summary>
+        /// <param name="pedido"></param>
+        public EstadoPreparacion ObtenerEstadoDePedido(Pedido pedido)
         {
-            throw new NotImplementedException();
+            return _mapper.Map<EstadoPreparacion>(_servicioTrackOrden.ObtenerEstadoDePedido(_mapper.Map<Comun.Modelo.Pedido>(pedido)));
         }
 
-       
         [HttpPut]
-        public IActionResult PonerPedidoEnProgreso(Pedido pedido)
+        /// <summary>
+        /// Obtiene el estado actual de un seleccion
+        /// </summary>
+        /// <param name="seleccion"></param>
+        public EstadoPreparacion ObtenerEstadoDeSeleccion(Seleccion seleccion)
         {
-            throw new NotImplementedException();
-        }
-
-       
-        [HttpPut]
-        public IActionResult PonerSeleccionEnProgreso(Seleccion seleccion)
-        {
-            throw new NotImplementedException();
-        }
-
-       
-        [HttpPut]
-        public IActionResult SeleccionListoEntregar(Seleccion seleccion)
-        {
-            throw new NotImplementedException();
+            {
+                return _mapper.Map<EstadoPreparacion>(_servicioTrackOrden.ObtenerEstadoDeSeleccion(_mapper.Map<Comun.Modelo.Seleccion>(seleccion)));
+            }
         }
     }
 }
